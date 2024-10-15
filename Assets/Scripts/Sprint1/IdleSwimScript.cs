@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class IdleSwimScript : MonoBehaviour
 {
-    public float speed = 2f;// Movement speed along X-axis
-    public float swayAmplitude = 0.5f;// Amplitude of the up and down sway
-    public float swayFrequency = 1f;// Frequency of the sway (how fast it moves up and down)
-    public float margin = 10f;// Margin from screen edges
+    public float speed = 2f;           // Movement speed along X-axis
+    public float swayAmplitude = 0.5f; // Amplitude of the up and down sway
+    public float swayFrequency = 1f;   // Frequency of the sway (how fast it moves up and down)
+    public float margin = 10f;         // Margin from screen edges
 
-    private Vector3 direction;// Stores the current horizontal direction (left or right)
-    private float originalY;// The original Y position to sway around
+    private Vector3 direction;         // Stores the current horizontal direction (left or right)
+    private float originalY;           // The original Y position to sway around
 
     void Start()
     {
@@ -17,6 +17,9 @@ public class IdleSwimScript : MonoBehaviour
 
         // Store the initial Y position to use for the swaying movement
         originalY = transform.position.y;
+
+        // Immediately flip the fish to face the correct direction
+        FlipFishToFaceDirection();
     }
 
     void Update()
@@ -43,10 +46,16 @@ public class IdleSwimScript : MonoBehaviour
             // Change direction (flip horizontally)
             direction = -direction;
 
-            // Optionally rotate the fish to face the new direction
-            Vector3 newScale = transform.localScale;
-            newScale.x = direction == Vector3.left ? Mathf.Abs(newScale.x) * -1 : Mathf.Abs(newScale.x);
-            transform.localScale = newScale;
+            // Flip the fish to face the new direction
+            FlipFishToFaceDirection();
         }
+    }
+
+    void FlipFishToFaceDirection()
+    {
+        // Flip the fish based on the direction (left or right)
+        Vector3 newScale = transform.localScale;
+        newScale.x = direction == Vector3.left ? Mathf.Abs(newScale.x) * -1 : Mathf.Abs(newScale.x);
+        transform.localScale = newScale;
     }
 }
