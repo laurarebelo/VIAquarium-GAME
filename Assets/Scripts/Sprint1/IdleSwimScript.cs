@@ -2,21 +2,31 @@ using UnityEngine;
 
 public class IdleSwimScript : MonoBehaviour
 {
-    public float speed = 2f;           // Movement speed along X-axis
-    public float margin = 10f;         // Margin from screen edges
+    public float speed = 2f;// Movement speed along X-axis
+    public float swayAmplitude = 0.5f;// Amplitude of the up and down sway
+    public float swayFrequency = 1f;// Frequency of the sway (how fast it moves up and down)
+    public float margin = 10f;// Margin from screen edges
 
-    private Vector3 direction;         // Stores the current direction (left or right)
+    private Vector3 direction;// Stores the current horizontal direction (left or right)
+    private float originalY;// The original Y position to sway around
 
     void Start()
     {
         // Initialize the fish's horizontal direction (randomly left or right)
         direction = Random.Range(0, 2) == 0 ? Vector3.left : Vector3.right;
+
+        // Store the initial Y position to use for the swaying movement
+        originalY = transform.position.y;
     }
 
     void Update()
     {
         // Move the fish horizontally
         transform.Translate(direction * speed * Time.deltaTime);
+
+        // Add swaying motion on the Y-axis using a sine wave
+        float swayOffset = Mathf.Sin(Time.time * swayFrequency) * swayAmplitude;
+        transform.position = new Vector3(transform.position.x, originalY + swayOffset, transform.position.z);
 
         // Keep fish within the horizontal screen bounds
         KeepWithinScreenBounds();
@@ -38,10 +48,5 @@ public class IdleSwimScript : MonoBehaviour
             newScale.x = direction == Vector3.left ? Mathf.Abs(newScale.x) * -1 : Mathf.Abs(newScale.x);
             transform.localScale = newScale;
         }
-
-        // Clamp Y position to prevent vertical movement (keep the fish at the current Y)
-        Vector3 clampedWorldPosition = transform.position;
-        clampedWorldPosition.y = Camera.main.ScreenToWorldPoint(new Vector3(0, screenPosition.y, screenPosition.z)).y;
-        transform.position = new Vector3(transform.position.x, clampedWorldPosition.y, transform.position.z);
     }
 }
