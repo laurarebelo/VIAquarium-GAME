@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class IdleSwimScript : MonoBehaviour
 {
@@ -9,9 +11,13 @@ public class IdleSwimScript : MonoBehaviour
     private Vector3 direction;
     private float originalY;
     private Camera camera;
+    private FishFlip fishFlip;
+    private float swayTime;
+
 
     void Start()
     {
+        fishFlip = GetComponent<FishFlip>();
         // Initialize the fish's horizontal direction (randomly left or right)
         direction = Random.Range(0, 2) == 0 ? Vector3.left : Vector3.right;
         originalY = transform.position.y;
@@ -19,12 +25,21 @@ public class IdleSwimScript : MonoBehaviour
         FlipFishToFaceDirection();
     }
 
+    private void OnEnable()
+    {
+        originalY = transform.position.y;
+        swayTime = 0f;
+        FlipFishToFaceDirection();
+    }
+
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * (speed * Time.deltaTime));
+        
+        swayTime += Time.deltaTime;
 
         // Add swaying motion on the Y-axis using a sine wave
-        float swayOffset = Mathf.Sin(Time.time * swayFrequency) * swayAmplitude;
+        float swayOffset = Mathf.Sin(swayTime * swayFrequency) * swayAmplitude;
         transform.position = new Vector3(transform.position.x, originalY + swayOffset, transform.position.z);
 
         KeepWithinScreenBounds();
@@ -37,15 +52,12 @@ public class IdleSwimScript : MonoBehaviour
         if (screenPosition.x <= margin || screenPosition.x >= Screen.width - margin)
         {
             direction = -direction;
-
             FlipFishToFaceDirection();
         }
     }
 
     void FlipFishToFaceDirection()
     {
-        Vector3 newScale = transform.localScale;
-        newScale.x = direction == Vector3.left ? Mathf.Abs(newScale.x) * -1 : Mathf.Abs(newScale.x);
-        transform.localScale = newScale;
+        fishFlip.FaceDirection(direction);
     }
 }

@@ -10,10 +10,18 @@ public class FishController : MonoBehaviour
     public TMP_Text fishNameText;
     public SpriteRenderer fishColorSprite;
     public GameObject fishSelectedCircle;
+    public int hungerLevel;
     void Start()
     {
         Deselect();
         UpdateText();
+    }
+
+    public void SetHungerLevel(int level)
+    {
+        if (level < 0) level = 0;
+        if (level > 100) level = 100;
+        hungerLevel = level;
     }
 
     public void Select()

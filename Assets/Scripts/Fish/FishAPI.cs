@@ -9,18 +9,33 @@ namespace Model
     public class FishAPI : MonoBehaviour
     {
         private string url = "http://viaquarium-api-env.eba-dcz7rmnw.eu-north-1.elasticbeanstalk.com/api/fish";
-
+        
         public async Task<FishGetObject> FishPost(string fishName)
         {
-            return await UploadFish(fishName);
-        }
+            string fullUrl = url + "?fishName=" + fishName;
+            using (UnityWebRequest www = UnityWebRequest.Post(fullUrl, null, "application/json"))
+            {
+                var operation = www.SendWebRequest();
+                while (!operation.isDone)
+                {
+                    await Task.Yield();
+                }
 
-        public async Task<List<FishGetObject>> FishGet()
-        {
-            return await DownloadFish();
+                if (www.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError(www.error);
+                    return null;
+                }
+                else
+                {
+                    string jsonResponse = www.downloadHandler.text;
+                    FishGetObject fishObject = JsonUtility.FromJson<FishGetObject>(jsonResponse);
+                    return fishObject;
+                }
+            }
         }
-
-        private async Task<List<FishGetObject>> DownloadFish()
+        
+        public async Task<List<FishGetObject>> FishGetAll()
         {
             using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
             {
@@ -65,11 +80,18 @@ namespace Model
             return jsonObjects;
         }
 
-        public async Task<FishGetObject> UploadFish(string fishName)
+        public async Task<FishFedResponse> UploadFishFeed(int fishFedId, int hungerPoints)
         {
-            string fullUrl = url + "?fishName=" + fishName;
-            using (UnityWebRequest www = UnityWebRequest.Post(fullUrl, null, "application/json"))
+            string fullUrl = url + $"/{fishFedId}/hunger";
+            HungerPostObject hungerPostObject = new HungerPostObject(hungerPoints);
+            string jsonBody = JsonUtility.ToJson(hungerPostObject);
+            using (UnityWebRequest www = new UnityWebRequest(fullUrl, "POST"))
             {
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
+                www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                www.SetRequestHeader("Content-Type", "application/json");
+                www.downloadHandler = new DownloadHandlerBuffer();
+                
                 var operation = www.SendWebRequest();
                 while (!operation.isDone)
                 {
@@ -83,10 +105,9 @@ namespace Model
                 }
                 else
                 {
-                    Debug.Log("Fish upload complete!");
                     string jsonResponse = www.downloadHandler.text;
-                    FishGetObject fishObject = JsonUtility.FromJson<FishGetObject>(jsonResponse);
-                    return fishObject;
+                    FishFedResponse responseObject = JsonUtility.FromJson<FishFedResponse>(jsonResponse);
+                    return responseObject;
                 }
             }
         }
@@ -111,7 +132,6 @@ namespace Model
                 }
                 else
                 {
-                    Debug.Log("Fish deletion complete!");
                     return true;
                 }
             }

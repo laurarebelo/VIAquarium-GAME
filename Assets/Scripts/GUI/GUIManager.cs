@@ -10,10 +10,12 @@ public class GUIManager : MonoBehaviour
     public Button AddButton;
     public Button SubmitButton;
     public Button DeleteButton;
+    public Button FeedButton;
 
     public GameObject AddFishCanvas;
 
     public FishManager fishManager;
+    public FeedingManager feedingManager;
 
     [CanBeNull] public FishController selectedFish;
 
@@ -23,6 +25,7 @@ public class GUIManager : MonoBehaviour
         AddButton.onClick.AddListener(() => ToggleScreen(AddFishCanvas));
         SubmitButton.onClick.AddListener(() => ToggleScreen(AddFishCanvas, false));
         DeleteButton.onClick.AddListener(DeleteFish);
+        FeedButton.onClick.AddListener(ToggleFeedingMode);
     }
 
     void DeleteFish()
@@ -31,6 +34,11 @@ public class GUIManager : MonoBehaviour
         {
             fishManager.DeleteFish(selectedFish);
         }
+    }
+
+    void ToggleFeedingMode()
+    {
+        feedingManager.ToggleFeedingMode();
     }
 
     void ToggleScreen(GameObject screen, bool? active = null)
