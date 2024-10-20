@@ -11,8 +11,10 @@ public class FlakeBehavior : MonoBehaviour
 
     private Vector3 moveDirection;  // New: random movement direction
     private float lifetimeCounter;
+    private SpriteRenderer particleSpriteRenderer;
 
-    public void Initialize(float lifetime, float speed, float size, Gradient color)
+
+    public void Initialize(float lifetime, float speed, float size, Gradient color, Sprite sprite)
     {
         this.lifetime = lifetime;
         this.speed = speed;
@@ -24,6 +26,7 @@ public class FlakeBehavior : MonoBehaviour
         transform.localScale = Vector3.one * size;
 
         GetComponent<Renderer>().material.color = colorGradient.Evaluate(Random.value);
+        GetComponent<SpriteRenderer>().sprite = sprite;
 
         moveDirection = Random.onUnitSphere;
     }

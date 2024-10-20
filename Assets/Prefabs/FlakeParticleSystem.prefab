@@ -44,6 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e31ce06b06548788b50cad138795ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 22a7a8501d0f04bc49dd0fbd9b6ac2d1, type: 3}
+  - {fileID: 21300000, guid: 72811127242a54c5d9013d92f7731d18, type: 3}
+  - {fileID: 21300000, guid: df2c3f86c4ba34a018fc5ef0317da852, type: 3}
+  - {fileID: 21300000, guid: a979181bf32e847f59db75ddd1f11232, type: 3}
+  - {fileID: 21300000, guid: acf5aa72dfdd148e599af443ac60cabb, type: 3}
+  - {fileID: 21300000, guid: 1b9f8126dcd654fe7a89f84f55d2aaa9, type: 3}
+  - {fileID: 21300000, guid: 891b8d2e642964feda2ee81cb7094e2e, type: 3}
+  - {fileID: 21300000, guid: dfc6f41fc6454413fb424eee6be46731, type: 3}
+  - {fileID: 21300000, guid: f3876724a009646f5a55a89aa6a8ae4a, type: 3}
+  - {fileID: 21300000, guid: 213c9ba78539f4fa48a64d6994baec26, type: 3}
+  - {fileID: 21300000, guid: 1ab1fb6eb63e1430eb5481c6d74cda5e, type: 3}
+  - {fileID: 21300000, guid: 6ef046d3fe6904cc290bc3c6cf27cb36, type: 3}
+  - {fileID: 21300000, guid: 165a3740bf28542d3b21e5fd1a784151, type: 3}
   duration: 0.25
   startDelay: 0
   startLifetime: 20

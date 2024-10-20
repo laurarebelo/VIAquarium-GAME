@@ -1,18 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FlakeParticleSystem : MonoBehaviour
 {
-    [Header("Base Settings")]
+    [Header("Possible Sprites")]
+    public List<Sprite> sprites;
+
+    [Header("Base Settings")] 
     public float duration = 0.25f;
     public float startDelay = 0f;
     public float startLifetime = 20f;
     public float startSpeed = 0.1f;
     public float startSize = 0.4f;
     public Gradient startColor;
-    
+
     [Header("Emission")]
     public int emissionRate = 20;
-    public float emissionInterval = 0.02f;  // Emit every 0.1 seconds
+    public float emissionInterval = 0.02f; // Emit every 0.1 seconds
     private float emissionTimer = 0f;
 
 
@@ -42,12 +46,12 @@ public class FlakeParticleSystem : MonoBehaviour
         if (emissionTimer >= emissionInterval)
         {
             InstantiateParticle();
-            emissionTimer = 0f;  // Reset timer
+            emissionTimer = 0f; // Reset timer
         }
 
         if (elapsedTime >= startDelay && elapsedTime >= duration)
         {
-            Destroy(gameObject);  // Destroy the system after its duration
+            Destroy(gameObject); // Destroy the system after its duration
         }
     }
 
@@ -55,8 +59,8 @@ public class FlakeParticleSystem : MonoBehaviour
     {
         Vector3 randomPosition = transform.position + Random.onUnitSphere * radius;
         GameObject particle = Instantiate(particlePrefab, randomPosition, Quaternion.identity);
-        
         FlakeBehavior behavior = particle.AddComponent<FlakeBehavior>();
-        behavior.Initialize(startLifetime, startSpeed, startSize, startColor);
+        Sprite sprite = Utils.GetRandomItem(sprites);
+        behavior.Initialize(startLifetime, startSpeed, startSize, startColor, sprite);
     }
 }

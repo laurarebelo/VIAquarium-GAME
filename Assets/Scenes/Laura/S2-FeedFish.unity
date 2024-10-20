@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49488535}
-  - component: {fileID: 49488534}
+  - component: {fileID: 49488536}
   m_Layer: 0
   m_Name: FishManager
   m_TagString: Untagged
@@ -274,22 +274,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &49488534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49488533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35092a7d23fad425d83b2b40b7535572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishApi: {fileID: 1923292382}
-  fishPrefab: {fileID: 181481122609354415, guid: 65838023a78c14b5085d5ed959749ace, type: 3}
-  fishInScene: []
-  fishNameField: {fileID: 2029214057}
 --- !u!4 &49488535
 Transform:
   m_ObjectHideFlags: 0
@@ -305,6 +289,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49488536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49488533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35092a7d23fad425d83b2b40b7535572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishApi: {fileID: 1923292382}
+  fishPrefab: {fileID: 181481122609354415, guid: 65838023a78c14b5085d5ed959749ace, type: 3}
+  fishInScene: []
+  fishNameField: {fileID: 2029214057}
 --- !u!1 &74950850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1543,7 @@ MonoBehaviour:
   DeleteButton: {fileID: 951049486}
   FeedButton: {fileID: 542434487}
   AddFishCanvas: {fileID: 1734298507}
-  fishManager: {fileID: 49488534}
+  fishManager: {fileID: 0}
   feedingManager: {fileID: 606147782}
   selectedFish: {fileID: 0}
 --- !u!1 &1923292381
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 49488534}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FishManager, Assembly-CSharp
         m_MethodName: SubmitFish
         m_Mode: 1
