@@ -14,12 +14,15 @@ public class IdleSwimScript : MonoBehaviour
     private FishFlip fishFlip;
     private float swayTime;
 
+    private void Awake()
+    {
+        fishFlip = GetComponent<FishFlip>();
+        direction = Random.Range(0, 2) == 0 ? Vector3.left : Vector3.right;
+    }
 
     void Start()
     {
-        fishFlip = GetComponent<FishFlip>();
         // Initialize the fish's horizontal direction (randomly left or right)
-        direction = Random.Range(0, 2) == 0 ? Vector3.left : Vector3.right;
         originalY = transform.position.y;
         camera = Camera.main;
         FlipFishToFaceDirection();
