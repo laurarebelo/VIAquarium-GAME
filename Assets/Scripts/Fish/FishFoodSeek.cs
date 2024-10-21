@@ -21,6 +21,7 @@ public class FishFoodSeek : MonoBehaviour
 
     private int potentialHunger;
     private bool isHungry;
+    private int minutesToGetHungry = 100;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class FishFoodSeek : MonoBehaviour
         fishFlip = GetComponent<FishFlip>();
         fishState = GetComponent<FishState>();
         potentialHunger = fishController.hungerLevel;
+        StartCoroutine(DecreaseHungerOverTime());
         CheckHunger();
     }
 
@@ -80,6 +82,7 @@ public class FishFoodSeek : MonoBehaviour
             if (Vector2.Distance(new Vector2(fishPosition.x, fishPosition.y), new Vector2(flakePosition.x, flakePosition.y)) < 0.1f)
             {
                 Destroy(targetFlake.gameObject);
+                potentialHunger++;
                 rampageCount++;
                 rampageTimer = 0f;
             }
@@ -99,6 +102,16 @@ public class FishFoodSeek : MonoBehaviour
             fishState.StopEating();
             _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
             rampageCount = 0;
+        }
+    }
+    
+    private IEnumerator DecreaseHungerOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(minutesToGetHungry * 60f);
+            potentialHunger = Mathf.Max(0, potentialHunger - 1);
+            CheckHunger();
         }
     }
 }
