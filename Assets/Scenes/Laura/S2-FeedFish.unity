@@ -1543,7 +1543,7 @@ MonoBehaviour:
   DeleteButton: {fileID: 951049486}
   FeedButton: {fileID: 542434487}
   AddFishCanvas: {fileID: 1734298507}
-  fishManager: {fileID: 0}
+  fishManager: {fileID: 49488536}
   feedingManager: {fileID: 606147782}
   selectedFish: {fileID: 0}
 --- !u!1 &1923292381
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 49488536}
         m_TargetAssemblyTypeName: FishManager, Assembly-CSharp
         m_MethodName: SubmitFish
         m_Mode: 1

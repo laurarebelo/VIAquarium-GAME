@@ -9,8 +9,8 @@ public class FishFoodSeek : MonoBehaviour
     public float detectionRadius = 1.5f;
     public float swimSpeed = 2f;
     public float rampageTimeout = 0.5f;
-    private Transform targetFlake;
-    
+    private FlakeBehavior targetFlake;
+
     private int rampageCount = 0;
     private float rampageTimer = 0f;
 
@@ -57,7 +57,8 @@ public class FishFoodSeek : MonoBehaviour
         {
             if (flake.CompareTag("FoodFlake"))
             {
-                targetFlake = flake.transform;
+                FlakeBehavior foundFlake = flake.GetComponent<FlakeBehavior>();
+                if (foundFlake.Claim(fishController.fishId)) targetFlake = foundFlake;
                 break;
             }
         }
@@ -69,7 +70,7 @@ public class FishFoodSeek : MonoBehaviour
         {
             fishState.StartEating();
             Vector3 fishPosition = transform.position;
-            Vector3 flakePosition = targetFlake.position;
+            Vector3 flakePosition = targetFlake.gameObject.transform.position;
 
             float originalZ = fishPosition.z;
 
@@ -79,7 +80,9 @@ public class FishFoodSeek : MonoBehaviour
 
             transform.position = new Vector3(transform.position.x, transform.position.y, originalZ);
 
-            if (Vector2.Distance(new Vector2(fishPosition.x, fishPosition.y), new Vector2(flakePosition.x, flakePosition.y)) < 0.1f)
+            // if the fish reaches the flake
+            if (Vector2.Distance(new Vector2(fishPosition.x, fishPosition.y),
+                    new Vector2(flakePosition.x, flakePosition.y)) < 0.1f)
             {
                 Destroy(targetFlake.gameObject);
                 potentialHunger++;
@@ -104,7 +107,7 @@ public class FishFoodSeek : MonoBehaviour
             rampageCount = 0;
         }
     }
-    
+
     private IEnumerator DecreaseHungerOverTime()
     {
         while (true)

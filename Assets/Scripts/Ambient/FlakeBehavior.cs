@@ -9,9 +9,10 @@ public class FlakeBehavior : MonoBehaviour
     private float size;
     private Gradient colorGradient;
 
-    private Vector3 moveDirection;  // New: random movement direction
+    private Vector3 moveDirection; // New: random movement direction
     private float lifetimeCounter;
     private SpriteRenderer particleSpriteRenderer;
+    public int fishClaimed;
 
 
     public void Initialize(float lifetime, float speed, float size, Gradient color, Sprite sprite)
@@ -20,6 +21,7 @@ public class FlakeBehavior : MonoBehaviour
         this.speed = speed;
         this.size = size;
         this.colorGradient = color;
+        fishClaimed = -1;
 
         lifetimeCounter = 0f;
 
@@ -41,5 +43,21 @@ public class FlakeBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public bool Claim(int fishId)
+    {
+        if (fishClaimed == -1)
+        {
+            fishClaimed = fishId;
+            return true;
+        }
+
+        if (fishClaimed == fishId)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

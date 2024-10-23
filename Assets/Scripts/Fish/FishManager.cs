@@ -69,7 +69,7 @@ public class FishManager : MonoBehaviour
             }
         }
     }
-    
+
     public void SubmitFish()
     {
         StartCoroutine(SubmitFishCoroutine());
