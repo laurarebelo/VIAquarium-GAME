@@ -79,13 +79,27 @@ namespace Model
 
             return jsonObjects;
         }
+        
+        // note for Bianca:
+        // for UploadFishPet i would imagine you need to create a new type
+        // in the Model folder called FishPetResponse
+        // since the return from the api is slightly different :D
 
-        public async Task<FishFedResponse> UploadFishFeed(int fishFedId, int hungerPoints)
+        public async Task<FishFedResponse> UploadFishFeed(int fishAffectedId, int hungerPoints)
         {
-            string fullUrl = url + $"/{fishFedId}/hunger";
-            HungerPostObject hungerPostObject = new HungerPostObject(hungerPoints);
-            string jsonBody = JsonUtility.ToJson(hungerPostObject);
-            using (UnityWebRequest www = new UnityWebRequest(fullUrl, "POST"))
+            return await UploadFishNeed(fishAffectedId, "hunger", hungerPoints);
+        }
+
+        private async Task<FishFedResponse> UploadFishNeed(int fishAffectedId, string needType, int needPoints)
+        {
+            if (needType != "hunger" && needType != "social")
+            {
+                Debug.Log($"Tried to UploadFishNeed with invalid need type: {needType}");
+            }
+            string fullUrl = url + $"/{fishAffectedId}/{needType}";
+            NeedPatchObject needPatchObject = new NeedPatchObject(needPoints);
+            string jsonBody = JsonUtility.ToJson(needPatchObject);
+            using (UnityWebRequest www = new UnityWebRequest(fullUrl, "PATCH"))
             {
                 byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
                 www.uploadHandler = new UploadHandlerRaw(bodyRaw);

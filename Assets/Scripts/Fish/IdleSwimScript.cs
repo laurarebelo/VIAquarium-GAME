@@ -52,9 +52,14 @@ public class IdleSwimScript : MonoBehaviour
     {
         Vector3 screenPosition = camera.WorldToScreenPoint(transform.position);
 
-        if (screenPosition.x <= margin || screenPosition.x >= Screen.width - margin)
+        if (screenPosition.x <= margin)
         {
-            direction = -direction;
+            direction = Vector3.right;
+            FlipFishToFaceDirection();
+        } 
+        else if (screenPosition.x >= Screen.width - margin)
+        {
+            direction = Vector3.left;
             FlipFishToFaceDirection();
         }
     }
