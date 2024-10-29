@@ -9,11 +9,13 @@ public class ClickableTrigger : MonoBehaviour
     private GUIManager guiManager;
     private FishController fishController;
     private bool selected = false;
+    private FishState fishState;
 
     void Start()
     {
         eventCamera = Camera.main;
         fishController = GetComponent<FishController>();
+        fishState = GetComponent<FishState>();
         guiManager = GameObject.Find("GUIManager").GetComponent<GUIManager>();
     }
 
@@ -37,10 +39,12 @@ public class ClickableTrigger : MonoBehaviour
         if (selected)
         {
             guiManager.SelectFish(fishController);
+            fishState.StopIdling();
         }
         else
         {
             guiManager.DeselectFish();
+            fishState.StartIdling();
         }
     }
 }
