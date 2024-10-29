@@ -9,18 +9,33 @@ namespace Model
     public class FishAPI : MonoBehaviour
     {
         private string url = "http://viaquarium-api-env.eba-dcz7rmnw.eu-north-1.elasticbeanstalk.com/api/fish";
-
+        
         public async Task<FishGetObject> FishPost(string fishName)
         {
-            return await UploadFish(fishName);
-        }
+            string fullUrl = url + "?fishName=" + fishName;
+            using (UnityWebRequest www = UnityWebRequest.Post(fullUrl, null, "application/json"))
+            {
+                var operation = www.SendWebRequest();
+                while (!operation.isDone)
+                {
+                    await Task.Yield();
+                }
 
-        public async Task<List<FishGetObject>> FishGet()
-        {
-            return await DownloadFish();
+                if (www.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError(www.error);
+                    return null;
+                }
+                else
+                {
+                    string jsonResponse = www.downloadHandler.text;
+                    FishGetObject fishObject = JsonUtility.FromJson<FishGetObject>(jsonResponse);
+                    return fishObject;
+                }
+            }
         }
-
-        private async Task<List<FishGetObject>> DownloadFish()
+        
+        public async Task<List<FishGetObject>> FishGetAll()
         {
             using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
             {
@@ -64,12 +79,33 @@ namespace Model
 
             return jsonObjects;
         }
+        
+        // note for Bianca:
+        // for UploadFishPet i would imagine you need to create a new type
+        // in the Model folder called FishPetResponse
+        // since the return from the api is slightly different :D
 
-        public async Task<FishGetObject> UploadFish(string fishName)
+        public async Task<FishFedResponse> UploadFishFeed(int fishAffectedId, int hungerPoints)
         {
-            string fullUrl = url + "?fishName=" + fishName;
-            using (UnityWebRequest www = UnityWebRequest.Post(fullUrl, null, "application/json"))
+            return await UploadFishNeed(fishAffectedId, "hunger", hungerPoints);
+        }
+
+        private async Task<FishFedResponse> UploadFishNeed(int fishAffectedId, string needType, int needPoints)
+        {
+            if (needType != "hunger" && needType != "social")
             {
+                Debug.Log($"Tried to UploadFishNeed with invalid need type: {needType}");
+            }
+            string fullUrl = url + $"/{fishAffectedId}/{needType}";
+            NeedPatchObject needPatchObject = new NeedPatchObject(needPoints);
+            string jsonBody = JsonUtility.ToJson(needPatchObject);
+            using (UnityWebRequest www = new UnityWebRequest(fullUrl, "PATCH"))
+            {
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
+                www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                www.SetRequestHeader("Content-Type", "application/json");
+                www.downloadHandler = new DownloadHandlerBuffer();
+                
                 var operation = www.SendWebRequest();
                 while (!operation.isDone)
                 {
@@ -83,10 +119,9 @@ namespace Model
                 }
                 else
                 {
-                    Debug.Log("Fish upload complete!");
                     string jsonResponse = www.downloadHandler.text;
-                    FishGetObject fishObject = JsonUtility.FromJson<FishGetObject>(jsonResponse);
-                    return fishObject;
+                    FishFedResponse responseObject = JsonUtility.FromJson<FishFedResponse>(jsonResponse);
+                    return responseObject;
                 }
             }
         }
@@ -111,7 +146,6 @@ namespace Model
                 }
                 else
                 {
-                    Debug.Log("Fish deletion complete!");
                     return true;
                 }
             }

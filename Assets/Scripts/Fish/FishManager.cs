@@ -17,12 +17,12 @@ public class FishManager : MonoBehaviour
 
     void Start()
     {
-        _ = GetFish();
+        _ = GetAllFish();
     }
 
-    async Task GetFish()
+    async Task GetAllFish()
     {
-        fishList = await fishApi.FishGet();
+        fishList = await fishApi.FishGetAll();
         InstantiateAllFish();
     }
 
@@ -36,13 +36,14 @@ public class FishManager : MonoBehaviour
         fishController.SetFishName(newFish.name);
         fishController.SetFishColor(Utils.GetRandomColor());
         fishController.SetFishId(newFish.id);
+        fishController.SetHungerLevel(newFish.hungerLevel);
         fishInScene.Add(newFishGo);
     }
 
     public async Task ResetFish()
     {
         DestroyAllFish();
-        await GetFish();
+        await GetAllFish();
     }
 
     public void DeleteFish(FishController fish)
@@ -68,7 +69,7 @@ public class FishManager : MonoBehaviour
             }
         }
     }
-    
+
     public void SubmitFish()
     {
         StartCoroutine(SubmitFishCoroutine());
@@ -96,7 +97,6 @@ public class FishManager : MonoBehaviour
     private IEnumerator SubmitFishCoroutine()
     {
         string fishName = fishNameField.text;
-        Debug.Log("Submitting fish " + fishName);
 
         FishGetObject fishObject;
         var task = FishPostAsync(fishName);

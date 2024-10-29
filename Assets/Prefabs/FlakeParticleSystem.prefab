@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4229246209983550415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7905399005823031121}
+  - component: {fileID: 7901407803688662040}
+  m_Layer: 0
+  m_Name: FlakeParticleSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7905399005823031121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229246209983550415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5819666, y: 0.75693876, z: -3.9715164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7901407803688662040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229246209983550415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e31ce06b06548788b50cad138795ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 22a7a8501d0f04bc49dd0fbd9b6ac2d1, type: 3}
+  - {fileID: 21300000, guid: 72811127242a54c5d9013d92f7731d18, type: 3}
+  - {fileID: 21300000, guid: df2c3f86c4ba34a018fc5ef0317da852, type: 3}
+  - {fileID: 21300000, guid: a979181bf32e847f59db75ddd1f11232, type: 3}
+  - {fileID: 21300000, guid: acf5aa72dfdd148e599af443ac60cabb, type: 3}
+  - {fileID: 21300000, guid: 1b9f8126dcd654fe7a89f84f55d2aaa9, type: 3}
+  - {fileID: 21300000, guid: 891b8d2e642964feda2ee81cb7094e2e, type: 3}
+  - {fileID: 21300000, guid: dfc6f41fc6454413fb424eee6be46731, type: 3}
+  - {fileID: 21300000, guid: f3876724a009646f5a55a89aa6a8ae4a, type: 3}
+  - {fileID: 21300000, guid: 213c9ba78539f4fa48a64d6994baec26, type: 3}
+  - {fileID: 21300000, guid: 1ab1fb6eb63e1430eb5481c6d74cda5e, type: 3}
+  - {fileID: 21300000, guid: 6ef046d3fe6904cc290bc3c6cf27cb36, type: 3}
+  - {fileID: 21300000, guid: 165a3740bf28542d3b21e5fd1a784151, type: 3}
+  duration: 0.25
+  startDelay: 0
+  startLifetime: 20
+  startSpeed: 0.1
+  startSize: 5
+  startColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  emissionRate: 1
+  emissionInterval: 0.04
+  radius: 0.3
+  particlePrefab: {fileID: 8976549633852783863, guid: 4f9597e3c03244273927ded240c4b0be, type: 3}

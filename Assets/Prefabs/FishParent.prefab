@@ -116,6 +116,9 @@ GameObject:
   - component: {fileID: 2245743496566405275}
   - component: {fileID: 7661279327173740060}
   - component: {fileID: 2702200574585820582}
+  - component: {fileID: 4764573070511446685}
+  - component: {fileID: 5045408217749514339}
+  - component: {fileID: 1897420917178382638}
   m_Layer: 0
   m_Name: FishParent
   m_TagString: Untagged
@@ -136,8 +139,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6447720080207405921}
   - {fileID: 8876441039260568790}
+  - {fileID: 6447720080207405921}
   - {fileID: 8283933864951981540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,6 +161,7 @@ MonoBehaviour:
   fishNameText: {fileID: 6689420630780696972}
   fishColorSprite: {fileID: 8975014788262413692}
   fishSelectedCircle: {fileID: 374793138637046305}
+  hungerLevel: 0
 --- !u!114 &2245743496566405275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +222,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  swayAmplitude: 0.5
+  swayFrequency: 1
   margin: 0
+--- !u!114 &4764573070511446685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db4af812d9d04a7c81e3f1f79b4a1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 1.5
+  swimSpeed: 2
+  rampageTimeout: 0.5
+--- !u!114 &5045408217749514339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a62055cdb574a688f61fe18562decc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 949740854243368076}
+  - {fileID: 8975014788262413692}
+--- !u!114 &1897420917178382638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a1eb8383de44402847b1c8587fbaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0
