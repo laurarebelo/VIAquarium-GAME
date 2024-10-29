@@ -74,7 +74,7 @@ public class FishManager : MonoBehaviour
     {
         string fishName = fishNameField.text;
 
-        if (ValidateName(fishName)) // Validate the name before submitting
+        if (ValidateName(fishName)) 
         {
             StartCoroutine(SubmitFishCoroutine(fishName));
         }
@@ -144,22 +144,20 @@ public class FishManager : MonoBehaviour
     // Validation method to check if the name contains only letters and is unique
     bool ValidateName(string name)
     {
-        // Check if the name is not empty and contains only letters
         if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$"))
         {
             return false;
         }
-
-        // Check for uniqueness
+        
         foreach (var fishGameObject in fishInScene)
         {
             FishController fishController = fishGameObject.GetComponent<FishController>();
-            if (fishController.fishName.Equals(name, System.StringComparison.OrdinalIgnoreCase)) // Case insensitive check
+            if (fishController.fishName.Equals(name, System.StringComparison.OrdinalIgnoreCase))
             {
-                return false; // Name is not unique
+                return false;
             }
         }
 
-        return true; // Name is valid and unique
+        return true;
     }
 }
