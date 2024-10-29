@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions; // Import for Regex
 using TMPro;
 using UnityEngine;
 
@@ -34,6 +33,7 @@ public class FishController : MonoBehaviour
     public void Deselect()
     {
         fishSelectedCircle.SetActive(false);
+
     }
 
     public void SetFishColor(Color color)
@@ -48,24 +48,12 @@ public class FishController : MonoBehaviour
 
     public void SetFishName(string newName)
     {
-        if (ValidateName(newName)) 
-        {
-            fishName = newName;
-            UpdateText();
-        }
-        else
-        {
-            Debug.LogWarning("Invalid fish name! It should contain only letters.");
-        }
+        fishName = newName;
+        UpdateText();
     }
 
     void UpdateText()
     {
         fishNameText.text = fishName;
-    }
-
-    bool ValidateName(string name)
-    {
-        return Regex.IsMatch(name, @"^[a-zA-Z]+$");
     }
 }

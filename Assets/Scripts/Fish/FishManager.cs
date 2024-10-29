@@ -14,7 +14,6 @@ public class FishManager : MonoBehaviour
     private int z;
     public TMP_InputField fishNameField;
 
-
     void Start()
     {
         _ = GetAllFish();
@@ -57,6 +56,7 @@ public class FishManager : MonoBehaviour
         {
             Destroy(fishGameObject);
         }
+        fishInScene.Clear(); // Clear the list after destroying fish
     }
 
     void InstantiateAllFish()
@@ -72,7 +72,16 @@ public class FishManager : MonoBehaviour
 
     public void SubmitFish()
     {
-        StartCoroutine(SubmitFishCoroutine());
+        string fishName = fishNameField.text;
+
+        if (ValidateName(fishName)) // Validate the name before submitting
+        {
+            StartCoroutine(SubmitFishCoroutine(fishName));
+        }
+        else
+        {
+            Debug.LogWarning("Invalid fish name! It should contain only letters and be unique.");
+        }
     }
 
     private IEnumerator DeleteFishCoroutine(FishController fishController)
@@ -91,13 +100,12 @@ public class FishManager : MonoBehaviour
         {
             GameObject fishGo = fishController.gameObject;
             Destroy(fishGo);
+            fishInScene.Remove(fishGo); // Remove the fish from the list after destroying it
         }
     }
 
-    private IEnumerator SubmitFishCoroutine()
+    private IEnumerator SubmitFishCoroutine(string fishName)
     {
-        string fishName = fishNameField.text;
-
         FishGetObject fishObject;
         var task = FishPostAsync(fishName);
         while (!task.IsCompleted)
@@ -131,5 +139,27 @@ public class FishManager : MonoBehaviour
     private void SpawnFishAsync(FishGetObject newFish)
     {
         InstantiateFish(newFish);
+    }
+
+    // Validation method to check if the name contains only letters and is unique
+    bool ValidateName(string name)
+    {
+        // Check if the name is not empty and contains only letters
+        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$"))
+        {
+            return false;
+        }
+
+        // Check for uniqueness
+        foreach (var fishGameObject in fishInScene)
+        {
+            FishController fishController = fishGameObject.GetComponent<FishController>();
+            if (fishController.fishName.Equals(name, System.StringComparison.OrdinalIgnoreCase)) // Case insensitive check
+            {
+                return false; // Name is not unique
+            }
+        }
+
+        return true; // Name is valid and unique
     }
 }
