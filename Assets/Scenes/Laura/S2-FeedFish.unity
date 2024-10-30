@@ -494,7 +494,7 @@ MonoBehaviour:
     texturesArray:
     - {fileID: 2800000, guid: 2da3d230011852f4ea712ca690de1526, type: 3}
     frameRate: 0.1
-    offset: {x: 10, y: 10}
+    offset: {x: 16, y: 16}
   - CursorType: 1
     texturesArray:
     - {fileID: 2800000, guid: 2da3d230011852f4ea712ca690de1526, type: 3}
@@ -502,7 +502,7 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 4e933191d2245bd4d8bd92cd5ff1441a, type: 3}
     - {fileID: 2800000, guid: 9ceb497e0f180354e8ebd95575d96ca8, type: 3}
     - {fileID: 2800000, guid: ea33c987c2502c54f8c33d1ca88d6e2d, type: 3}
-    frameRate: 0.3
+    frameRate: 0.15
     offset: {x: 16, y: 16}
 --- !u!4 &391959000
 Transform:

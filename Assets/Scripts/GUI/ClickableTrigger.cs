@@ -10,7 +10,7 @@ public class ClickableTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private FishState fishState;
     private bool isPressed = false;
     private bool isSelected = false;
-    private float pressDuration = 0.5f; // Time threshold for press vs. click
+    private float pressDuration = 0.2f; // Time threshold for press vs. click
     private float pressTimer;
 
     void Start()
