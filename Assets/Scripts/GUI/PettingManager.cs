@@ -7,9 +7,6 @@ using UnityEngine.EventSystems;
 
 public class PettingManager : MonoBehaviour
 {
-   public static PettingManager Instance{get; private set;}
-   
-   
    [SerializeField] private List<CursorAnimation> CursorAnimationList;
    private CursorAnimation cursorAnimation;
    private int currentFrame;
@@ -22,10 +19,6 @@ public class PettingManager : MonoBehaviour
       DefaultHand,
       Petting
    } 
-   private void Awake()
-   {
-      Instance=this;
-   }
 
    private void Start()
    { 
