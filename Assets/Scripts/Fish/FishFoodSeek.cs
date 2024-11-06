@@ -103,7 +103,7 @@ public class FishFoodSeek : MonoBehaviour
         if (rampageTimer >= rampageTimeout && rampageCount > 0)
         {
             fishState.StopEating();
-            _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
+            _ = fishApi.UploadFishNeed(fishController.fishId,"hunger", rampageCount);
             rampageCount = 0;
         }
     }

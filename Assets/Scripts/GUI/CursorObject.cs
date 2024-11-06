@@ -1,13 +1,20 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
+using Model;
 
 public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    private FishAPI fishApi;
+    private FishController fishController;
     private PettingManager pettingManager;
+    private int holdCounter = 0;
+    private Coroutine holdCounterCoroutine;
 
     private void Start()
     {
-        // Find the PettingManager in the scene, assuming it's attached to a GameObject tagged as "PettingManager"
+        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
+        fishController = GetComponent<FishController>();
         pettingManager = FindObjectOfType<PettingManager>();
         
         if (pettingManager == null)
@@ -20,8 +27,8 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (pettingManager != null)
         {
-            // Change the cursor to the Petting type
             pettingManager.SetActiveCursorType(PettingManager.CursorType.Petting);
+            holdCounterCoroutine = StartCoroutine(CountHoldTime());
         }
     }
 
@@ -29,8 +36,25 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (pettingManager != null)
         {
-            // Revert the cursor back to the DefaultHand type
             pettingManager.SetActiveCursorType(PettingManager.CursorType.DefaultHand);
+
+            if (holdCounterCoroutine != null)
+            {
+                StopCoroutine(holdCounterCoroutine);
+                _ = fishApi.UploadFishNeed(fishController.fishId,"hunger", holdCounter);
+                holdCounter = 0;
+            }
+        }
+    }
+
+    private IEnumerator CountHoldTime()
+    {
+        holdCounter = 0;
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            holdCounter++;
+            Debug.Log("Hold time: " + holdCounter + " seconds."); //1 sec = 1point? might change
         }
     }
 }

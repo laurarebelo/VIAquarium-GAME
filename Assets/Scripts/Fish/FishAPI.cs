@@ -8,7 +8,7 @@ namespace Model
 {
     public class FishAPI : MonoBehaviour
     {
-        private string url = "http://viaquarium-api-env.eba-dcz7rmnw.eu-north-1.elasticbeanstalk.com/api/fish";
+        private string url = "https://localhost:7166/api/fish";
         
         public async Task<FishGetObject> FishPost(string fishName)
         {
@@ -84,13 +84,8 @@ namespace Model
         // for UploadFishPet i would imagine you need to create a new type
         // in the Model folder called FishPetResponse
         // since the return from the api is slightly different :D
-
-        public async Task<FishFedResponse> UploadFishFeed(int fishAffectedId, int hungerPoints)
-        {
-            return await UploadFishNeed(fishAffectedId, "hunger", hungerPoints);
-        }
-
-        private async Task<FishFedResponse> UploadFishNeed(int fishAffectedId, string needType, int needPoints)
+        
+        public async Task<FishNeedResponse> UploadFishNeed(int fishAffectedId, string needType, int needPoints)
         {
             if (needType != "hunger" && needType != "social")
             {
@@ -120,7 +115,7 @@ namespace Model
                 else
                 {
                     string jsonResponse = www.downloadHandler.text;
-                    FishFedResponse responseObject = JsonUtility.FromJson<FishFedResponse>(jsonResponse);
+                    FishNeedResponse responseObject = JsonUtility.FromJson<FishNeedResponse>(jsonResponse);
                     return responseObject;
                 }
             }
