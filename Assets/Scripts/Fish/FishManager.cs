@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
+    [SerializeField] public int NameSize;
     public FishAPI fishApi;
     private List<FishGetObject> fishList;
     public GameObject fishPrefab;
     public List<GameObject> fishInScene = new List<GameObject>();
     private int z;
     public TMP_InputField fishNameField;
-
 
     void Start()
     {
@@ -57,6 +57,7 @@ public class FishManager : MonoBehaviour
         {
             Destroy(fishGameObject);
         }
+        fishInScene.Clear(); // Clear the list after destroying fish
     }
 
     void InstantiateAllFish()
@@ -72,7 +73,16 @@ public class FishManager : MonoBehaviour
 
     public void SubmitFish()
     {
-        StartCoroutine(SubmitFishCoroutine());
+        string fishName = fishNameField.text;
+
+        if (ValidateName(fishName)) 
+        {
+            StartCoroutine(SubmitFishCoroutine(fishName));
+        }
+        else
+        {
+            Debug.LogWarning("Invalid fish name! It should contain only letters, be unique and under: " + NameSize + " characters");
+        }
     }
 
     private IEnumerator DeleteFishCoroutine(FishController fishController)
@@ -91,13 +101,12 @@ public class FishManager : MonoBehaviour
         {
             GameObject fishGo = fishController.gameObject;
             Destroy(fishGo);
+            fishInScene.Remove(fishGo); // Remove the fish from the list after destroying it
         }
     }
 
-    private IEnumerator SubmitFishCoroutine()
+    private IEnumerator SubmitFishCoroutine(string fishName)
     {
-        string fishName = fishNameField.text;
-
         FishGetObject fishObject;
         var task = FishPostAsync(fishName);
         while (!task.IsCompleted)
@@ -131,5 +140,25 @@ public class FishManager : MonoBehaviour
     private void SpawnFishAsync(FishGetObject newFish)
     {
         InstantiateFish(newFish);
+    }
+
+    // Validation method to check if the name contains only letters and is unique
+    bool ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$") || name.Length > NameSize)
+        {
+            return false;
+        }
+        
+        foreach (var fishGameObject in fishInScene)
+        {
+            FishController fishController = fishGameObject.GetComponent<FishController>();
+            if (fishController.fishName.Equals(name, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

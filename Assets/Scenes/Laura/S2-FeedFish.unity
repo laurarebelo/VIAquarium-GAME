@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35092a7d23fad425d83b2b40b7535572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NameSize: 30
   fishApi: {fileID: 1923292382}
   fishPrefab: {fileID: 181481122609354415, guid: 65838023a78c14b5085d5ed959749ace, type: 3}
   fishInScene: []
