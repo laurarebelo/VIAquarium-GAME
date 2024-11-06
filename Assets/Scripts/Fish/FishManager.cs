@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
+    [SerializeField] public int NameSize;
     public FishAPI fishApi;
     private List<FishGetObject> fishList;
     public GameObject fishPrefab;
@@ -80,7 +81,7 @@ public class FishManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Invalid fish name! It should contain only letters and be unique.");
+            Debug.LogWarning("Invalid fish name! It should contain only letters, be unique and under: " + NameSize + " characters");
         }
     }
 
@@ -144,7 +145,7 @@ public class FishManager : MonoBehaviour
     // Validation method to check if the name contains only letters and is unique
     bool ValidateName(string name)
     {
-        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$"))
+        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$") || name.Length > NameSize)
         {
             return false;
         }
