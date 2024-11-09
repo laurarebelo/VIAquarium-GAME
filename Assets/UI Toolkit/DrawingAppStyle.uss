@@ -1,0 +1,60 @@
+.button_background {
+    background-image: url("project://database/Assets/_Sprites/Kenney%20ui%20pack%20pixel%20adventure/Tiles/Large%20tiles/Thin%20outline/tile_0000.png?fileID=2800000&guid=e9acc23942fb48c49a6bb96de4fe9682&type=3#tile_0000");
+    margin-top: 1px;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    font-size: 28px;
+    -unity-background-scale-mode: scale-to-fit;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    -unity-slice-scale: 0.5px;
+}
+
+.button_background:hover {
+    background-image: url("project://database/Assets/_Sprites/Kenney%20ui%20pack%20pixel%20adventure/Tiles/Large%20tiles/Thin%20outline/tile_0008.png?fileID=-9191263657056127176&guid=beddb425086fa0a4aaa1f303ca49aed3&type=3#tile_0008_0");
+    scale: 1 1;
+    -unity-slice-scale: 2px;
+}
+
+.button_background:checked {
+    background-image: url("project://database/Assets/_Sprites/Kenney%20ui%20pack%20pixel%20adventure/Tiles/Large%20tiles/Thin%20outline/tile_0002.png?fileID=-2727194386381995188&guid=c4139d9b5f7bdcc43b92c634da2df6ba&type=3#tile_0002_0");
+}
+
+.tool_button {
+    flex-shrink: 1;
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgba(255, 255, 255, 0);
+    flex-grow: 1;
+    margin-top: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    font-size: 28px;
+    background-image: url("project://database/Assets/_Sprites/Kenney%20Cursor%20pack/PNG/Outline/Double/drawing_pen.png?fileID=-5172951650001389678&guid=7e2caa2f733b92941808f10be3c907bf&type=3#drawing_pen_0");
+    height: 100px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.label_Text {
+    color: rgb(0, 0, 0);
+    -unity-text-outline-width: 0;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+}
