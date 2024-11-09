@@ -159,6 +159,7 @@ MonoBehaviour:
   fishId: 0
   fishName: ...
   fishNameText: {fileID: 6689420630780696972}
+  fishOutlineSprite: {fileID: 949740854243368076}
   fishColorSprite: {fileID: 8975014788262413692}
   fishSelectedCircle: {fileID: 374793138637046305}
   hungerLevel: 0
@@ -647,7 +648,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a9b6341260a0e49468698a66231c2bb2, type: 3}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  m_Color: {r: 0.44014773, g: 0.58638823, b: 0.5943396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

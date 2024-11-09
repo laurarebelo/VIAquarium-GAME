@@ -7,8 +7,10 @@ public class FishGetObject
     public string lastUpdatedHunger;
     public int socialLevel;
     public string lastUpdatedSocial;
+    public string template;
+    public string sprite;
 
-    public FishGetObject(int id, string name, int hungerLevel, string lastUpdatedHunger, int socialLevel, string lastUpdatedSocial)
+    public FishGetObject(int id, string name, int hungerLevel, string lastUpdatedHunger, int socialLevel, string lastUpdatedSocial, string template, string sprite)
     {
         this.id = id;
         this.name = name;
@@ -16,5 +18,7 @@ public class FishGetObject
         this.lastUpdatedHunger = lastUpdatedHunger;
         this.socialLevel = socialLevel;
         this.lastUpdatedSocial = lastUpdatedSocial;
+        this.template = template;
+        this.sprite = sprite;
     }
 }

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Laura/DrawingCanvas.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Laura/S2-FeedFish.unity
+    guid: 44a625ce978214ef3acb487d64426b0a
   m_configObjects: {}

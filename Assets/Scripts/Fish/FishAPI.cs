@@ -8,12 +8,19 @@ namespace Model
 {
     public class FishAPI : MonoBehaviour
     {
-        private string url = "http://viaquarium-api-env.eba-dcz7rmnw.eu-north-1.elasticbeanstalk.com/api/fish";
-        
-        public async Task<FishGetObject> FishPost(string fishName)
+        private string url = "http://localhost:5296/api/fish";
+
+        void Awake()
         {
-            string fullUrl = url + "?fishName=" + fishName;
-            using (UnityWebRequest www = UnityWebRequest.Post(fullUrl, null, "application/json"))
+            DontDestroyOnLoad(gameObject);
+        }
+        
+        public async Task<FishGetObject> FishPost(FishPostObject fishPostObject)
+        {
+            string json = JsonUtility.ToJson(fishPostObject);
+            Debug.Log("Json that im sending...");
+            Debug.Log(json);
+            using (UnityWebRequest www = UnityWebRequest.Post(url, json, "application/json"))
             {
                 var operation = www.SendWebRequest();
                 while (!operation.isDone)
