@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Laura/S2-FeedFish.unity
     guid: 44a625ce978214ef3acb487d64426b0a
+  - enabled: 1
+    path: Assets/Scenes/Sprint3-Petting.unity
+    guid: ad181b14bdc119b44bdc5cad550e3464
   m_configObjects: {}

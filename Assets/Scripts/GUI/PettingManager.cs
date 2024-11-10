@@ -21,7 +21,7 @@ public class PettingManager : MonoBehaviour
    } 
 
    private void Start()
-   { 
+   {
       SetActiveCursorType(CursorType.DefaultHand);   
    }
 
@@ -37,6 +37,11 @@ public class PettingManager : MonoBehaviour
             Cursor.SetCursor(cursorAnimation.texturesArray[currentFrame], cursorAnimation.offset, CursorMode.Auto);
          }
       }
+   }
+
+   private void OnDestroy()
+   {
+      Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); // Resets to default cursor
    }
 
    private void SetActiveCursorAnimation(CursorAnimation cursorAnimation)

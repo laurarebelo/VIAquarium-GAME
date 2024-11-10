@@ -69,10 +69,9 @@ public class DrawingGUIManager : MonoBehaviour
         return await fishApi.FishPost(fishPostObject);
     }
 
-
     void GoBack()
     {
-        SceneManager.LoadScene("S2-FeedFish");
+        SceneManager.LoadScene("Sprint3-Petting");
     }
     private string SaveTextureAsPNG()
     {
@@ -91,7 +90,7 @@ public class DrawingGUIManager : MonoBehaviour
     // Validation method to check if the name contains only letters and is unique
     bool ValidateName(string name)
     {
-        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$") || name.Length > NameSize)
+        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$") || name.Length > NameSize)
         {
             return false;
         }
