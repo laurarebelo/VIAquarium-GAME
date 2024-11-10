@@ -5,27 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishPostObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishPostObject.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/My/ImagePost.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/My/ImagePost.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/My/ImageResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/My/ImageResponse.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Model/FishGetObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Model/FishGetObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FishParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FishParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/S2-FeedFish.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/S2-FeedFish.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/GUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/GUIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/fish01-color.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/fish01-color.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/fish01-line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/fish01-line.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/IdleSwimScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/IdleSwimScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +132,9 @@
       <workItem from="1730287933062" duration="2298000" />
       <workItem from="1730376442008" duration="5993000" />
       <workItem from="1730828462435" duration="24681000" />
-      <workItem from="1731171618810" duration="1164000" />
+      <workItem from="1731171618810" duration="1769000" />
+      <workItem from="1731234828837" duration="1382000" />
+      <workItem from="1731236500593" duration="152000" />
     </task>
     <servers />
   </component>
