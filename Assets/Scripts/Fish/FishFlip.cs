@@ -8,22 +8,22 @@ public class FishFlip : MonoBehaviour
 
     public void FaceDirection(Vector3 direction)
     {
-        if (direction == Vector3.left)
-        {
-            FaceLeft();
-        }
-
-        if (direction == Vector3.right)
+        bool toTheRight = direction.x > 0;
+        if (toTheRight)
         {
             FaceRight();
         }
+        else
+        {
+            FaceLeft();
+        }
     }
-    
+
     public void FaceDirection(Vector2 direction)
     {
         FaceDirection(new Vector3(direction.x, direction.y, 0));
     }
-    
+
     public void FaceRight()
     {
         foreach (var sprite in sprites)

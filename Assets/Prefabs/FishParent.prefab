@@ -115,10 +115,10 @@ GameObject:
   - component: {fileID: 3103807466487316241}
   - component: {fileID: 2245743496566405275}
   - component: {fileID: 7661279327173740060}
-  - component: {fileID: 2702200574585820582}
   - component: {fileID: 4764573070511446685}
   - component: {fileID: 5045408217749514339}
   - component: {fileID: 1897420917178382638}
+  - component: {fileID: 4197014554196695564}
   m_Layer: 0
   m_Name: FishParent
   m_TagString: Untagged
@@ -159,6 +159,7 @@ MonoBehaviour:
   fishId: 0
   fishName: ...
   fishNameText: {fileID: 6689420630780696972}
+  fishOutlineSprite: {fileID: 949740854243368076}
   fishColorSprite: {fileID: 8975014788262413692}
   fishSelectedCircle: {fileID: 374793138637046305}
   hungerLevel: 0
@@ -209,22 +210,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.028619122, y: -0.06439442}
   m_Size: {x: 1.515158, y: 0.9856987}
   m_Direction: 1
---- !u!114 &2702200574585820582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181481122609354415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac134d14bb38710499d3c9167b86843d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  swayAmplitude: 0.5
-  swayFrequency: 1
-  margin: 0
 --- !u!114 &4764573070511446685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +252,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a1eb8383de44402847b1c8587fbaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4197014554196695564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df1532d551d44883add3689a6cbbbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 0.6
+  maxSpeed: 2
+  stopDurationMin: 0.5
+  stopDurationMax: 2
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +648,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a9b6341260a0e49468698a66231c2bb2, type: 3}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  m_Color: {r: 0.44014773, g: 0.58638823, b: 0.5943396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
