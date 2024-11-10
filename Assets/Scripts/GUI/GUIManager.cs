@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Model;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour
 {
     public Button AddButton;
-    public Button SubmitButton;
+    public Button ContinueButton;
     public Button DeleteButton;
     public Button FeedButton;
 
@@ -23,7 +25,7 @@ public class GUIManager : MonoBehaviour
     void Start()
     {
         AddButton.onClick.AddListener(() => ToggleScreen(AddFishCanvas));
-        SubmitButton.onClick.AddListener(() => ToggleScreen(AddFishCanvas, false));
+        ContinueButton.onClick.AddListener(GoToFishPainting);
         DeleteButton.onClick.AddListener(DeleteFish);
         FeedButton.onClick.AddListener(ToggleFeedingMode);
     }
@@ -49,6 +51,11 @@ public class GUIManager : MonoBehaviour
         }
 
         screen.SetActive(active.Value);
+    }
+
+    void GoToFishPainting()
+    {
+        SceneManager.LoadScene("DrawingCanvas");
     }
 
     public void SelectFish(FishController fish)

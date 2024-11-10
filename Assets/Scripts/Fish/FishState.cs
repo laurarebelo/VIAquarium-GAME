@@ -5,11 +5,11 @@ using UnityEngine;
 public class FishState : MonoBehaviour
 {
     private FishFoodSeek foodSeek;
-    private IdleSwimScript idleSwim;
+    private RandomIdleSwim idleSwim;
     void Start()
     {
         foodSeek = GetComponent<FishFoodSeek>();
-        idleSwim = GetComponent<IdleSwimScript>();
+        idleSwim = GetComponent<RandomIdleSwim>();
         idleSwim.enabled = true;
     }
 
