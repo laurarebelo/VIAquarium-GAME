@@ -8,13 +8,10 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
-    [SerializeField] public int NameSize;
     public FishAPI fishApi;
     private List<FishGetObject> fishList;
     public GameObject fishPrefab;
-    public List<GameObject> fishInScene = new List<GameObject>();
     private int z;
-    public TMP_InputField fishNameField;
     private FishTemplateProvider fishTemplateProvider;
     
     void Start()
@@ -44,27 +41,11 @@ public class FishManager : MonoBehaviour
         fishController.SetFishTemplate(spritePair);
         if (newFish.sprite != "") fishController.SetFishSprite(newFish.sprite);
         else fishController.SetFishColor(Utils.GetRandomColor());
-        fishInScene.Add(newFishGo);
-    }
-
-    public async Task ResetFish()
-    {
-        DestroyAllFish();
-        await GetAllFish();
     }
 
     public void DeleteFish(FishController fish)
     {
         StartCoroutine(DeleteFishCoroutine(fish));
-    }
-
-    void DestroyAllFish()
-    {
-        foreach (var fishGameObject in fishInScene)
-        {
-            Destroy(fishGameObject);
-        }
-        fishInScene.Clear(); // Clear the list after destroying fish
     }
 
     void InstantiateAllFish()
@@ -94,36 +75,11 @@ public class FishManager : MonoBehaviour
         {
             GameObject fishGo = fishController.gameObject;
             Destroy(fishGo);
-            fishInScene.Remove(fishGo); // Remove the fish from the list after destroying it
         }
     }
 
     private async Task<bool> FishDeleteAsync(int fishId)
     {
         return await fishApi.FishDelete(fishId);
-    }
-    private void SpawnFishAsync(FishGetObject newFish)
-    {
-        InstantiateFish(newFish);
-    }
-
-    // Validation method to check if the name contains only letters and is unique
-    bool ValidateName(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$") || name.Length > NameSize)
-        {
-            return false;
-        }
-        
-        foreach (var fishGameObject in fishInScene)
-        {
-            FishController fishController = fishGameObject.GetComponent<FishController>();
-            if (fishController.fishName.Equals(name, System.StringComparison.OrdinalIgnoreCase))
-            {
-                return false;
-            }
-        }
-
-        return true;
     }
 }

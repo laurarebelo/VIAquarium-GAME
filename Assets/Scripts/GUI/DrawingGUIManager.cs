@@ -19,6 +19,9 @@ public class DrawingGUIManager : MonoBehaviour
 
     private FishAPI fishApi;
     public RenderTexture renderTexture;
+    private List<FishGetObject> fishList;
+    public int NameSize = 30;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +30,20 @@ public class DrawingGUIManager : MonoBehaviour
         fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
+        _ = GetAllFish();
+
+    }
+
+    async Task GetAllFish()
+    {
+        fishList = await fishApi.FishGetAll();
     }
 
     private IEnumerator SubmitFishCoroutine()
     {
         string fishName = nameInputField.text;
+
+        if (!ValidateName(fishName)) yield break;
         string fishTemplate = fishTemplateProvider.selectedTemplate.TemplateName();
         string image = SaveTextureAsPNG();
         FishGetObject fishObject;
@@ -74,5 +86,24 @@ public class DrawingGUIManager : MonoBehaviour
         Destroy(tex);
         string byteString = System.Convert.ToBase64String(bytes);
         return byteString;
+    }
+    
+    // Validation method to check if the name contains only letters and is unique
+    bool ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z]+$") || name.Length > NameSize)
+        {
+            return false;
+        }
+        
+        foreach (var fishGetObject in fishList)
+        {
+            if (fishGetObject.name.Equals(name, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
