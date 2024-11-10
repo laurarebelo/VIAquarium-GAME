@@ -42,8 +42,8 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             if (holdCounterCoroutine != null)
             {
                 StopCoroutine(holdCounterCoroutine);
-                Debug.Log("Attempting to upload petting need.");
-                _ = fishApi.UploadFishNeed(fishController.fishId,"social", holdCounter);
+                Debug.Log("Attempting to upload petting need. fishid:" + fishController.fishId);
+                _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
                 holdCounter = 0;
             }
         }
