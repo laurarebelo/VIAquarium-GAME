@@ -12,7 +12,7 @@ public class FishController : MonoBehaviour
     public SpriteRenderer fishColorSprite;
     public GameObject fishSelectedCircle;
     public int hungerLevel;
-
+    
     void Start()
     {
         Deselect();

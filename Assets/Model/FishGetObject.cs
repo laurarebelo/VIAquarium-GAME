@@ -9,8 +9,10 @@ public class FishGetObject
     public string lastUpdatedSocial;
     public string template;
     public string sprite;
+    public string dateOfBirth;
 
-    public FishGetObject(int id, string name, int hungerLevel, string lastUpdatedHunger, int socialLevel, string lastUpdatedSocial, string template, string sprite)
+
+    public FishGetObject(int id, string name, int hungerLevel, string lastUpdatedHunger, int socialLevel, string lastUpdatedSocial, string template, string sprite, string dateOfBirth)
     {
         this.id = id;
         this.name = name;
@@ -20,5 +22,7 @@ public class FishGetObject
         this.lastUpdatedSocial = lastUpdatedSocial;
         this.template = template;
         this.sprite = sprite;
+        this.dateOfBirth = dateOfBirth;
+
     }
 }
