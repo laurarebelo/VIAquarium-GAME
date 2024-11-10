@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaee6ac3-5ef7-4825-898d-ef1a9361fd85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishFedResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishFedResponse.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishPetResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishPetResponse.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Model/FishNeedResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Model/FishNeedResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Model/FishNeedResponse.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Model/FishNeedResponse.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFoodSeek.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFoodSeek.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/CursorObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/CursorObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1731246989881</updated>
-      <workItem from="1731246992729" duration="7293000" />
+      <workItem from="1731246992729" duration="8003000" />
     </task>
     <servers />
   </component>

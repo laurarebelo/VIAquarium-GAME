@@ -79,23 +79,6 @@ namespace Model
 
             return jsonObjects;
         }
-
-        // note for Bianca:
-        // for UploadFishPet i would imagine you need to create a new type
-        // in the Model folder called FishPetResponse
-        // since the return from the api is slightly different :D
-
-       
-        // public async Task<FishPetResponse> UploadFishPet(int fishAffectedId, int hungerPoints)
-        // {
-        //     return await UploadFishNeed(fishAffectedId, "social", hungerPoints);
-        // }
-
-        // public async Task<FishFedResponse> UploadFishFeed(int fishAffectedId, int hungerPoints)
-        // {
-        //     return await UploadFishNeed(fishAffectedId, "hunger", hungerPoints);
-        // }
-
         private async Task<T> UploadFishNeed<T>(int fishAffectedId, string needType, int needPoints) where T : class
         {
             if (needType != "hunger" && needType != "social")
