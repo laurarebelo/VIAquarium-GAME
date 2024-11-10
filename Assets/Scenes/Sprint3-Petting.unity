@@ -376,7 +376,7 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 4e933191d2245bd4d8bd92cd5ff1441a, type: 3}
     - {fileID: 2800000, guid: 9ceb497e0f180354e8ebd95575d96ca8, type: 3}
     - {fileID: 2800000, guid: ea33c987c2502c54f8c33d1ca88d6e2d, type: 3}
-    frameRate: 0.2
+    frameRate: 0.15
     offset: {x: 16, y: 16}
 --- !u!1 &545250521
 GameObject:
@@ -1716,6 +1716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35092a7d23fad425d83b2b40b7535572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NameSize: 0
   fishApi: {fileID: 1749260725}
   fishPrefab: {fileID: 181481122609354415, guid: 65838023a78c14b5085d5ed959749ace, type: 3}
   fishInScene: []

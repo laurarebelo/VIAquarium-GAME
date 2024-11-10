@@ -37,15 +37,18 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (pettingManager != null)
         {
             pettingManager.SetActiveCursorType(PettingManager.CursorType.DefaultHand);
+            Debug.Log("Releasing petting, holdCounter: " + holdCounter);
 
             if (holdCounterCoroutine != null)
             {
                 StopCoroutine(holdCounterCoroutine);
-                _ = fishApi.UploadFishNeed(fishController.fishId,"hunger", holdCounter);
+                Debug.Log("Attempting to upload petting need.");
+                _ = fishApi.UploadFishNeed(fishController.fishId,"social", holdCounter);
                 holdCounter = 0;
             }
         }
     }
+
 
     private IEnumerator CountHoldTime()
     {
@@ -53,8 +56,8 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         while (true)
         {
             yield return new WaitForSeconds(1);
-            holdCounter++;
-            Debug.Log("Hold time: " + holdCounter + " seconds."); //1 sec = 1point? might change
+            holdCounter+=5;
+            Debug.Log("Hold points: " + holdCounter); //1 sec = 5point? might change
         }
     }
 }

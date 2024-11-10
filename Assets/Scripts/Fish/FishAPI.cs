@@ -8,7 +8,7 @@ namespace Model
 {
     public class FishAPI : MonoBehaviour
     {
-        private string url = "https://localhost:7166/api/fish";
+        private string url = "http://localhost:5296/api/fish";
         
         public async Task<FishGetObject> FishPost(string fishName)
         {
@@ -91,6 +91,11 @@ namespace Model
             {
                 Debug.Log($"Tried to UploadFishNeed with invalid need type: {needType}");
             }
+            else
+            {
+                Debug.Log($"Uploading {needType} with points: {needPoints}");
+            }
+
             string fullUrl = url + $"/{fishAffectedId}/{needType}";
             NeedPatchObject needPatchObject = new NeedPatchObject(needPoints);
             string jsonBody = JsonUtility.ToJson(needPatchObject);
