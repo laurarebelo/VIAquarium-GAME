@@ -41,10 +41,23 @@ namespace Model
                 }
             }
         }
+        
+        //will be used to get alive fish
+        // public async Task<List<FishGetObject>> FishGetAlive()
+        // {
+        //     return await FishGetAll("alive");
+        // }
 
-        public async Task<List<FishGetObject>> FishGetAll()
+        // will use for getting all dead fish
+        // public async Task<List<DeadFishGetObject>> FishGetDead()
+        // {
+        //     return await FishGetAll("dead");
+        // }
+
+
+        public async Task<List<FishGetObject>> FishGetAll(string fishType = "alive")
         {
-            using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+            using (UnityWebRequest webRequest = UnityWebRequest.Get($"{url}/{fishType}"))
             {
                 var asyncOperation = webRequest.SendWebRequest();
                 while (!asyncOperation.isDone)
