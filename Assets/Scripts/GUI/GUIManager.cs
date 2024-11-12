@@ -20,6 +20,7 @@ public class GUIManager : MonoBehaviour
     public FeedingManager feedingManager;
 
     [CanBeNull] public FishController selectedFish;
+    private FishState fishState;
 
     // Start is called before the first frame update
     void Start()
@@ -60,22 +61,27 @@ public class GUIManager : MonoBehaviour
 
     public void SelectFish(FishController fish)
     {
-        if (selectedFish)
+        // Deselect the currently selected fish, if any
+        if (selectedFish != null)
         {
-            selectedFish.Deselect();
+            DeselectFish();
         }
 
+        // Set the new selected fish and stop idling
         selectedFish = fish;
-        fish.Select();
+        selectedFish.GetComponent<FishState>().StopIdling();
+        selectedFish.Select();
     }
 
     public void DeselectFish()
     {
-        if (selectedFish)
+        if (selectedFish != null)
         {
             selectedFish.Deselect();
+            selectedFish.GetComponent<FishState>().StartIdling();
         }
-
+    
         selectedFish = null;
     }
+    
 }
