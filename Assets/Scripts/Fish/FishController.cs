@@ -12,11 +12,19 @@ public class FishController : MonoBehaviour
     public SpriteRenderer fishColorSprite;
     public GameObject fishSelectedCircle;
     public int hungerLevel;
+    public FishState fishState;
+    public string fishSpriteName;
     
     void Start()
     {
         Deselect();
         UpdateText();
+        InitiateDeathSequence();
+    }
+
+    public void InitiateDeathSequence()
+    {
+        fishState.StartDeathSequence();
     }
 
     public void SetHungerLevel(int level)
@@ -39,6 +47,7 @@ public class FishController : MonoBehaviour
     
     public void SetFishTemplate(NamedSprite sprite)
     {
+        fishSpriteName = sprite.name;
         fishOutlineSprite.sprite = sprite.outlineSprite;
         fishColorSprite.sprite = sprite.colorSprite;
     }
@@ -80,5 +89,15 @@ public class FishController : MonoBehaviour
     void UpdateText()
     {
         fishNameText.text = fishName;
+    }
+    
+    public SpriteRenderer GetOutline()
+    {
+        return fishOutlineSprite;
+    }
+
+    public void SetOutline(SpriteRenderer newOutline)
+    {
+        fishOutlineSprite = newOutline;
     }
 }

@@ -57,7 +57,7 @@ public class RandomIdleSwim : MonoBehaviour
 
     void SetNewTargetPosition()
     {
-        if (topLeftBoundary != null && bottomRightBoundary != null)
+        if (topLeftBoundary is not null && bottomRightBoundary is not null)
         {
             float minX = topLeftBoundary.position.x;
             float maxX = bottomRightBoundary.position.x;

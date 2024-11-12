@@ -9,6 +9,7 @@ public class FishFlip : MonoBehaviour
     public void FaceDirection(Vector3 direction)
     {
         bool toTheRight = direction.x > 0;
+        bool flipFishVertically = direction.y > 0;
         if (toTheRight)
         {
             FaceRight();
@@ -16,6 +17,11 @@ public class FishFlip : MonoBehaviour
         else
         {
             FaceLeft();
+        }
+        
+        if (flipFishVertically)
+        {
+            FlipVertically();
         }
     }
 
@@ -39,4 +45,13 @@ public class FishFlip : MonoBehaviour
             sprite.flipX = true;
         }
     }
+    
+    public void FlipVertically()
+    {
+        foreach (var sprite in sprites)
+        {
+            sprite.flipY = true;
+        }
+    }
+    
 }

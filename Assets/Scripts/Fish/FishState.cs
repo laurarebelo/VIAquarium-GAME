@@ -6,10 +6,13 @@ public class FishState : MonoBehaviour
 {
     private FishFoodSeek foodSeek;
     private RandomIdleSwim idleSwim;
+    private FishDeath deathSequence;
+
     void Start()
     {
         foodSeek = GetComponent<FishFoodSeek>();
         idleSwim = GetComponent<RandomIdleSwim>();
+        deathSequence = GetComponent<FishDeath>();
         idleSwim.enabled = true;
     }
 
@@ -17,7 +20,7 @@ public class FishState : MonoBehaviour
     {
         StopIdling();
     }
-
+    
     public void StopEating()
     {
         StartIdling();
@@ -31,5 +34,14 @@ public class FishState : MonoBehaviour
     public void StartIdling()
     {
         idleSwim.enabled = true;
+    }
+
+    public void StartDeathSequence()
+    {
+        StopIdling();
+        if (deathSequence != null)
+        {
+            deathSequence.TriggerDeath();
+        }
     }
 }
