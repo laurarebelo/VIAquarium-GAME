@@ -38,7 +38,7 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             pettingManager.SetActiveCursorType(PettingManager.CursorType.DefaultHand);
 
-            if (holdCounterCoroutine != null)
+            if (holdCounterCoroutine != null && holdCounter >= 5)
             {
                 StopCoroutine(holdCounterCoroutine);
                 _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
