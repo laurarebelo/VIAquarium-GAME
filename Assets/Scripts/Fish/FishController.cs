@@ -19,7 +19,7 @@ public class FishController : MonoBehaviour
     {
         Deselect();
         UpdateText();
-        InitiateDeathSequence();
+     //   InitiateDeathSequence();
     }
 
     public void InitiateDeathSequence()
