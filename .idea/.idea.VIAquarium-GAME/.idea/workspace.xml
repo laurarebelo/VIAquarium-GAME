@@ -5,36 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sprint1-IdleSwim.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sprint1-IdleSwim.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sprint3-Petting.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sprint3-Petting.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/RandomIdleSwim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/RandomIdleSwim.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/angelfish-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/angelfish-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/anglerfish-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/anglerfish-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/big-jellyfish-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/big-jellyfish-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/bluetang-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/bluetang-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/clownfish-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/clownfish-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/default-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/default-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/pufferfish-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/pufferfish-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/sardine-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/sardine-dead.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/starfish-dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Fish/Dead/starfish-dead.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +145,7 @@
       <workItem from="1731257829686" duration="556000" />
       <workItem from="1731427244175" duration="5000" />
       <workItem from="1731427263334" duration="7426000" />
-      <workItem from="1731436608931" duration="1202000" />
+      <workItem from="1731436608931" duration="1976000" />
     </task>
     <servers />
   </component>

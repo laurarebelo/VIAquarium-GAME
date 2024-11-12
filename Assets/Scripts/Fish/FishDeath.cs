@@ -31,7 +31,9 @@ public class FishDeath : MonoBehaviour
         return isDead;
     }
 
-    public void TriggerDeath()
+    
+    //will be triggered on an update or on instantiate all, prob when checking the list of dead fish from the latest instantiate compared to the one remembered
+    public void TriggerDeath()  
     {
         if (!isDead)
         {

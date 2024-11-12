@@ -91,13 +91,15 @@ public class FishController : MonoBehaviour
         fishNameText.text = fishName;
     }
     
-    public SpriteRenderer GetOutline()
-    {
-        return fishOutlineSprite;
-    }
-
-    public void SetOutline(SpriteRenderer newOutline)
-    {
-        fishOutlineSprite = newOutline;
-    }
+    //may need to find the current sprite, the dead one being deadName = fishsprite.name + "-dead"
+    
+    // public NamedSprite GetNamedSprite(NamedSprite sprite)
+    // {
+    //     return fishSprite;
+    // }
+    //
+    // public void SetOutline(SpriteRenderer newOutline)
+    // {
+    //     fishOutlineSprite = newOutline;
+    // }
 }
