@@ -1,23 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
 public class ClickableTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private Camera eventCamera;
     private GUIManager guiManager;
     private FishController fishController;
-    private FishState fishState;
     private bool isPressed = false;
-    private bool isSelected = false;
     private float pressDuration = 0.2f; // Time threshold for press vs. click
     private float pressTimer;
 
     void Start()
     {
-        eventCamera = Camera.main;
         fishController = GetComponent<FishController>();
-        fishState = GetComponent<FishState>();
         guiManager = GameObject.Find("GUIManager").GetComponent<GUIManager>();
     }
 
@@ -26,14 +20,9 @@ public class ClickableTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (isPressed)
         {
             pressTimer += Time.deltaTime;
-            if (pressTimer >= pressDuration)
+            if (pressTimer >= pressDuration && guiManager.selectedFish != fishController)
             {
-                if (!isSelected)
-                {
-                    isSelected = true;
-                    guiManager.SelectFish(fishController);
-                    fishState.StopIdling();
-                }
+                guiManager.SelectFish(fishController);
             }
         }
     }
@@ -50,34 +39,17 @@ public class ClickableTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         if (pressTimer < pressDuration)
         {
-            OnClick();
-        }
-        else
-        {
-            if (isSelected)
+            if (guiManager.selectedFish == fishController)
             {
                 guiManager.DeselectFish();
-                fishState.StartIdling();
-                isSelected = false;
+            }
+            else
+            {
+                guiManager.SelectFish(fishController);
             }
         }
-
+        
         pressTimer = 0f;
     }
-
-    private void OnClick()
-    {
-        if (isSelected)
-        {
-            guiManager.DeselectFish();
-            fishState.StartIdling();
-            isSelected = false;
-        }
-        else
-        {
-            guiManager.SelectFish(fishController);
-            fishState.StopIdling();
-            isSelected = true;
-        }
-    }
 }
+

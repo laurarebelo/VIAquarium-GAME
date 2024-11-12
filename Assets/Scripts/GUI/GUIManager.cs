@@ -21,7 +21,6 @@ public class GUIManager : MonoBehaviour
 
     [CanBeNull] public FishController selectedFish;
 
-    // Start is called before the first frame update
     void Start()
     {
         AddButton.onClick.AddListener(() => ToggleScreen(AddFishCanvas));
@@ -35,6 +34,7 @@ public class GUIManager : MonoBehaviour
         if (selectedFish)
         {
             fishManager.DeleteFish(selectedFish);
+            DeselectFish();
         }
     }
 
@@ -64,9 +64,10 @@ public class GUIManager : MonoBehaviour
         {
             selectedFish.Deselect();
         }
-
+        
         selectedFish = fish;
         fish.Select();
+        fish.GetComponent<FishState>().StopIdling();
     }
 
     public void DeselectFish()
@@ -74,8 +75,8 @@ public class GUIManager : MonoBehaviour
         if (selectedFish)
         {
             selectedFish.Deselect();
+            selectedFish.GetComponent<FishState>().StartIdling();
+            selectedFish = null;
         }
-
-        selectedFish = null;
     }
 }
