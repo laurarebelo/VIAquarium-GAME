@@ -10,6 +10,7 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private PettingManager pettingManager;
     private int holdCounter = 0;
     private Coroutine holdCounterCoroutine;
+    private FishEmotions fishEmotions;
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class CursorObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             if (holdCounterCoroutine != null && holdCounter >= 5)
             {
                 StopCoroutine(holdCounterCoroutine);
+                //fishEmotions.UpdateHappyEmotion();
                 _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
                 holdCounter = 0;
             }

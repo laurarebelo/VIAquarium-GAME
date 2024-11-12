@@ -18,7 +18,8 @@ public class FishFoodSeek : MonoBehaviour
     private FishController fishController;
     private FishFlip fishFlip;
     private FishState fishState;
-
+    private FishEmotions fishEmotions;
+    
     private int potentialHunger;
     private bool isHungry;
     private int minutesToGetHungry = 100;
@@ -103,6 +104,7 @@ public class FishFoodSeek : MonoBehaviour
         if (rampageTimer >= rampageTimeout && rampageCount > 0)
         {
             fishState.StopEating();
+            //fishEmotions.UpdateHeartEmotion();
             _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
             rampageCount = 0;
         }

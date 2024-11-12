@@ -12,9 +12,14 @@ public class FishController : MonoBehaviour
     public SpriteRenderer fishColorSprite;
     public GameObject fishSelectedCircle;
     public int hungerLevel;
+    public int socialLevel;
+
     
+    private FishEmotions fishEmotions;
+
     void Start()
     {
+        fishEmotions = GetComponent<FishEmotions>();
         Deselect();
         UpdateText();
     }
@@ -24,8 +29,16 @@ public class FishController : MonoBehaviour
         if (level < 0) level = 0;
         if (level > 100) level = 100;
         hungerLevel = level;
+       // fishEmotions.UpdateLowEmotion();
     }
 
+    public void SetSocialLevel(int level)
+    {
+        if (level < 0) level = 0;
+        if (level > 100) level = 100;
+        socialLevel = level;
+       // fishEmotions.UpdateLowEmotion();
+    }
     public void Select()
     {
         fishSelectedCircle.SetActive(true);
