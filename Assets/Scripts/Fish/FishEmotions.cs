@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FishEmotions : MonoBehaviour
 {
+    //ok so i thought it was single sprites we were dealing with so the class needs to be completely changed since it needs to handle animation
+    
     public SpriteRenderer hungrySprite;
     public SpriteRenderer lonelySprite;
     public SpriteRenderer happySprite;
@@ -52,4 +54,31 @@ public class FishEmotions : MonoBehaviour
         yield return new WaitForSeconds(emotionShowTime);
         sprite.gameObject.SetActive(false);
     }
+    
+    // for animation it might be something more like this:
+    // public class FishEmotions : MonoBehaviour
+    // {
+    //     public Animator thinkingCloudAnimator;
+    //
+    //     public void SetEmotion(string emotion)
+    //     {
+    //         switch (emotion)
+    //         {
+    //             case "Hungry":
+    //                 thinkingCloudAnimator.SetTrigger("HungryTrigger");
+    //                 break;
+    //             case "Lonely":
+    //                 thinkingCloudAnimator.SetTrigger("LonelyTrigger");
+    //                 break;
+    //             case "Happy":
+    //                 thinkingCloudAnimator.SetTrigger("HappyTrigger");
+    //                 break;
+    //             case "Loved":
+    //                 thinkingCloudAnimator.SetTrigger("LovedTrigger");
+    //                 break;
+    //         }
+    //     }
+    // }
+    
+    //and we'd call SetEmotion when needed
 }
