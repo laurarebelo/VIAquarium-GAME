@@ -160,8 +160,13 @@ MonoBehaviour:
   fishId: 0
   fishName: ...
   fishNameText: {fileID: 6689420630780696972}
-  fishOutlineSprite: {fileID: 949740854243368076}
-  fishColorSprite: {fileID: 8975014788262413692}
+  fishSprites:
+    name: 
+    outlineSprite: {fileID: 0}
+    colorSprite: {fileID: 0}
+    outlineDeadSprite: {fileID: 0}
+  fishOutlineSpriteRenderer: {fileID: 949740854243368076}
+  fishColorSpriteRenderer: {fileID: 8975014788262413692}
   fishSelectedCircle: {fileID: 374793138637046305}
   hungerLevel: 0
 --- !u!114 &2245743496566405275

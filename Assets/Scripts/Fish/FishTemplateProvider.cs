@@ -7,9 +7,8 @@ using UnityEngine.UI;
 
 public class FishTemplateProvider : MonoBehaviour
 {
+    private static FishTemplateProvider instance;
     public UnityEvent<bool> OnTemplateSelectionChanged;
-
-    
     public List<NamedSprite> namedSprites;
     private Dictionary<string, NamedSprite> namedSpritesDictionary;
     public GameObject selectorPrefab;
@@ -19,7 +18,17 @@ public class FishTemplateProvider : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     private void Start()

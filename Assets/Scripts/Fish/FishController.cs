@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FishController : MonoBehaviour
 {
     public int fishId;
     public string fishName = "...";
     public TMP_Text fishNameText;
-    public SpriteRenderer fishOutlineSprite;
-    public SpriteRenderer fishColorSprite;
+    public NamedSprite fishSprites;
+    public SpriteRenderer fishOutlineSpriteRenderer;
+    public SpriteRenderer fishColorSpriteRenderer;
     public GameObject fishSelectedCircle;
     public int hungerLevel;
     
@@ -34,18 +36,23 @@ public class FishController : MonoBehaviour
     public void Deselect()
     {
         fishSelectedCircle.SetActive(false);
+    }
 
+    public void ChangeToDeadOutline()
+    {
+        fishOutlineSpriteRenderer.sprite = fishSprites.outlineDeadSprite;
     }
     
     public void SetFishTemplate(NamedSprite sprite)
     {
-        fishOutlineSprite.sprite = sprite.outlineSprite;
-        fishColorSprite.sprite = sprite.colorSprite;
+        fishSprites = sprite;
+        fishOutlineSpriteRenderer.sprite = sprite.outlineSprite;
+        fishColorSpriteRenderer.sprite = sprite.colorSprite;
     }
 
     public void SetFishColor(Color color)
     {
-        fishColorSprite.color = color;
+        fishColorSpriteRenderer.color = color;
     }
 
     public void SetFishSprite(string encodedSprite)
@@ -57,8 +64,8 @@ public class FishController : MonoBehaviour
             texture.filterMode = FilterMode.Point;
             Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
                 new Vector2(0.5f, 0.5f));
-            fishColorSprite.color = Color.white;
-            fishColorSprite.sprite = sprite;
+            fishColorSpriteRenderer.color = Color.white;
+            fishColorSpriteRenderer.sprite = sprite;
         }
         else
         {

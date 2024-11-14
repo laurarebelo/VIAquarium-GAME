@@ -31,7 +31,11 @@ public class DrawingGUIManager : MonoBehaviour
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
         _ = GetAllFish();
+    }
 
+    private void GoBack()
+    {
+        SceneManager.LoadScene("S6-Cleanup");
     }
 
     async Task GetAllFish()
@@ -68,11 +72,7 @@ public class DrawingGUIManager : MonoBehaviour
     {
         return await fishApi.FishPost(fishPostObject);
     }
-
-    void GoBack()
-    {
-        SceneManager.LoadScene("Sprint3-Petting");
-    }
+    
     private string SaveTextureAsPNG()
     {
         RenderTexture currentRT = RenderTexture.active;
