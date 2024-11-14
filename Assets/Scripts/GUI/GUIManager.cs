@@ -10,11 +10,12 @@ using UnityEngine.UI;
 public class GUIManager : MonoBehaviour
 {
     public Button AddButton;
-    public Button ContinueButton;
     public Button DeleteButton;
     public Button FeedButton;
+    public Button ContinueButton;
 
     public GameObject AddFishCanvas;
+    public FishTemplateProvider fishTemplateProvider;
 
     public FishManager fishManager;
     public FeedingManager feedingManager;
@@ -25,8 +26,10 @@ public class GUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddButton.onClick.AddListener(() => ToggleScreen(AddFishCanvas));
+        fishTemplateProvider.OnTemplateSelectionChanged.AddListener(UpdateContinueButtonState);
+        AddButton.onClick.AddListener(() => ToggleAddFishCanvas());
         ContinueButton.onClick.AddListener(GoToFishPainting);
+        ContinueButton.interactable = false;
         DeleteButton.onClick.AddListener(DeleteFish);
         FeedButton.onClick.AddListener(ToggleFeedingMode);
     }
@@ -42,21 +45,6 @@ public class GUIManager : MonoBehaviour
     void ToggleFeedingMode()
     {
         feedingManager.ToggleFeedingMode();
-    }
-
-    void ToggleScreen(GameObject screen, bool? active = null)
-    {
-        if (active == null)
-        {
-            active = !screen.activeSelf;
-        }
-
-        screen.SetActive(active.Value);
-    }
-
-    void GoToFishPainting()
-    {
-        SceneManager.LoadScene("DrawingCanvas");
     }
 
     public void SelectFish(FishController fish)
@@ -80,8 +68,30 @@ public class GUIManager : MonoBehaviour
             selectedFish.Deselect();
             selectedFish.GetComponent<FishState>().StartIdling();
         }
-    
+
         selectedFish = null;
     }
-    
+
+    void ToggleAddFishCanvas(bool? active = null)
+    {
+        if (active == null)
+        {
+            active = !AddFishCanvas.activeSelf;
+        }
+        AddFishCanvas.SetActive(active.Value);
+        if (!active.Value)
+        {
+            fishTemplateProvider.DeselectTemplate();
+        }
+    }
+
+    void GoToFishPainting()
+    {
+        SceneManager.LoadScene("DrawingCanvas");
+    }
+
+    void UpdateContinueButtonState(bool isTemplateSelected)
+    {
+        ContinueButton.interactable = isTemplateSelected;
+    }
 }
