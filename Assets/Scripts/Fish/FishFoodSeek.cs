@@ -68,7 +68,7 @@ public class FishFoodSeek : MonoBehaviour
     {
         if (targetFlake)
         {
-            fishState.StartEating();
+            fishState.StopIdling();
             Vector3 fishPosition = transform.position;
             Vector3 flakePosition = targetFlake.gameObject.transform.position;
 
@@ -102,7 +102,7 @@ public class FishFoodSeek : MonoBehaviour
 
         if (rampageTimer >= rampageTimeout && rampageCount > 0)
         {
-            fishState.StopEating();
+            fishState.StartIdling();
             _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
             rampageCount = 0;
         }

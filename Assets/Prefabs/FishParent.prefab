@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 1897420917178382638}
   - component: {fileID: 4197014554196695564}
   - component: {fileID: 6442589274985085003}
+  - component: {fileID: 19071706211423832}
   m_Layer: 0
   m_Name: FishParent
   m_TagString: Untagged
@@ -270,10 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df1532d551d44883add3689a6cbbbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0.6
-  maxSpeed: 2
-  stopDurationMin: 0.5
-  stopDurationMax: 2
+  minEscapeDistance: 3
+  maxEscapeDistance: 5
 --- !u!114 &6442589274985085003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +285,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a00ed9f25ac084f91a8e7e27281ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &19071706211423832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c98f49af32245e187cb810e6457e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToReact: 3
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0
