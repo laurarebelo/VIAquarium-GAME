@@ -18,13 +18,18 @@ public class PettingManager : MonoBehaviour
    {
       DefaultHand,
       Petting
-   } 
+   }
 
+   private void Awake()
+   {
+      TurnSpritesToTextures();
+   }
+   
    private void Start()
    {
       SetActiveCursorType(CursorType.DefaultHand);   
    }
-
+   
    private void Update()
    {
       if (frameCount > 0)
@@ -34,14 +39,15 @@ public class PettingManager : MonoBehaviour
          {
             frameTimer -= cursorAnimation.frameRate;
             currentFrame = (currentFrame + 1) % frameCount;
-            Cursor.SetCursor(cursorAnimation.texturesArray[currentFrame], cursorAnimation.offset, CursorMode.Auto);
+            Texture2D currentFrameTexture = cursorAnimation.texturesArray[currentFrame];
+            Cursor.SetCursor(currentFrameTexture, cursorAnimation.offset, CursorMode.Auto);
          }
       }
    }
 
    private void OnDestroy()
    {
-      Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); // Resets to default cursor
+      Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
    }
 
    private void SetActiveCursorAnimation(CursorAnimation cursorAnimation)
@@ -66,27 +72,48 @@ public class PettingManager : MonoBehaviour
       {
          if (cursorAnimation.CursorType == cursorType) return cursorAnimation;
       }
-
       return null;
    }
-   
+
    public void SetActiveCursorType(CursorType cursorType)
    {
-      Debug.Log($"Setting cursor type to: {cursorType}");
       SetActiveCursorAnimation(GetCursorAnimation(cursorType));
    }
 
+   private void TurnSpritesToTextures()
+   {
+      foreach (CursorAnimation curAnim in CursorAnimationList)
+      {
+         curAnim.texturesArray = new Texture2D[curAnim.spritesArray.Length];
+         for (int i = 0; i < curAnim.spritesArray.Length; i++)
+         {
+            curAnim.texturesArray[i] = SpriteToTexture(curAnim.spritesArray[i]);
+         }
+      }
+   }
    
+   private Texture2D SpriteToTexture(Sprite sprite)
+   {
+      Texture2D spriteTexture = sprite.texture;
+      Rect spriteRect = sprite.textureRect;
+      Texture2D texture = new Texture2D((int)spriteRect.width, (int)spriteRect.height, TextureFormat.RGBA32, false);
+      texture.SetPixels(spriteTexture.GetPixels(
+         (int)spriteRect.x, 
+         (int)spriteRect.y, 
+         (int)spriteRect.width, 
+         (int)spriteRect.height));
+      texture.Apply();
+      return texture;
+   }
 }
 
 [System.Serializable]
 public class CursorAnimation
 {
-   public PettingManager.CursorType CursorType; 
+   public PettingManager.CursorType CursorType;
+   public Sprite[] spritesArray;
    public Texture2D[] texturesArray;
    public float frameRate;
    public Vector2 offset;
-
-
 }
 
