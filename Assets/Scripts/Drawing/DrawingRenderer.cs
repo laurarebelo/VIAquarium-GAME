@@ -280,7 +280,7 @@ public class DrawingRenderer : MonoBehaviour
         }
     }
 
-    private bool CanDrawAt(Vector2Int position)
+    public bool CanDrawAt(Vector2Int position)
     {
         int index = position.y * m_renderTexture.width + position.x;
         return m_drawableMask != null && m_drawableMask[index];

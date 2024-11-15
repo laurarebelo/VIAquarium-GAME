@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6081aeade967e3742a147eb811496f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_renderTexture: {fileID: 8400000, guid: a32a07e61d26e494b9c502a04a083fdf, type: 2}
 --- !u!4 &60584644
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +543,7 @@ MonoBehaviour:
   submitButton: {fileID: 2048832010}
   nameInputField: {fileID: 650223962}
   renderTexture: {fileID: 8400000, guid: a32a07e61d26e494b9c502a04a083fdf, type: 2}
+  NameSize: 30
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,8 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7135a999816ea4379896c03da86cc324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  imageId: 0
 --- !u!4 &563599357
 Transform:
   m_ObjectHideFlags: 0
@@ -1221,7 +1219,6 @@ MonoBehaviour:
   m_drawingRenderer: {fileID: 1515287030}
   m_gridRenderer: {fileID: 355426359}
   m_colorSelector: {fileID: 78886555}
-  m_textureSaver: {fileID: 60584643}
 --- !u!4 &1032859424
 Transform:
   m_ObjectHideFlags: 0

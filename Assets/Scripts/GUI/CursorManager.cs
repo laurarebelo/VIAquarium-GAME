@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PettingManager : MonoBehaviour
+public class CursorManager : MonoBehaviour
 {
    [SerializeField] private List<CursorAnimation> CursorAnimationList;
    private CursorAnimation cursorAnimation;
@@ -123,7 +123,7 @@ public class PettingManager : MonoBehaviour
 [System.Serializable]
 public class CursorAnimation
 {
-   public PettingManager.CursorType CursorType;
+   public CursorManager.CursorType CursorType;
    public Sprite[] spritesArray;
    public Texture2D[] texturesArray;
    public float frameRate;

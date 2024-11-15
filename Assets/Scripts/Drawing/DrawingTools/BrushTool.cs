@@ -5,11 +5,8 @@ using UnityEngine;
 /// </summary>
 public class BrushTool : DrawingTool
 {
-    ColorSelector m_colorSelector;
-
-    public BrushTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer)
+    public BrushTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer, colorSelector)
     {
-        m_colorSelector = colorSelector;
     }
 
     protected override Color GetDrawColor()

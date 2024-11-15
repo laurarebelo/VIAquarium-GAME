@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class ColorPickerTool : DrawingTool
 {
-    private ColorSelector m_colorSelector;
     Color m_previewColor = new Color(1, 1, 1, 0.6f);
-    public ColorPickerTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer)
+    public ColorPickerTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer, colorSelector)
     {
-        m_colorSelector = colorSelector;
     }
 
     protected override Color GetDrawColor()

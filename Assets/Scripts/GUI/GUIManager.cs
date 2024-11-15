@@ -21,7 +21,6 @@ public class GUIManager : MonoBehaviour
     public FeedingManager feedingManager;
 
     [CanBeNull] public FishController selectedFish;
-    private FishState fishState;
 
     // Start is called before the first frame update
     void Start()

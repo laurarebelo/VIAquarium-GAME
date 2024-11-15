@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class FishKnockReaction : MonoBehaviour
 {
-    private FishState fishState;
     private Knocker knocker;
     private FishMovement swimmingController;
     public float distanceToReact;
 
-    // Start is called before the first frame update
     void Start()
     {
-        fishState = GetComponent<FishState>();
         knocker = GameObject.Find("Knocker").GetComponent<Knocker>();
         if (knocker != null)
         {

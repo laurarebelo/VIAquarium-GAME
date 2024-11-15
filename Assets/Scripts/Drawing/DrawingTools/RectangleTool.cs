@@ -6,9 +6,7 @@ using UnityEngine;
 /// </summary>
 public class RectangleTool : DrawingTool
 {
-    private ColorSelector m_colorSelector;
-
-    public RectangleTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer)
+    public RectangleTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer, colorSelector)
     {
         m_colorSelector = colorSelector;
     }

@@ -9,7 +9,7 @@ public class Knocker : MonoBehaviour
     private Camera mainCamera;
     public float doubleTapTime = 0.3f;
     private float lastTapTime = 0f;
-    public PettingManager cursorManager;
+    public CursorManager cursorManager;
     public FeedingManager feedingManager;
     public event Action<Vector3> OnDoubleTap;
     public GameObject knockFeedback;
