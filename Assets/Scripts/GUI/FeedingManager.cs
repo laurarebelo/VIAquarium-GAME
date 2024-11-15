@@ -5,7 +5,7 @@ using UnityEngine;
 public class FeedingManager : MonoBehaviour
 {
     public GameObject flakeParticleSystemPrefab;
-    private bool feedingModeOn;
+    public bool feedingModeOn;
 
     public void ToggleFeedingMode()
     {

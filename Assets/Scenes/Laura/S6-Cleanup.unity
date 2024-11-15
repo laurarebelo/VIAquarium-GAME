@@ -321,7 +321,7 @@ MonoBehaviour:
     - {fileID: 1283225788, guid: 69171832e85104e7982f7283eba4121b, type: 3}
     texturesArray: []
     frameRate: 0.1
-    offset: {x: 10, y: 10}
+    offset: {x: 32, y: 10}
   - CursorType: 1
     spritesArray:
     - {fileID: 2060436916, guid: 69171832e85104e7982f7283eba4121b, type: 3}
@@ -331,7 +331,13 @@ MonoBehaviour:
     - {fileID: 1283225788, guid: 69171832e85104e7982f7283eba4121b, type: 3}
     texturesArray: []
     frameRate: 0.1
-    offset: {x: 10, y: 10}
+    offset: {x: 32, y: 10}
+  - CursorType: 2
+    spritesArray:
+    - {fileID: 21300000, guid: 9949cf6a8b9854f1fac27cf0154070f1, type: 3}
+    texturesArray: []
+    frameRate: 0.1
+    offset: {x: 32, y: 10}
 --- !u!1 &410636525
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flakeParticleSystemPrefab: {fileID: 4229246209983550415, guid: 7f15a50788a9c4367b3cdb1a6f756faa, type: 3}
+  feedingModeOn: 0
 --- !u!4 &518834294
 Transform:
   m_ObjectHideFlags: 0
@@ -1500,6 +1507,54 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1769467015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769467017}
+  - component: {fileID: 1769467016}
+  m_Layer: 0
+  m_Name: Knocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1769467016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769467015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be1af22015cb434783e6aa1e21274e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleTapTime: 0.3
+  cursorManager: {fileID: 236998861}
+  feedingManager: {fileID: 518834293}
+  knockFeedback: {fileID: 8453285899806530279, guid: 1b02efc933eeb4613b8703d904aebab6, type: 3}
+--- !u!4 &1769467017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769467015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0140594, y: 0.10539521, z: 0.042574625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833279873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,3 +2182,4 @@ SceneRoots:
   - {fileID: 35340303}
   - {fileID: 196153695}
   - {fileID: 236998858}
+  - {fileID: 1769467017}

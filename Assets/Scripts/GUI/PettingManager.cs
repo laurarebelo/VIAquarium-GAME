@@ -17,7 +17,8 @@ public class PettingManager : MonoBehaviour
    public enum CursorType
    {
       DefaultHand,
-      Petting
+      Petting,
+      Knock
    }
 
    private void Awake()
@@ -28,6 +29,18 @@ public class PettingManager : MonoBehaviour
    private void Start()
    {
       SetActiveCursorType(CursorType.DefaultHand);   
+   }
+
+   public void Knock()
+   {
+      SetActiveCursorType(CursorType.Knock);
+      StartCoroutine(WaitAndGoBackToDefault());
+   }
+
+   private IEnumerator WaitAndGoBackToDefault()
+   {
+      yield return new WaitForSeconds(0.2f);
+      SetActiveCursorType(CursorType.DefaultHand);
    }
    
    private void Update()
