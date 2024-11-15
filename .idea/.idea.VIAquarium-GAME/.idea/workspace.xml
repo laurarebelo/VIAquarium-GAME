@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/BucketTool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/BucketTool.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/DrawingCanvas.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/DrawingCanvas.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingRenderer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/BrushTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/BrushTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/BucketTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/BucketTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/ColorPickerTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/ColorPickerTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/DrawingTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/DrawingTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/EraserTool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/EraserTool.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/LineTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/LineTool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/UIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/DrawingUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI Toolkit/DrawingUI.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/RectangleTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingTools/RectangleTool.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -149,7 +149,7 @@
       <workItem from="1731236500593" duration="4324000" />
       <workItem from="1731257829686" duration="556000" />
       <workItem from="1731599627019" duration="6304000" />
-      <workItem from="1731617897907" duration="2833000" />
+      <workItem from="1731617897907" duration="4149000" />
     </task>
     <servers />
   </component>

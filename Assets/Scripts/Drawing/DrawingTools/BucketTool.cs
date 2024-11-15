@@ -5,11 +5,8 @@ namespace Drawing.DrawingTools
 {
     public class BucketTool : DrawingTool
     {
-        ColorSelector m_colorSelector;
-
-        public BucketTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer)
+        public BucketTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer, colorSelector)
         {
-            m_colorSelector = colorSelector;
         }
 
         protected override Color GetDrawColor()

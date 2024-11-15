@@ -6,11 +6,8 @@ using UnityEngine;
 /// </summary>
 public class LineTool : DrawingTool
 {
-    ColorSelector m_colorSelector;
-
-    public LineTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer)
+    public LineTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector) : base(drawingRenderer, colorSelector)
     {
-        m_colorSelector = colorSelector;
     }
 
     protected override Color GetDrawColor()
