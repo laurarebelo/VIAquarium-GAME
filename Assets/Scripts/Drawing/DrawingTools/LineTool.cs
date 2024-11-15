@@ -36,6 +36,4 @@ public class LineTool : DrawingTool
         }
         return new List<Vector2Int>(uniquePositions);
     }
-
-
 }

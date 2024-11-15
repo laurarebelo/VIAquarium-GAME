@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
 {
     private UIDocument m_uiDocument;
     private VisualElement m_canvas, m_canvasBackground, m_previewCanvas, m_outlineCanvas;
-    private VisualElement m_clearButton, m_brushButton, m_lineButton, m_squareButton, m_colorPickerButton;
+    private VisualElement m_clearButton, m_brushButton, m_lineButton, m_squareButton, m_colorPickerButton, m_bucketButton;
 
     private Slider m_hueSlider, m_saturationSlider, m_valueSlider, m_alphaSlider;
     private IntegerField m_hueField, m_saturationField, m_valueField, m_alphaField;
@@ -22,14 +22,12 @@ public class UIController : MonoBehaviour
 
 
     public event Action<Vector2> OnPointerDown, OnPointerMoved, OnPointerEntered, OnPointerReleased;
-    public event Action OnClearButtonClicked, OnEraserClicked, OnRectangleClicked, OnLineClicked, OnBrushClicked, OnPointerOut, OnColorPickerClicked;
+    public event Action OnClearButtonClicked, OnRectangleClicked, OnLineClicked, OnBrushClicked, OnPointerOut, OnColorPickerClicked, OnBucketClicked;
     public event Action OnBrushSizePlusClicked, OnBrushSizeMinusClicked;
 
     public event Action<Vector2> OnColorSelected;
     public event Action<int> OnHueChanged, OnAlphaChanged, OnSaturationChanged, OnValueChanged;
-
-    public event Action OnSaveButtonClicked;
-
+    
     private bool m_pointerColorSquareHeld = false;
 
     /// <summary>
@@ -51,6 +49,7 @@ public class UIController : MonoBehaviour
         m_lineButton = m_uiDocument.rootVisualElement.Q<VisualElement>("LineButton");
         m_squareButton = m_uiDocument.rootVisualElement.Q<VisualElement>("SquareButton");
         m_colorPickerButton = m_uiDocument.rootVisualElement.Q<VisualElement>("ColorPickerButton");
+        m_bucketButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BucketButton");
 
         m_brushSizeLabel = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSize");
         m_brushSizePlusButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSizePlus");
@@ -75,6 +74,7 @@ public class UIController : MonoBehaviour
         m_toolButtons.Add(m_lineButton);
         m_toolButtons.Add(m_squareButton);
         m_toolButtons.Add(m_colorPickerButton);
+        m_toolButtons.Add(m_bucketButton);
 
         //Make the Canvas square
         m_canvas.RegisterCallback<GeometryChangedEvent>(HandleCanvasGeometryChanged);
@@ -97,6 +97,8 @@ public class UIController : MonoBehaviour
         m_squareButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_squareButton));
         m_colorPickerButton.RegisterCallback<ClickEvent>((arg) => OnColorPickerClicked?.Invoke());
         m_colorPickerButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_colorPickerButton));
+        m_bucketButton.RegisterCallback<ClickEvent>((arg) => OnBucketClicked?.Invoke());
+        m_bucketButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_bucketButton));
         
         //Brush size button callbacks
         m_brushSizePlusButton.RegisterCallback<ClickEvent>((arg) => OnBrushSizePlusClicked?.Invoke());
