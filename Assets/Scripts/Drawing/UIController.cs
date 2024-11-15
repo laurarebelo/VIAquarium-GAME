@@ -19,8 +19,7 @@ public class UIController : MonoBehaviour
     private VisualElement m_colorSquare, m_selectedColor;
 
     private VisualElement m_brushSizeLabel, m_brushSizePlusButton, m_brushSizeMinusButton;
-
-
+    
     public event Action<Vector2> OnPointerDown, OnPointerMoved, OnPointerEntered, OnPointerReleased;
     public event Action OnClearButtonClicked, OnRectangleClicked, OnLineClicked, OnBrushClicked, OnPointerOut, OnColorPickerClicked, OnBucketClicked;
     public event Action OnBrushSizePlusClicked, OnBrushSizeMinusClicked;
