@@ -8,14 +8,16 @@ public abstract class DrawingTool
 {
     //Reference to the DrawingRenderer so that we can apply changes to the canvas
     protected DrawingRenderer _drawingRenderer;
+    protected ColorSelector m_colorSelector;
 
     /// <summary>
     /// Constructor allows us to assign the DrawingRenderer
     /// </summary>
     /// <param name="drawingRenderer"></param>
-    public DrawingTool(DrawingRenderer drawingRenderer)
+    public DrawingTool(DrawingRenderer drawingRenderer, ColorSelector colorSelector)
     {
         _drawingRenderer = drawingRenderer;
+        m_colorSelector = colorSelector;
     }
 
     /// <summary>

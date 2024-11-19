@@ -1,3 +1,4 @@
+using Drawing.DrawingTools;
 using UnityEngine;
 
 /// <summary>
@@ -31,11 +32,10 @@ public class DrawingManager : MonoBehaviour
         m_uiController.OnClearButtonClicked += ClearDrawing;
 
         m_uiController.OnBrushClicked += SetBrush;
-        // m_uiController.OnEraserClicked += SetEraser;
         m_uiController.OnLineClicked += SetLine;
         m_uiController.OnRectangleClicked += SetUpRectangle;
-        // m_uiController.OnSaveButtonClicked += () => m_textureSaver.SaveTextureAsPNG();
         m_uiController.OnColorPickerClicked += SetColorPicker;
+        m_uiController.OnBucketClicked += SetBucket;
 
         m_uiController.OnBrushSizePlusClicked += IncreaseBrushSize;
         m_uiController.OnBrushSizeMinusClicked += DecreaseBrushSize;
@@ -88,16 +88,6 @@ public class DrawingManager : MonoBehaviour
         m_uiController.SetBrushSize(m_drawingRenderer.BrushSize);
     }
 
-    /// <summary>
-    /// Toggles the Eraser tool
-    /// </summary>
-    private void SetEraser()
-    {
-        m_currentTool = new EraserTool(m_drawingRenderer);
-        m_uiController.ClearCanvasPointerEvents();
-        SetUpDrawOnClickEvents();
-    }
-
     private void SetColorPicker()
     {
         m_currentTool = new ColorPickerTool(m_drawingRenderer, m_colorSelector);
@@ -113,7 +103,13 @@ public class DrawingManager : MonoBehaviour
         m_currentTool = new LineTool(m_drawingRenderer, m_colorSelector);
         m_uiController.ClearCanvasPointerEvents();
         SetUpDrawOnReleaseEvents();
+    }
 
+    private void SetBucket()
+    {
+        m_currentTool = new BucketTool(m_drawingRenderer, m_colorSelector);
+        m_uiController.ClearCanvasPointerEvents();
+        SetUpDrawOnClickEvents();
     }
 
     /// <summary>

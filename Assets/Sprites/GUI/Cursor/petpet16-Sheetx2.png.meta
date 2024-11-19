@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e6edef56edb3e4cfaa3f5a402b7a3d56
+guid: 69171832e85104e7982f7283eba4121b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: food-bubble-Sheet_0
+      name: petpet16-Sheetx2_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 14
-        height: 13
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64c6b0e75367a46cf9fd7601656cc922
-      internalID: 671017654
+      spriteID: 99f3c59881eae48b4a7ca2aa5c8796e8
+      internalID: 1283225788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food-bubble-Sheet_1
+      name: petpet16-Sheetx2_1
       rect:
         serializedVersion: 2
-        x: 28
+        x: 40
         y: 0
-        width: 14
-        height: 13
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ef8ac8ebe68c474f8d1e40a72a1ea80
-      internalID: -1753745302
+      spriteID: 79a6765846ad64231bc0d81901af542f
+      internalID: 1626647450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food-bubble-Sheet_2
+      name: petpet16-Sheetx2_2
       rect:
         serializedVersion: 2
-        x: 42
+        x: 80
         y: 0
-        width: 14
-        height: 13
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e9bff8dedf2e49999b01dfa4639a3af
-      internalID: 2124081549
+      spriteID: d6a24e7becad54d58aaf53c59dccc60a
+      internalID: 1912664782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food-bubble-Sheet_3
+      name: petpet16-Sheetx2_3
       rect:
         serializedVersion: 2
-        x: 56
+        x: 120
         y: 0
-        width: 14
-        height: 13
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d956395fe59474822a1d234252bf1391
-      internalID: 1885200288
+      spriteID: 2954499a26ddd4b5c8ed6ca24be699a0
+      internalID: 545403680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food-bubble-Sheet_4
+      name: petpet16-Sheetx2_4
       rect:
         serializedVersion: 2
-        x: 70
+        x: 160
         y: 0
-        width: 14
-        height: 13
+        width: 40
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,155 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9750dc30ce55c484cbbe5f0712413fdb
-      internalID: 1423919444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc02487679bb9443bb3dff79f0dd8ff1
-      internalID: -385909525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 04291887f8f454f89b9eae1e422d5119
-      internalID: -2096531370
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b688237a8699448887cc9e43d9f5f46
-      internalID: -1565017874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef531e575626e4657b6d536b7401a402
-      internalID: -807706601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 512a5daa85c9240609a4302d211a7ad7
-      internalID: 265018739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 154
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c168d6602d3c4931ae77401e9c3e5c4
-      internalID: -1988159083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: food-bubble-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 0
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64b0e82ac7d73464889020a34e3b731a
-      internalID: 998128446
+      spriteID: 95d91eb24081e4672a36aaaf75aa6704
+      internalID: 2060436916
       vertices: []
       indices: 
       edges: []
@@ -385,18 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      food-bubble-Sheet_0: 671017654
-      food-bubble-Sheet_1: -1753745302
-      food-bubble-Sheet_10: -1988159083
-      food-bubble-Sheet_11: 998128446
-      food-bubble-Sheet_2: 2124081549
-      food-bubble-Sheet_3: 1885200288
-      food-bubble-Sheet_4: 1423919444
-      food-bubble-Sheet_5: -385909525
-      food-bubble-Sheet_6: -2096531370
-      food-bubble-Sheet_7: -1565017874
-      food-bubble-Sheet_8: -807706601
-      food-bubble-Sheet_9: 265018739
+      petpet16-Sheetx2_0: 1283225788
+      petpet16-Sheetx2_1: 1626647450
+      petpet16-Sheetx2_2: 1912664782
+      petpet16-Sheetx2_3: 545403680
+      petpet16-Sheetx2_4: 2060436916
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

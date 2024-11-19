@@ -26,7 +26,6 @@ public class FishTemplateSelector : MonoBehaviour
         namedSprite = template;
         fishNameText.text = template.name;
         outlineSprite.sprite = template.outlineSprite;
-        AdjustSizes();
     }
 
     public string TemplateName()
@@ -34,25 +33,11 @@ public class FishTemplateSelector : MonoBehaviour
         return namedSprite.name;
     }
 
-    private void AdjustSizes()
-    {
-        if (namedSprite != null)
-        {
-            if (namedSprite.outlineSprite.texture.width == 64)
-            {
-                RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
-                buttonRectTransform.sizeDelta = new Vector2(300, 150);
-                RectTransform imageRectTransform = outlineSprite.GetComponent<RectTransform>();
-                imageRectTransform.sizeDelta = new Vector2(300, 150);
-            }
-        }
-    }
-
     private void OnTemplateSelected()
     {
         if (namedSprite != null)
         {
-            fishTemplateProvider.SetSelectedTemplate(this);
+            fishTemplateProvider.SelectTemplate(this);
         }
     }
 

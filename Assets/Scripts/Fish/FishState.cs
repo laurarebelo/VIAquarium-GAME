@@ -5,22 +5,23 @@ using UnityEngine;
 public class FishState : MonoBehaviour
 {
     private FishFoodSeek foodSeek;
-    private RandomIdleSwim idleSwim;
+    private FishMovement idleSwim;
     void Start()
     {
         foodSeek = GetComponent<FishFoodSeek>();
-        idleSwim = GetComponent<RandomIdleSwim>();
+        idleSwim = GetComponent<FishMovement>();
         idleSwim.enabled = true;
+        foodSeek.enabled = true;
     }
 
-    public void StartEating()
+    public void StartSeekingFood()
     {
-        StopIdling();
+        foodSeek.enabled = true;
     }
 
-    public void StopEating()
+    public void StopSeekingFood()
     {
-        StartIdling();
+        foodSeek.enabled = false;
     }
 
     public void StopIdling()

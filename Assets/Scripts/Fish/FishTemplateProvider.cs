@@ -1,20 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FishTemplateProvider : MonoBehaviour
 {
+    private static FishTemplateProvider instance;
+    public UnityEvent<bool> OnTemplateSelectionChanged;
     public List<NamedSprite> namedSprites;
     private Dictionary<string, NamedSprite> namedSpritesDictionary;
     public GameObject selectorPrefab;
     public FishTemplateSelector selectedTemplate;
     public GameObject allFishTemplatesParent;
+    public GameObject addFishCanvas;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
-    
+
     private void Start()
     {
         namedSpritesDictionary = new Dictionary<string, NamedSprite>();
@@ -30,6 +46,20 @@ public class FishTemplateProvider : MonoBehaviour
         else
         {
             selectedTemplate.SetTemplate(namedSpritesDictionary["default"]);
+        }
+    }
+
+    public void ToggleCanvasVisibility(bool? active = null)
+    {
+        GameObject screen = addFishCanvas;
+        if (active == null)
+        {
+            active = !screen.activeSelf;
+        }
+        screen.SetActive(active.Value);
+        if (!active.Value)
+        {
+            DeselectTemplate();
         }
     }
 
@@ -51,11 +81,12 @@ public class FishTemplateProvider : MonoBehaviour
         return namedSpritesDictionary[template.ToLower()];
     }
 
-    public void SetSelectedTemplate(FishTemplateSelector template)
+    public void SelectTemplate(FishTemplateSelector template)
     {
         DeselectTemplate();
         selectedTemplate = template;
         selectedTemplate.Select();
+        OnTemplateSelectionChanged.Invoke(true);
     }
 
     public void DeselectTemplate()
@@ -64,8 +95,7 @@ public class FishTemplateProvider : MonoBehaviour
         {
             selectedTemplate.Deselect();
         }
-
         selectedTemplate = null;
+        OnTemplateSelectionChanged.Invoke(false);
     }
-
 }

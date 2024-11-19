@@ -317,28 +317,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CursorAnimationList:
   - CursorType: 0
-    texturesArray:
-    - {fileID: 2800000, guid: 2da3d230011852f4ea712ca690de1526, type: 3}
+    spritesArray:
+    - {fileID: 1283225788, guid: 69171832e85104e7982f7283eba4121b, type: 3}
+    texturesArray: []
     frameRate: 0.1
-    offset: {x: 10, y: 10}
+    offset: {x: 32, y: 10}
   - CursorType: 1
-    texturesArray:
-    - {fileID: 2800000, guid: 2da3d230011852f4ea712ca690de1526, type: 3}
-    - {fileID: 2800000, guid: e8fdbf094a548ee4884d0748d7379782, type: 3}
-    - {fileID: 2800000, guid: 4e933191d2245bd4d8bd92cd5ff1441a, type: 3}
-    - {fileID: 2800000, guid: 9ceb497e0f180354e8ebd95575d96ca8, type: 3}
-    - {fileID: 2800000, guid: ea33c987c2502c54f8c33d1ca88d6e2d, type: 3}
-    frameRate: 0.15
-    offset: {x: 16, y: 16}
-  - CursorType: 1
-    texturesArray:
-    - {fileID: 2800000, guid: 2da3d230011852f4ea712ca690de1526, type: 3}
-    - {fileID: 2800000, guid: e8fdbf094a548ee4884d0748d7379782, type: 3}
-    - {fileID: 2800000, guid: 4e933191d2245bd4d8bd92cd5ff1441a, type: 3}
-    - {fileID: 2800000, guid: 9ceb497e0f180354e8ebd95575d96ca8, type: 3}
-    - {fileID: 2800000, guid: ea33c987c2502c54f8c33d1ca88d6e2d, type: 3}
-    frameRate: 0.15
-    offset: {x: 16, y: 16}
+    spritesArray:
+    - {fileID: 2060436916, guid: 69171832e85104e7982f7283eba4121b, type: 3}
+    - {fileID: 545403680, guid: 69171832e85104e7982f7283eba4121b, type: 3}
+    - {fileID: 1912664782, guid: 69171832e85104e7982f7283eba4121b, type: 3}
+    - {fileID: 1626647450, guid: 69171832e85104e7982f7283eba4121b, type: 3}
+    - {fileID: 1283225788, guid: 69171832e85104e7982f7283eba4121b, type: 3}
+    texturesArray: []
+    frameRate: 0.1
+    offset: {x: 32, y: 10}
+  - CursorType: 2
+    spritesArray:
+    - {fileID: 21300000, guid: 9949cf6a8b9854f1fac27cf0154070f1, type: 3}
+    texturesArray: []
+    frameRate: 0.1
+    offset: {x: 32, y: 10}
 --- !u!1 &410636525
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flakeParticleSystemPrefab: {fileID: 4229246209983550415, guid: 7f15a50788a9c4367b3cdb1a6f756faa, type: 3}
+  feedingModeOn: 0
 --- !u!4 &518834294
 Transform:
   m_ObjectHideFlags: 0
@@ -1494,6 +1494,54 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1769467015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769467017}
+  - component: {fileID: 1769467016}
+  m_Layer: 0
+  m_Name: Knocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1769467016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769467015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be1af22015cb434783e6aa1e21274e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doubleTapTime: 0.3
+  cursorManager: {fileID: 236998861}
+  feedingManager: {fileID: 518834293}
+  knockFeedback: {fileID: 8453285899806530279, guid: 1b02efc933eeb4613b8703d904aebab6, type: 3}
+--- !u!4 &1769467017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769467015}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0140594, y: 0.10539521, z: 0.042574625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833279873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,30 +2101,39 @@ MonoBehaviour:
   - name: Angelfish
     outlineSprite: {fileID: 21300000, guid: 1eea0919d393a436b97f064924557c9e, type: 3}
     colorSprite: {fileID: 21300000, guid: 5c70e6a5ec6ff40808d0a6d8493ebfb4, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: e1e1ca3e373124c4287b02a2091739fd, type: 3}
   - name: Anglerfish
     outlineSprite: {fileID: 21300000, guid: 1d68239a06ff34761a02854685d5db37, type: 3}
     colorSprite: {fileID: 21300000, guid: da0fcf50f63c344bcb312164a44666c6, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: cbdfa80815db944029f8644f25ca85ed, type: 3}
   - name: BlueTang
     outlineSprite: {fileID: 21300000, guid: ccb7ccb0385ef4b1a9592405be2af5c2, type: 3}
     colorSprite: {fileID: 21300000, guid: 112efe3e43fd04991bbe29c1b4320207, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: 86da3223e1d0141c28cba1207e79dd7d, type: 3}
   - name: Clownfish
     outlineSprite: {fileID: 21300000, guid: 776a3c0dba8bb4f5db76611aed0aecf0, type: 3}
     colorSprite: {fileID: 21300000, guid: 5f7cc8efc5f0047bcbfd122b3383ed72, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: 3b717520e34f64c398254db2dab97074, type: 3}
   - name: Default
     outlineSprite: {fileID: 21300000, guid: 2af811e52fd214ff5b70f250eeffe17f, type: 3}
     colorSprite: {fileID: 21300000, guid: a9b6341260a0e49468698a66231c2bb2, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: b7cf8f2c0b6194af9bcd366aa24174e2, type: 3}
   - name: Jellyfish
     outlineSprite: {fileID: 21300000, guid: 7c95539175c30447280b8ae147f3f5b4, type: 3}
     colorSprite: {fileID: 21300000, guid: 7fb50a966af9e44839effc90c8feb9f7, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: 031d93ebe4f1f4585b317bf255009210, type: 3}
   - name: Sardine
     outlineSprite: {fileID: 21300000, guid: f358349462e49443184a8a2ef81308b6, type: 3}
     colorSprite: {fileID: 21300000, guid: a5ce83bd966e24dca9cf42c8dc17f6af, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: 976ee7cf1b20c4f7495554f1ffd182f5, type: 3}
   - name: Starfish
     outlineSprite: {fileID: 21300000, guid: 63c2719d0619447f3bbbc12d02e115ec, type: 3}
     colorSprite: {fileID: 21300000, guid: a434fe50c8d4e435aa657472256fa5f5, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: 4274681869fae43f5b91828fedefa73d, type: 3}
   - name: Pufferfish
     outlineSprite: {fileID: 21300000, guid: 310350f5c3cc746f789a089cf86faf35, type: 3}
     colorSprite: {fileID: 21300000, guid: 5de8dbd721818484fa2f321962312a03, type: 3}
+    outlineDeadSprite: {fileID: 21300000, guid: 8b4f0e614df3a4b0bb9d3b269eba261b, type: 3}
   selectorPrefab: {fileID: 3718804779506770252, guid: afdd1dab75e754ec3908f33a67d29de3, type: 3}
   selectedTemplate: {fileID: 0}
   allFishTemplatesParent: {fileID: 634186928}
@@ -2112,3 +2169,4 @@ SceneRoots:
   - {fileID: 35340303}
   - {fileID: 196153695}
   - {fileID: 236998858}
+  - {fileID: 1769467017}

@@ -8,13 +8,24 @@ namespace Model
 {
     public class FishAPI : MonoBehaviour
     {
+        private static FishAPI instance;
         private string url = "http://localhost:5296/api/fish";
 
         void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(instance.gameObject);
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
         }
-        
+
         public async Task<FishGetObject> FishPost(FishPostObject fishPostObject)
         {
             string json = JsonUtility.ToJson(fishPostObject);
@@ -41,7 +52,7 @@ namespace Model
                 }
             }
         }
-        
+
         //will be used to get alive fish
         // public async Task<List<FishGetObject>> FishGetAlive()
         // {
@@ -99,6 +110,7 @@ namespace Model
 
             return jsonObjects;
         }
+
         private async Task<T> UploadFishNeed<T>(int fishAffectedId, string needType, int needPoints) where T : class
         {
             if (needType != "hunger" && needType != "social")
@@ -106,18 +118,18 @@ namespace Model
                 Debug.Log($"Tried to UploadFishNeed with invalid need type: {needType}");
                 return null;
             }
-            
+
             string fullUrl = url + $"/{fishAffectedId}/{needType}";
             NeedPatchObject needPatchObject = new NeedPatchObject(needPoints);
             string jsonBody = JsonUtility.ToJson(needPatchObject);
-            
+
             using (UnityWebRequest www = new UnityWebRequest(fullUrl, "PATCH"))
             {
                 byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
                 www.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 www.SetRequestHeader("Content-Type", "application/json");
                 www.downloadHandler = new DownloadHandlerBuffer();
-                
+
                 var operation = www.SendWebRequest();
                 while (!operation.isDone)
                 {
@@ -161,11 +173,11 @@ namespace Model
         {
             return await UploadFishNeed<FishPetResponse>(fishAffectedId, "social", pettingPoints);
         }
-                
+
         public async Task<bool> FishDelete(int fishId)
         {
-            string fullUrl = $"{url}/{fishId}"; 
-    
+            string fullUrl = $"{url}/{fishId}";
+
             using (UnityWebRequest www = UnityWebRequest.Delete(fullUrl))
             {
                 var operation = www.SendWebRequest();
@@ -186,6 +198,5 @@ namespace Model
                 }
             }
         }
-
     }
 }
