@@ -10,6 +10,8 @@ namespace Fish
         private FishAPI fishApi;
         private FishController fishController;
         private CursorManager _cursorManager;
+        private FishEmotions fishEmotions;
+
         private int holdCounter = 0;
         private Coroutine holdCounterCoroutine;
 
@@ -17,6 +19,7 @@ namespace Fish
         {
             fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
             fishController = GetComponent<FishController>();
+            fishEmotions = GetComponent<FishEmotions>();
             _cursorManager = FindObjectOfType<CursorManager>();
         
             if (_cursorManager == null)
@@ -42,8 +45,10 @@ namespace Fish
 
                 if (holdCounterCoroutine != null && holdCounter >= 5)
                 {
+                    fishEmotions.SetEmotion("Loved");
                     StopCoroutine(holdCounterCoroutine);
                     _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
+                    fishController.SetSocialLevel(fishController.socialLevel + holdCounter);
                     holdCounter = 0;
                 }
             }

@@ -15,9 +15,11 @@ public class FishController : MonoBehaviour
     public GameObject fishSelectedCircle;
     public int hungerLevel;
     public int socialLevel;
+    private FishEmotions fishEmotions;
     
     void Start()
     {
+        fishEmotions = GetComponent<FishEmotions>();
         Deselect();
         UpdateText();
     }

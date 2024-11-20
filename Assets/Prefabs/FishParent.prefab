@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 6442589274985085003}
   - component: {fileID: 19071706211423832}
   - component: {fileID: 4695600038674108867}
+  - component: {fileID: 5562975831589410454}
   m_Layer: 0
   m_Name: FishParent
   m_TagString: Untagged
@@ -314,7 +315,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emotionAnimation: {fileID: 5604505555255955989}
-  playForSeconds: 2
+--- !u!114 &5562975831589410454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235da988378840a3af75ed84ab7e50b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishController: {fileID: 0}
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0

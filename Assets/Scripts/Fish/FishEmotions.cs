@@ -1,25 +1,28 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
 public class FishEmotions : MonoBehaviour
 {
     private Animator animator;
+    private SpriteRenderer animationSpriteRenderer;
     public GameObject emotionAnimation;
-    public int playForSeconds;
+
     void Start()
     {
         animator = emotionAnimation.GetComponent<Animator>();
+        animationSpriteRenderer = emotionAnimation.GetComponent<SpriteRenderer>();
+        animationSpriteRenderer.enabled = false;
     }
 
     public void SetEmotion(string emotion)
     {
-        StartCoroutine(PlayEmotionAndReturnToIdle(emotion));
+        animationSpriteRenderer.enabled = true; 
+        StartCoroutine(PlayEmotionAndHideAfterDuration(emotion));
     }
 
-    private IEnumerator PlayEmotionAndReturnToIdle(string emotion)
+    private IEnumerator PlayEmotionAndHideAfterDuration(string emotion)
     {
-        animator.SetTrigger("Idle"); 
-
         switch (emotion)
         {
             case "Hungry":
@@ -43,8 +46,9 @@ public class FishEmotions : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(playForSeconds);
+        float animationDuration = 5f;
+        yield return new WaitForSeconds(animationDuration);
+        animationSpriteRenderer.enabled = false;
 
-        animator.SetTrigger("Idle");
     }
 }
