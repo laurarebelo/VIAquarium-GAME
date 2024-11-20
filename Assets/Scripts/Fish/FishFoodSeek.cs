@@ -18,6 +18,7 @@ public class FishFoodSeek : MonoBehaviour
     private FishController fishController;
     private FishFlip fishFlip;
     private FishState fishState;
+    private FishEmotions fishEmotions;
 
     private int potentialHunger;
     private bool isHungry;
@@ -29,6 +30,7 @@ public class FishFoodSeek : MonoBehaviour
         fishController = GetComponent<FishController>();
         fishFlip = GetComponent<FishFlip>();
         fishState = GetComponent<FishState>();
+        fishEmotions = GetComponent<FishEmotions>();
         potentialHunger = fishController.hungerLevel;
         StartCoroutine(DecreaseHungerOverTime());
         CheckHunger();
@@ -102,8 +104,11 @@ public class FishFoodSeek : MonoBehaviour
 
         if (rampageTimer >= rampageTimeout && rampageCount > 0)
         {
+            fishEmotions.SetEmotion("Happy");
             fishState.StartIdling();
             _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
+            fishController.SetHungerLevel(fishController.hungerLevel + rampageCount);
+
             rampageCount = 0;
         }
     }

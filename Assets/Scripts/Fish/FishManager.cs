@@ -36,6 +36,8 @@ public class FishManager : MonoBehaviour
         fishController.SetFishName(newFish.name);
         fishController.SetFishId(newFish.id);
         fishController.SetHungerLevel(newFish.hungerLevel);
+        fishController.SetSocialLevel(newFish.socialLevel);
+
         
         NamedSprite spritePair = fishTemplateProvider.GetSpritePair(newFish.template);
         fishController.SetFishTemplate(spritePair);
