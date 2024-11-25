@@ -25,7 +25,7 @@ public class BackgroundManager : MonoBehaviour
     
     private void UpdateBackground()
     {
-        TimeSpan currentTime = new TimeSpan(5, 0, 0);
+        TimeSpan currentTime = DateTime.Now.TimeOfDay;
 
         if (currentTime >= dawnStart && currentTime < dayStart)
         {
@@ -47,7 +47,7 @@ public class BackgroundManager : MonoBehaviour
 
     public static Color GetFishColorForTimeOfDay()
     {
-        TimeSpan currentTime = new TimeSpan(5, 0, 0);
+        TimeSpan currentTime = DateTime.Now.TimeOfDay;
 
         if (currentTime >= dawnStart && currentTime < dayStart)
         {
