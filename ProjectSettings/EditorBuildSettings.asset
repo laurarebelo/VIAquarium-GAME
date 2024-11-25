@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Laura/S6-Cleanup.unity
     guid: 699d1c4af73a64a878ab36584bd93bfc
+  - enabled: 1
+    path: Assets/Scenes/Laura/S7-Optimizing.unity
+    guid: 081c41522e1714f8a91a9eeaf6cd369b
   m_configObjects: {}
