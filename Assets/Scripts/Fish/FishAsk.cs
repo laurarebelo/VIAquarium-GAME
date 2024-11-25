@@ -32,7 +32,7 @@ public class FishAsk : MonoBehaviour
         }
         else if (fishController.socialLevel < 10)
         {
-            fishEmotions.SetEmotion("Social");
+            fishEmotions.SetEmotion("Lonely");
         }
     }
 }
