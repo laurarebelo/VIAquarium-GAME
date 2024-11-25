@@ -1,4 +1,5 @@
 using Drawing.DrawingTools;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -30,6 +31,8 @@ public class DrawingManager : MonoBehaviour
     {
         m_gridRenderer.RenderGrid(m_drawingRenderer.TextureSize);
         m_uiController.OnClearButtonClicked += ClearDrawing;
+        m_uiController.OnUndoButtonClicked += Undo;
+        m_uiController.OnRedoButtonClicked += Redo;
 
         m_uiController.OnBrushClicked += SetBrush;
         m_uiController.OnLineClicked += SetLine;
@@ -167,6 +170,7 @@ public class DrawingManager : MonoBehaviour
     /// <param name="vector"></param>
     private void StartDrawing(Vector2 vector)
     {
+        m_drawingRenderer.SaveUndoState();
         m_isDrawing = true;
     }
 
@@ -218,6 +222,16 @@ public class DrawingManager : MonoBehaviour
     private void ClearDrawing()
     {
         m_drawingRenderer.ClearCanvas();
+    }
+
+    private void Undo()
+    {
+        m_drawingRenderer.Undo();
+    }
+
+    private void Redo()
+    {
+        m_drawingRenderer.Redo();
     }
 
     //Manage drawing process

@@ -13,20 +13,45 @@ public class FishManager : MonoBehaviour
     public GameObject fishPrefab;
     private int z;
     private FishTemplateProvider fishTemplateProvider;
-    
+    public GameObject loadingScreen;
+
+
     void Start()
     {
-        _ = GetAllFish();
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
+        _ = InitializeFish();
     }
 
-    async Task GetAllFish()
+    async Task InitializeFish()
     {
-        fishList = await fishApi.FishGetAll();
-        InstantiateAllFish();
+        if (FishStore.Instance.HasStoredFish())
+        {
+            InstantiateFishList(FishStore.Instance.GetStoredFish());
+        }
+        else
+        {
+            ShowLoadingScreen(true);
+            var allFish = await fishApi.FishGetAll();
+            FishStore.Instance.StoreFishList(allFish);
+            InstantiateFishList(allFish);
+            ShowLoadingScreen(false);
+        }
     }
 
-    public void InstantiateFish(FishGetObject newFish)
+    void ShowLoadingScreen(bool show)
+    {
+        loadingScreen.SetActive(show);
+    }
+
+    public void InstantiateFishList(List<FishGetObject> fishList)
+    {
+        foreach (var fish in fishList)
+        {
+            InstantiateFish(fish);
+        }
+    }
+
+public void InstantiateFish(FishGetObject newFish)
     {
         Vector3 position = Utils.GetRandomPosition();
         position.z = z;
@@ -42,7 +67,6 @@ public class FishManager : MonoBehaviour
         NamedSprite spritePair = fishTemplateProvider.GetSpritePair(newFish.template);
         fishController.SetFishTemplate(spritePair);
         if (newFish.sprite != "") fishController.SetFishSprite(newFish.sprite);
-        else fishController.SetFishColor(Utils.GetRandomColor());
     }
 
     public void DeleteFish(FishController fish)
