@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class FishController : MonoBehaviour
 {
@@ -16,7 +13,7 @@ public class FishController : MonoBehaviour
     public int hungerLevel;
     public int socialLevel;
     private FishEmotions fishEmotions;
-    
+
     void Start()
     {
         fishEmotions = GetComponent<FishEmotions>();
@@ -37,6 +34,7 @@ public class FishController : MonoBehaviour
         if (level > 100) level = 100;
         socialLevel = level;
     }
+
     public void Select()
     {
         fishSelectedCircle.SetActive(true);
@@ -51,12 +49,27 @@ public class FishController : MonoBehaviour
     {
         fishOutlineSpriteRenderer.sprite = fishSprites.outlineDeadSprite;
     }
-    
+
     public void SetFishTemplate(NamedSprite sprite)
     {
         fishSprites = sprite;
         fishOutlineSpriteRenderer.sprite = sprite.outlineSprite;
         fishColorSpriteRenderer.sprite = sprite.colorSprite;
+        AdjustNameHeight();
+        ChangeHueDependingOnTime();
+    }
+
+    private void AdjustNameHeight()
+    {
+        float height = FishTemplateProvider.GetRectTransformHeightForTemplateType(fishSprites.name);
+        var sizeDelta = fishNameText.rectTransform.sizeDelta;
+        sizeDelta.y = height;
+        fishNameText.rectTransform.sizeDelta = sizeDelta;
+    }
+
+    private void ChangeHueDependingOnTime()
+    {
+        SetFishColor(BackgroundManager.GetFishColorForTimeOfDay());
     }
 
     public void SetFishColor(Color color)
@@ -80,6 +93,7 @@ public class FishController : MonoBehaviour
         {
             Debug.LogError("Failed to load image from Base64 string.");
         }
+        ChangeHueDependingOnTime();
     }
 
     public void SetFishId(int id)

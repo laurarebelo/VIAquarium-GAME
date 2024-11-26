@@ -56,6 +56,7 @@ public class FishTemplateProvider : MonoBehaviour
         {
             active = !screen.activeSelf;
         }
+
         screen.SetActive(active.Value);
         if (!active.Value)
         {
@@ -95,7 +96,29 @@ public class FishTemplateProvider : MonoBehaviour
         {
             selectedTemplate.Deselect();
         }
+
         selectedTemplate = null;
         OnTemplateSelectionChanged.Invoke(false);
+    }
+
+    public static float GetRectTransformHeightForTemplateType(string templateName)
+    {
+        switch (templateName.ToLower())
+        {
+            case "jellyfish":
+                return 2.4f;
+            case "pufferfish":
+            case "angelfish":
+            case "anglerfish":
+            case "starfish":
+                return 2.2f;
+            case "default":
+            case "clownfish":
+                return 1.8f;
+            case "sardine":
+                return 1.6f;
+            default:
+                return 2f;
+        }
     }
 }

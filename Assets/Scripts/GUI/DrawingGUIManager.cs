@@ -34,17 +34,12 @@ public class DrawingGUIManager : MonoBehaviour
         
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
-        _ = GetAllFish();
+        fishList = FishStore.Instance.GetStoredFish();
     }
 
     private void GoBack()
     {
-        SceneManager.LoadScene("S6-Cleanup");
-    }
-
-    async Task GetAllFish()
-    {
-        fishList = await fishApi.FishGetAll();
+        SceneManager.LoadScene("S7-Optimizing");
     }
 
     private IEnumerator SubmitFishCoroutine()
@@ -54,7 +49,6 @@ public class DrawingGUIManager : MonoBehaviour
         if (!ValidateName(fishName)) yield break;
         string fishTemplate = fishTemplateProvider.selectedTemplate.TemplateName();
         string image = SaveTextureAsPNG();
-        FishGetObject fishObject;
         FishPostObject fishPostObject = new FishPostObject(fishName, fishTemplate, image);
         var task = FishPostAsync(fishPostObject);
         while (!task.IsCompleted)
@@ -66,7 +60,10 @@ public class DrawingGUIManager : MonoBehaviour
         {
             Debug.LogError("Failed to submit fish: " + task.Exception.InnerException.Message);
         }
-
+        
+        FishGetObject fishObject = task.Result;
+        FishStore.Instance.StoreFish(fishObject);
+        
         nameInputField.text = "";
         fishTemplateProvider.DeselectTemplate();
         GoBack();

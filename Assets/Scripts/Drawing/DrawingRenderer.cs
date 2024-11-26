@@ -25,7 +25,9 @@ public class DrawingRenderer : MonoBehaviour
     private FishTemplateProvider fishTemplateProvider;
 
     private bool[] m_drawableMask;
-
+    
+    private Stack<Color[]> undoStack = new Stack<Color[]>();
+    private Stack<Color[]> redoStack = new Stack<Color[]>();
 
     public Vector2Int TextureSize => new(m_renderTexture.width, m_renderTexture.height);
 
@@ -55,6 +57,33 @@ public class DrawingRenderer : MonoBehaviour
         m_previewPixelColors = new Color[m_previewRenderTexture.width * m_previewRenderTexture.height];
         SetFishBase();
     }
+    
+    public void SaveUndoState()
+    {
+        undoStack.Push((Color[])m_drawingPixelColors.Clone());
+        redoStack.Clear();
+    }
+    
+    public void Undo()
+    {
+        if (undoStack.Count > 0)
+        {
+            redoStack.Push((Color[])m_drawingPixelColors.Clone());
+            m_drawingPixelColors = undoStack.Pop();
+            UpdateRenderTexture(m_renderTexture, m_drawingTexture, m_drawingPixelColors);
+        }
+    }
+    
+    public void Redo()
+    {
+        if (redoStack.Count > 0)
+        {
+            undoStack.Push((Color[])m_drawingPixelColors.Clone());
+            m_drawingPixelColors = redoStack.Pop();
+            UpdateRenderTexture(m_renderTexture, m_drawingTexture, m_drawingPixelColors);
+        }
+    }
+
 
     private Vector2Int ValidateSize(Vector2Int m_textureSize)
     {
@@ -262,7 +291,6 @@ public class DrawingRenderer : MonoBehaviour
         return m_drawingPixelColors[pixelIndex];
     }
 
-    // Call this after setting the fish base texture
     private void SetDrawableMask(Texture2D fishBaseTexture)
     {
         m_drawableMask = new bool[fishBaseTexture.width * fishBaseTexture.height];
@@ -274,7 +302,6 @@ public class DrawingRenderer : MonoBehaviour
                 int index = y * fishBaseTexture.width + x;
                 Color pixelColor = fishBaseTexture.GetPixel(x, y);
 
-                // Mark the pixel as drawable if it's opaque (or any condition you define)
                 m_drawableMask[index] = pixelColor.a > 0.1f;
             }
         }
