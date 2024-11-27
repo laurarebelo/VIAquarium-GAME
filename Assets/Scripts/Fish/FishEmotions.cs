@@ -7,6 +7,14 @@ public class FishEmotions : MonoBehaviour
     private Animator animator;
     private SpriteRenderer animationSpriteRenderer;
     public GameObject emotionAnimation;
+    
+    public enum Emotion
+    {
+        Lonely,
+        Happy,
+        Loved,
+        Hungry
+    }
 
     void Start()
     {
@@ -15,29 +23,29 @@ public class FishEmotions : MonoBehaviour
         animationSpriteRenderer.enabled = false;
     }
 
-    public void SetEmotion(string emotion)
+    public void SetEmotion(Emotion emotion)
     {
         animationSpriteRenderer.enabled = true; 
         StartCoroutine(PlayEmotionAndHideAfterDuration(emotion));
     }
 
-    private IEnumerator PlayEmotionAndHideAfterDuration(string emotion)
+    private IEnumerator PlayEmotionAndHideAfterDuration(Emotion emotion)
     {
         switch (emotion)
         {
-            case "Hungry":
+            case Emotion.Hungry:
                 animator.SetTrigger("Hungry");
                 break;
 
-            case "Lonely":
+            case Emotion.Lonely:
                 animator.SetTrigger("Lonely");
                 break;
 
-            case "Happy":
+            case Emotion.Happy:
                 animator.SetTrigger("Happy");
                 break;
 
-            case "Loved":
+            case Emotion.Loved:
                 animator.SetTrigger("Loved");
                 break;
 

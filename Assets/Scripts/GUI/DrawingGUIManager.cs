@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class DrawingGUIManager : MonoBehaviour
 {
+    private ErrorManager errorManager;
     public Button backButton;
 
     public Button submitButton;
@@ -20,6 +21,7 @@ public class DrawingGUIManager : MonoBehaviour
     private FishAPI fishApi;
     public RenderTexture renderTexture;
     private List<FishGetObject> fishList;
+    
     public int NameSize = 30;
 
 
@@ -28,6 +30,8 @@ public class DrawingGUIManager : MonoBehaviour
     {
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
+        errorManager = GameObject.Find("ErrorManager").GetComponent<ErrorManager>();
+        
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
         fishList = FishStore.Instance.GetStoredFish();
@@ -89,6 +93,8 @@ public class DrawingGUIManager : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$") || name.Length > NameSize)
         {
+            errorManager.ShowError( name + " is very special, however NO SPECIAL CHARACTERS are allowed in the name!");
+
             return false;
         }
         
@@ -96,6 +102,8 @@ public class DrawingGUIManager : MonoBehaviour
         {
             if (fishGetObject.name.Equals(name, System.StringComparison.OrdinalIgnoreCase))
             {
+                errorManager.ShowError("There is only space for one " + name + " in the tank, make the name UNIQUE!");
+
                 return false;
             }
         }
