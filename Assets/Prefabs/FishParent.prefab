@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235da988378840a3af75ed84ab7e50b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkInterval: 10
+  checkInterval: 15
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,8 +567,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: fish
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f9c375fa1a824fb4888452b1dfb07352, type: 2}
-  m_sharedMaterial: {fileID: -930096469710089682, guid: f9c375fa1a824fb4888452b1dfb07352, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ccba034132b63e74a8adab1b73532cd7, type: 2}
+  m_sharedMaterial: {fileID: 8743889243243376120, guid: ccba034132b63e74a8adab1b73532cd7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -592,8 +592,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.4
-  m_fontSizeBase: 0.4
+  m_fontSize: 0.3
+  m_fontSizeBase: 0.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

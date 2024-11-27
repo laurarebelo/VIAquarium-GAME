@@ -26,11 +26,11 @@ public class FishAsk : MonoBehaviour
 
     void CheckFishStatus()
     {
-        if (fishController.hungerLevel < 10)
+        if (fishController.hungerLevel < 30)
         {
            fishEmotions.SetEmotion(FishEmotions.Emotion.Hungry);
         }
-        else if (fishController.socialLevel < 10)
+        else if (fishController.socialLevel < 30)
         {
             fishEmotions.SetEmotion(FishEmotions.Emotion.Lonely);
         }
