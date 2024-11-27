@@ -7,7 +7,7 @@ public class FishAsk : MonoBehaviour
     private FishController fishController;
     private FishEmotions fishEmotions;
 
-    private float checkInterval = 30f;
+    public float checkInterval = 30f;
     void Start()
     {   
         fishController = gameObject.GetComponent<FishController>();
@@ -28,11 +28,11 @@ public class FishAsk : MonoBehaviour
     {
         if (fishController.hungerLevel < 10)
         {
-           fishEmotions.SetEmotion("Hungry");
+           fishEmotions.SetEmotion(FishEmotions.Emotion.Hungry);
         }
         else if (fishController.socialLevel < 10)
         {
-            fishEmotions.SetEmotion("Lonely");
+            fishEmotions.SetEmotion(FishEmotions.Emotion.Lonely);
         }
     }
 }

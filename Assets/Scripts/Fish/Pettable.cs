@@ -45,7 +45,7 @@ namespace Fish
 
                 if (holdCounterCoroutine != null && holdCounter >= 5)
                 {
-                    fishEmotions.SetEmotion("Loved");
+                    fishEmotions.SetEmotion(FishEmotions.Emotion.Loved);
                     StopCoroutine(holdCounterCoroutine);
                     _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
                     fishController.SetSocialLevel(fishController.socialLevel + holdCounter);

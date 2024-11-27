@@ -104,7 +104,7 @@ public class FishFoodSeek : MonoBehaviour
 
         if (rampageTimer >= rampageTimeout && rampageCount > 0)
         {
-            fishEmotions.SetEmotion("Happy");
+            fishEmotions.SetEmotion(FishEmotions.Emotion.Happy);
             fishState.StartIdling();
             _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
             fishController.SetHungerLevel(fishController.hungerLevel + rampageCount);
