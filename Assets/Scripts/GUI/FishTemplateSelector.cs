@@ -11,8 +11,7 @@ public class FishTemplateSelector : MonoBehaviour
     public TMP_Text fishNameText;
     public NamedSprite namedSprite;
     private FishTemplateProvider fishTemplateProvider;
-    public Color deselectedColor;
-    public Color selectedColor;
+    public GameObject highlightImage;
 
     private void Awake()
     {
@@ -43,11 +42,11 @@ public class FishTemplateSelector : MonoBehaviour
 
     public void Select()
     {
-        button.image.color = selectedColor;
+        highlightImage.SetActive(true);
     }
 
     public void Deselect()
     {
-        button.image.color = deselectedColor;
+        highlightImage.SetActive(false);
     }
 }
