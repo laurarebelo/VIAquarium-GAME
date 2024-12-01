@@ -19,6 +19,7 @@ public class FishFoodSeek : MonoBehaviour
     private FishFlip fishFlip;
     private FishState fishState;
     private FishEmotions fishEmotions;
+    private FishDeath fishDeath;
 
     private int potentialHunger;
     private bool isHungry;
@@ -31,20 +32,20 @@ public class FishFoodSeek : MonoBehaviour
         fishFlip = GetComponent<FishFlip>();
         fishState = GetComponent<FishState>();
         fishEmotions = GetComponent<FishEmotions>();
+        fishDeath = GetComponent<FishDeath>();
         potentialHunger = fishController.hungerLevel;
         StartCoroutine(DecreaseHungerOverTime());
-        CheckHunger();
+        CheckIfHungry();
     }
 
     void Update()
     {
-        CheckHunger();
         FindFoodFlake();
         MoveTowardsFlake();
         HandleRampage();
     }
 
-    void CheckHunger()
+    void CheckIfHungry()
     {
         isHungry = potentialHunger < 100;
     }
@@ -113,13 +114,23 @@ public class FishFoodSeek : MonoBehaviour
         }
     }
 
+    private void CheckIfDead()
+    {
+        if (potentialHunger == 0)
+        {
+            fishDeath.Die();
+        }
+    }
+
     private IEnumerator DecreaseHungerOverTime()
     {
         while (true)
         {
             yield return new WaitForSeconds(minutesToGetHungry * 60f);
             potentialHunger = Mathf.Max(0, potentialHunger - 1);
-            CheckHunger();
+            fishController.SetHungerLevel(potentialHunger);
+            CheckIfHungry();
+            CheckIfDead();
         }
     }
 }

@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 19071706211423832}
   - component: {fileID: 4695600038674108867}
   - component: {fileID: 5562975831589410454}
+  - component: {fileID: 2415189573436106460}
   m_Layer: 0
   m_Name: FishParent
   m_TagString: Untagged
@@ -328,6 +329,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkInterval: 15
+--- !u!114 &2415189573436106460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31957c8450ef748caa62b8b4f317370f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineFishRenderer: {fileID: 949740854243368076}
+  colorFishRenderer: {fileID: 8975014788262413692}
+  fishNameText: {fileID: 6689420630780696972}
+  floatSpeed: 1
+  waveAmplitude: 0.5
+  waveFrequency: 2
+  fadeDuration: 4
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0
