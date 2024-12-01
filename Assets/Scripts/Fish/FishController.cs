@@ -10,6 +10,7 @@ public class FishController : MonoBehaviour
     public SpriteRenderer fishOutlineSpriteRenderer;
     public SpriteRenderer fishColorSpriteRenderer;
     public GameObject fishSelectedCircle;
+    public GameObject emotionsDisplayGo;
     public int hungerLevel;
     public int socialLevel;
     private FishEmotions fishEmotions;
@@ -56,7 +57,14 @@ public class FishController : MonoBehaviour
         fishOutlineSpriteRenderer.sprite = sprite.outlineSprite;
         fishColorSpriteRenderer.sprite = sprite.colorSprite;
         AdjustNameHeight();
+        AdjustEmotionsPosition();
         ChangeHueDependingOnTime();
+    }
+
+    private void AdjustEmotionsPosition()
+    {
+        Vector3 localPosition = FishTemplateProvider.GetLocalTransformForEmotionsBubble(fishSprites.name);
+        emotionsDisplayGo.transform.localPosition = localPosition;
     }
 
     private void AdjustNameHeight()

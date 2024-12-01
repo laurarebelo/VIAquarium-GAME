@@ -173,6 +173,7 @@ MonoBehaviour:
   fishOutlineSpriteRenderer: {fileID: 949740854243368076}
   fishColorSpriteRenderer: {fileID: 8975014788262413692}
   fishSelectedCircle: {fileID: 374793138637046305}
+  emotionsDisplayGo: {fileID: 5604505555255955989}
   hungerLevel: 0
   socialLevel: 0
 --- !u!114 &2245743496566405275
@@ -252,6 +253,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 949740854243368076}
   - {fileID: 8975014788262413692}
+  - {fileID: 3126883084943835262}
+  emotionSpriteRenderer: {fileID: 3126883084943835262}
 --- !u!114 &1897420917178382638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,8 +768,8 @@ Transform:
   m_GameObject: {fileID: 5604505555255955989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 1, z: -0.52104187}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalPosition: {x: 1.05, y: 0.5, z: -0.52104187}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9110708007631738298}
