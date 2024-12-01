@@ -39,7 +39,7 @@ public class DrawingGUIManager : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene("S7-Optimizing");
+        SceneManager.LoadScene("S8-Visuals");
     }
 
     private IEnumerator SubmitFishCoroutine()

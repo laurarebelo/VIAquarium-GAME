@@ -22,10 +22,20 @@ public class FishStore : MonoBehaviour
 
     public static FishStore Instance => instance;
 
+    public void RemoveFish(int fishId)
+    {
+        FishGetObject fishToRemove = storedFish.Find(fish => fish.id == fishId);
+        if (fishToRemove != null)
+        {
+            storedFish.Remove(fishToRemove);
+        }
+    }
+
     public void StoreFish(FishGetObject fish)
     {
         storedFish.Add(fish);
     }
+
     public void StoreFishList(List<FishGetObject> fishList)
     {
         storedFish.AddRange(fishList);

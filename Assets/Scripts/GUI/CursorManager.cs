@@ -18,7 +18,9 @@ public class CursorManager : MonoBehaviour
    {
       DefaultHand,
       Petting,
-      Knock
+      Knock,
+      Feeding,
+      Fed
    }
 
    private void Awake()
@@ -34,13 +36,30 @@ public class CursorManager : MonoBehaviour
    public void Knock()
    {
       SetActiveCursorType(CursorType.Knock);
-      StartCoroutine(WaitAndGoBackToDefault());
+      StartCoroutine(WaitAndGoBackTo(CursorType.DefaultHand));
    }
 
-   private IEnumerator WaitAndGoBackToDefault()
+   public void EnterFeedingMode()
+   {
+      SetActiveCursorType(CursorType.Feeding);
+   }
+
+   public void DefaultHand()
+   {
+      StopAllCoroutines();
+      SetActiveCursorType(CursorType.DefaultHand);
+   }
+
+   public void Feed()
+   {
+      SetActiveCursorType(CursorType.Fed);
+      StartCoroutine(WaitAndGoBackTo(CursorType.Feeding));
+   }
+
+   private IEnumerator WaitAndGoBackTo(CursorType backTo)
    {
       yield return new WaitForSeconds(0.2f);
-      SetActiveCursorType(CursorType.DefaultHand);
+      SetActiveCursorType(backTo);
    }
    
    private void Update()

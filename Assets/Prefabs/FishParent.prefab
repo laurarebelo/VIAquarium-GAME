@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 19071706211423832}
   - component: {fileID: 4695600038674108867}
   - component: {fileID: 5562975831589410454}
+  - component: {fileID: 2415189573436106460}
   m_Layer: 0
   m_Name: FishParent
   m_TagString: Untagged
@@ -172,6 +173,7 @@ MonoBehaviour:
   fishOutlineSpriteRenderer: {fileID: 949740854243368076}
   fishColorSpriteRenderer: {fileID: 8975014788262413692}
   fishSelectedCircle: {fileID: 374793138637046305}
+  emotionsDisplayGo: {fileID: 5604505555255955989}
   hungerLevel: 0
   socialLevel: 0
 --- !u!114 &2245743496566405275
@@ -235,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 1.5
   swimSpeed: 2
-  rampageTimeout: 0.5
+  rampageTimeout: 1
 --- !u!114 &5045408217749514339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +253,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 949740854243368076}
   - {fileID: 8975014788262413692}
+  - {fileID: 3126883084943835262}
+  emotionSpriteRenderer: {fileID: 3126883084943835262}
 --- !u!114 &1897420917178382638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +332,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkInterval: 15
+--- !u!114 &2415189573436106460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181481122609354415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31957c8450ef748caa62b8b4f317370f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineFishRenderer: {fileID: 949740854243368076}
+  colorFishRenderer: {fileID: 8975014788262413692}
+  fishNameText: {fileID: 6689420630780696972}
+  floatSpeed: 1
+  waveAmplitude: 0.5
+  waveFrequency: 2
+  fadeDuration: 4
 --- !u!1 &374793138637046305
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,8 +768,8 @@ Transform:
   m_GameObject: {fileID: 5604505555255955989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 1, z: -0.52104187}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalPosition: {x: 1.05, y: 0.5, z: -0.52104187}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9110708007631738298}

@@ -40,9 +40,6 @@ public class DrawingManager : MonoBehaviour
         m_uiController.OnColorPickerClicked += SetColorPicker;
         m_uiController.OnBucketClicked += SetBucket;
 
-        m_uiController.OnBrushSizePlusClicked += IncreaseBrushSize;
-        m_uiController.OnBrushSizeMinusClicked += DecreaseBrushSize;
-
         m_uiController.OnColorSelected += m_colorSelector.SetColor;
         m_uiController.OnHueChanged += m_colorSelector.SetHue;
         m_uiController.OnSaturationChanged += m_colorSelector.SetSaturation;
@@ -71,24 +68,6 @@ public class DrawingManager : MonoBehaviour
         m_currentTool = new RectangleTool(m_drawingRenderer, m_colorSelector);
         m_uiController.ClearCanvasPointerEvents();
         SetUpDrawOnReleaseEvents();
-    }
-
-    /// <summary>
-    /// Modified brush size.
-    /// </summary>
-    private void DecreaseBrushSize()
-    {
-        m_drawingRenderer.SetBrushSize(m_drawingRenderer.BrushSize - 1);
-        m_uiController.SetBrushSize(m_drawingRenderer.BrushSize);
-    }
-
-    /// <summary>
-    /// Modifies brush size.
-    /// </summary>
-    private void IncreaseBrushSize()
-    {
-        m_drawingRenderer.SetBrushSize(m_drawingRenderer.BrushSize + 1);
-        m_uiController.SetBrushSize(m_drawingRenderer.BrushSize);
     }
 
     private void SetColorPicker()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishFlip : MonoBehaviour
 {
     public List<SpriteRenderer> sprites;
+    public SpriteRenderer emotionSpriteRenderer;
 
     public void FaceDirection(Vector3 direction)
     {
@@ -30,6 +31,9 @@ public class FishFlip : MonoBehaviour
         {
             sprite.flipX = false;
         }
+
+        AdjustEmotionXValue(true);
+
     }
 
     public void FaceLeft()
@@ -38,5 +42,23 @@ public class FishFlip : MonoBehaviour
         {
             sprite.flipX = true;
         }
+
+        AdjustEmotionXValue(false);
+    }
+    
+    private void AdjustEmotionXValue(bool right)
+    {
+        Vector3 currentPosition = emotionSpriteRenderer.gameObject.transform.localPosition;
+
+        if (right)
+        {
+            currentPosition.x = Mathf.Abs(currentPosition.x);
+        }
+        else
+        {
+            currentPosition.x = -Mathf.Abs(currentPosition.x);
+        }
+
+        emotionSpriteRenderer.gameObject.transform.localPosition = currentPosition;
     }
 }

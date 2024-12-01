@@ -121,4 +121,21 @@ public class FishTemplateProvider : MonoBehaviour
                 return 2f;
         }
     }
+
+    public static Vector3 GetLocalTransformForEmotionsBubble(string templateName)
+    {
+        switch (templateName.ToLower())
+        {
+            case "jellyfish":
+                return new Vector3(0.9f, 0.9f, 0);
+            case "anglerfish":
+                return new Vector3(1.05f, 0.4f, 0);
+            case "pufferfish":
+                return new Vector3(1.05f, 0.7f, 0);
+            case "starfish":
+                return new Vector3(0.7f, 0.7f, 0);
+            default:
+                return new Vector3(1.05f, 0.5f, 0);
+        }
+    }
 }

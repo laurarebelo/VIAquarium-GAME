@@ -6,12 +6,42 @@ public class FishState : MonoBehaviour
 {
     private FishFoodSeek foodSeek;
     private FishMovement idleSwim;
+    private FishKnockReaction fishKnockReaction;
+    private FishEmotions fishEmotions;
     void Start()
     {
         foodSeek = GetComponent<FishFoodSeek>();
         idleSwim = GetComponent<FishMovement>();
-        idleSwim.enabled = true;
-        foodSeek.enabled = true;
+        fishKnockReaction = GetComponent<FishKnockReaction>();
+        fishEmotions = GetComponent<FishEmotions>();
+    }
+
+    public void Die()
+    {
+        StopIdling();
+        StopSeekingFood();
+        StopShowingEmotions();
+        StopReactingToKnocks();
+    }
+
+    public void StartShowingEmotions()
+    {
+        fishEmotions.enabled = true;
+    }
+
+    public void StopShowingEmotions()
+    {
+        fishEmotions.enabled = false;
+    }
+
+    public void StartReactingToKnocks()
+    {
+        fishKnockReaction.enabled = true;
+    }
+
+    public void StopReactingToKnocks()
+    {
+        fishKnockReaction.enabled = false;
     }
 
     public void StartSeekingFood()

@@ -12,22 +12,37 @@ public class UIController : MonoBehaviour
 {
     private UIDocument m_uiDocument;
     private VisualElement m_canvas, m_canvasBackground, m_previewCanvas, m_outlineCanvas;
-    private VisualElement m_clearButton, m_brushButton, m_lineButton, m_squareButton, m_colorPickerButton, m_bucketButton, m_undoButton, m_redoButton;
+
+    private VisualElement
+        m_brushButton,
+        m_lineButton,
+        m_squareButton,
+        m_colorPickerButton,
+        m_bucketButton;
+
+    public UnityEngine.UI.Button undoButton;
+    public UnityEngine.UI.Button redoButton;
+    public UnityEngine.UI.Button clearButton;
 
     private Slider m_hueSlider, m_saturationSlider, m_valueSlider, m_alphaSlider;
     private IntegerField m_hueField, m_saturationField, m_valueField, m_alphaField;
     private VisualElement m_colorSquare, m_selectedColor;
 
-    private VisualElement m_brushSizeLabel, m_brushSizePlusButton, m_brushSizeMinusButton;
-    
     public event Action<Vector2> OnPointerDown, OnPointerMoved, OnPointerEntered, OnPointerReleased;
-    public event Action OnClearButtonClicked, OnRectangleClicked, OnLineClicked, OnBrushClicked, OnPointerOut, OnColorPickerClicked, OnBucketClicked;
-    public event Action OnBrushSizePlusClicked, OnBrushSizeMinusClicked;
+
+    public event Action OnClearButtonClicked,
+        OnRectangleClicked,
+        OnLineClicked,
+        OnBrushClicked,
+        OnPointerOut,
+        OnColorPickerClicked,
+        OnBucketClicked;
+
     public event Action OnUndoButtonClicked, OnRedoButtonClicked;
 
     public event Action<Vector2> OnColorSelected;
     public event Action<int> OnHueChanged, OnAlphaChanged, OnSaturationChanged, OnValueChanged;
-    
+
     private bool m_pointerColorSquareHeld = false;
 
     /// <summary>
@@ -44,19 +59,11 @@ public class UIController : MonoBehaviour
         m_previewCanvas = m_uiDocument.rootVisualElement.Q<VisualElement>("PreviewCanvas");
         m_outlineCanvas = m_uiDocument.rootVisualElement.Q<VisualElement>("Outline");
 
-        m_clearButton = m_uiDocument.rootVisualElement.Q<VisualElement>("ClearButton");
         m_brushButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushButtonBackground");
         m_lineButton = m_uiDocument.rootVisualElement.Q<VisualElement>("LineButtonBackground");
         m_squareButton = m_uiDocument.rootVisualElement.Q<VisualElement>("SquareButtonBackground");
         m_colorPickerButton = m_uiDocument.rootVisualElement.Q<VisualElement>("ColorPickerButtonBackground");
         m_bucketButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BucketButtonBackground");
-        
-        m_undoButton = m_uiDocument.rootVisualElement.Q<VisualElement>("UndoButtonBackground");
-        m_redoButton = m_uiDocument.rootVisualElement.Q<VisualElement>("RedoButtonBackground");
-
-        m_brushSizeLabel = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSize");
-        m_brushSizePlusButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSizePlus");
-        m_brushSizeMinusButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSizeMinus");
 
         m_hueSlider = m_uiDocument.rootVisualElement.Q<Slider>("HueSlider");
         m_saturationSlider = m_uiDocument.rootVisualElement.Q<Slider>("SaturationSlider");
@@ -91,7 +98,7 @@ public class UIController : MonoBehaviour
         m_canvas.RegisterCallback<PointerEnterEvent>(HandlePointerIn, TrickleDown.TrickleDown);
 
         //Button callbacks
-        m_clearButton.RegisterCallback<ClickEvent>((arg)  => OnClearButtonClicked?.Invoke());
+        clearButton.onClick.AddListener(() => OnClearButtonClicked?.Invoke());
         m_brushButton.RegisterCallback<ClickEvent>((arg) => OnBrushClicked?.Invoke());
         m_brushButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_brushButton));
         m_lineButton.RegisterCallback<ClickEvent>((arg) => OnLineClicked?.Invoke());
@@ -102,18 +109,16 @@ public class UIController : MonoBehaviour
         m_colorPickerButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_colorPickerButton));
         m_bucketButton.RegisterCallback<ClickEvent>((arg) => OnBucketClicked?.Invoke());
         m_bucketButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_bucketButton));
-        m_undoButton.RegisterCallback<ClickEvent>((arg)  => OnUndoButtonClicked?.Invoke());
-        m_redoButton.RegisterCallback<ClickEvent>((arg)  => OnRedoButtonClicked?.Invoke());
-        
-        //Brush size button callbacks
-        m_brushSizePlusButton.RegisterCallback<ClickEvent>((arg) => OnBrushSizePlusClicked?.Invoke());
-        m_brushSizeMinusButton.RegisterCallback<ClickEvent>((arg) => OnBrushSizeMinusClicked?.Invoke());
+        undoButton.onClick.AddListener(() => OnUndoButtonClicked?.Invoke());
+        redoButton.onClick.AddListener(() => OnRedoButtonClicked?.Invoke());
 
         //Color selector callbacks
         m_colorSquare.RegisterCallback<PointerDownEvent>(HandleColorSquareClicked);
         m_colorSquare.RegisterCallback<PointerMoveEvent>(HandleColorSquareHeld, TrickleDown.TrickleDown);
-        m_colorSquare.RegisterCallback<PointerUpEvent>((arg) => m_pointerColorSquareHeld = false, TrickleDown.TrickleDown);
-        m_colorSquare.RegisterCallback<PointerLeaveEvent>((arg) => m_pointerColorSquareHeld = false, TrickleDown.TrickleDown);
+        m_colorSquare.RegisterCallback<PointerUpEvent>((arg) => m_pointerColorSquareHeld = false,
+            TrickleDown.TrickleDown);
+        m_colorSquare.RegisterCallback<PointerLeaveEvent>((arg) => m_pointerColorSquareHeld = false,
+            TrickleDown.TrickleDown);
         m_hueSlider.RegisterValueChangedCallback(ChangeHue);
         m_hueField.RegisterValueChangedCallback(ChangeHue);
         m_alphaSlider.RegisterValueChangedCallback(ChangeAlpha);
@@ -135,6 +140,7 @@ public class UIController : MonoBehaviour
         {
             item.style.unityBackgroundImageTintColor = Color.white;
         }
+
         element.style.unityBackgroundImageTintColor = Color.yellow;
     }
 
@@ -181,6 +187,7 @@ public class UIController : MonoBehaviour
         SetAlpha(evt.newValue);
         OnAlphaChanged?.Invoke(m_alphaField.value);
     }
+
     private void ChangeAlpha(ChangeEvent<float> evt)
     {
         SetAlpha(Mathf.RoundToInt(evt.newValue));
@@ -287,18 +294,14 @@ public class UIController : MonoBehaviour
         OnPointerEntered?.Invoke(normalizedPosition);
     }
 
-    public void SetBrushSize(int size)
-    {
-        ((Label)m_brushSizeLabel).text = size.ToString();
-    }
-
     /// <summary>
     /// We use this method to set make the canvas into square.
     /// </summary>
     /// <param name="evt"></param>
     private void HandleCanvasGeometryChanged(GeometryChangedEvent evt)
     {
-        float desiredSize = m_canvasBackground.resolvedStyle.height - m_canvasBackground.resolvedStyle.paddingBottom * 2;
+        float desiredSize = m_canvasBackground.resolvedStyle.height -
+                            m_canvasBackground.resolvedStyle.paddingBottom * 2;
         m_canvasBackground.style.width = desiredSize;
         m_canvas.style.height = desiredSize;
         m_canvas.style.width = desiredSize;
@@ -311,7 +314,6 @@ public class UIController : MonoBehaviour
     private void HandlePointerOut(PointerOutEvent evt)
     {
         OnPointerOut?.Invoke();
-
     }
 
     private void HandlePointerUp(PointerUpEvent evt)
@@ -339,7 +341,6 @@ public class UIController : MonoBehaviour
     //Flip Y axis to be pointing UP. Otherwise Ui Toolkit draws the UI with Y axis pointing down. By default unity draws with Y axis pointing up.
     private Vector2 ProcessPosition(Vector2 localMousePosition, VisualElement element)
     {
-
         //Debug.Log(localMousePosition);
         Vector2 normalizedPosition = NormalizePixelPosition(localMousePosition, element.layout);
         normalizedPosition.y = 1 - normalizedPosition.y;
@@ -354,5 +355,4 @@ public class UIController : MonoBehaviour
         float normalizedY = Mathf.InverseLerp(0, layout.height, pixelPosition.y);
         return new(normalizedX, normalizedY);
     }
-
 }

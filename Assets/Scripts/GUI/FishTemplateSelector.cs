@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class FishTemplateSelector : MonoBehaviour
 {
     public Image outlineSprite;
+    public Image colorSprite;
     public Button button;
     public TMP_Text fishNameText;
     public NamedSprite namedSprite;
     private FishTemplateProvider fishTemplateProvider;
-    public Color deselectedColor;
-    public Color selectedColor;
+    public GameObject highlightImage;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class FishTemplateSelector : MonoBehaviour
         namedSprite = template;
         fishNameText.text = template.name;
         outlineSprite.sprite = template.outlineSprite;
+        colorSprite.sprite = template.colorSprite;
     }
 
     public string TemplateName()
@@ -43,11 +44,11 @@ public class FishTemplateSelector : MonoBehaviour
 
     public void Select()
     {
-        button.image.color = selectedColor;
+        highlightImage.SetActive(true);
     }
 
     public void Deselect()
     {
-        button.image.color = deselectedColor;
+        highlightImage.SetActive(false);
     }
 }
