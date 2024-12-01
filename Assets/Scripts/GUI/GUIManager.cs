@@ -22,7 +22,6 @@ public class GUIManager : MonoBehaviour
 
     [CanBeNull] public FishController selectedFish;
 
-    // Start is called before the first frame update
     void Start()
     {
         fishTemplateProvider.OnTemplateSelectionChanged.AddListener(UpdateContinueButtonState);

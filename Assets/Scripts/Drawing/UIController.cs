@@ -12,7 +12,16 @@ public class UIController : MonoBehaviour
 {
     private UIDocument m_uiDocument;
     private VisualElement m_canvas, m_canvasBackground, m_previewCanvas, m_outlineCanvas;
-    private VisualElement m_clearButton, m_brushButton, m_lineButton, m_squareButton, m_colorPickerButton, m_bucketButton, m_undoButton, m_redoButton;
+
+    private VisualElement m_clearButton,
+        m_brushButton,
+        m_lineButton,
+        m_squareButton,
+        m_colorPickerButton,
+        m_bucketButton;
+
+    public UnityEngine.UI.Button undoButton;
+    public UnityEngine.UI.Button redoButton;
 
     private Slider m_hueSlider, m_saturationSlider, m_valueSlider, m_alphaSlider;
     private IntegerField m_hueField, m_saturationField, m_valueField, m_alphaField;
@@ -50,9 +59,6 @@ public class UIController : MonoBehaviour
         m_squareButton = m_uiDocument.rootVisualElement.Q<VisualElement>("SquareButtonBackground");
         m_colorPickerButton = m_uiDocument.rootVisualElement.Q<VisualElement>("ColorPickerButtonBackground");
         m_bucketButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BucketButtonBackground");
-        
-        m_undoButton = m_uiDocument.rootVisualElement.Q<VisualElement>("UndoButtonBackground");
-        m_redoButton = m_uiDocument.rootVisualElement.Q<VisualElement>("RedoButtonBackground");
 
         m_brushSizeLabel = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSize");
         m_brushSizePlusButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BrushSizePlus");
@@ -102,8 +108,8 @@ public class UIController : MonoBehaviour
         m_colorPickerButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_colorPickerButton));
         m_bucketButton.RegisterCallback<ClickEvent>((arg) => OnBucketClicked?.Invoke());
         m_bucketButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_bucketButton));
-        m_undoButton.RegisterCallback<ClickEvent>((arg)  => OnUndoButtonClicked?.Invoke());
-        m_redoButton.RegisterCallback<ClickEvent>((arg)  => OnRedoButtonClicked?.Invoke());
+        undoButton.onClick.AddListener(() => OnUndoButtonClicked?.Invoke());
+        redoButton.onClick.AddListener(()  => OnRedoButtonClicked?.Invoke());
         
         //Brush size button callbacks
         m_brushSizePlusButton.RegisterCallback<ClickEvent>((arg) => OnBrushSizePlusClicked?.Invoke());

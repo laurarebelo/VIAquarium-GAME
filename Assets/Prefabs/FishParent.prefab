@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 1.5
   swimSpeed: 2
-  rampageTimeout: 0.5
+  rampageTimeout: 1
 --- !u!114 &5045408217749514339
 MonoBehaviour:
   m_ObjectHideFlags: 0
