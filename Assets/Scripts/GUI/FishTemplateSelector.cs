@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class FishTemplateSelector : MonoBehaviour
 {
     public Image outlineSprite;
+    public Image colorSprite;
     public Button button;
     public TMP_Text fishNameText;
     public NamedSprite namedSprite;
@@ -25,6 +26,7 @@ public class FishTemplateSelector : MonoBehaviour
         namedSprite = template;
         fishNameText.text = template.name;
         outlineSprite.sprite = template.outlineSprite;
+        colorSprite.sprite = template.colorSprite;
     }
 
     public string TemplateName()

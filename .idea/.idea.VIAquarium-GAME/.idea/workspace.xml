@@ -6,37 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelBreit SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelBreit SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelHalbfett SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelHalbfett SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelKlein SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelKlein SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelSchmal SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelSchmal SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Devil Children GBC English Patch Font SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Devil Children GBC English Patch Font SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Gamer SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Gamer SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Mario-Kart-DS SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Mario-Kart-DS SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PrStart SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PrStart SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PressStart2P SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PressStart2P SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/prstartk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/prstartk SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/retro_computer_personal_use SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/retro_computer_personal_use SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ErrorManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ErrorManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FishParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FishParent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/DrawingCanvas.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/DrawingCanvas.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/UIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishTemplateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishTemplateProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/select-template-button-highlight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/select-template-button-highlight.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/select-template-button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/select-template-button.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/select-template-button2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/select-template-button2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/white-btn-pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/white-btn-pressed.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/white-btn-raised.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/GUI/white-btn-raised.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Toolkit/DrawingUI.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI Toolkit/DrawingUI.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FishTemplate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FishTemplate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/FishTemplateSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/FishTemplateSelector.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +59,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/CanvasUpdateRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/DefaultControls.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Dropdown.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/GraphicRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
@@ -200,7 +172,7 @@
       <workItem from="1732090812189" duration="3548000" />
       <workItem from="1732526630796" duration="10115000" />
       <workItem from="1732982993661" duration="3238000" />
-      <workItem from="1733046298675" duration="9436000" />
+      <workItem from="1733046298675" duration="10708000" />
     </task>
     <servers />
   </component>
