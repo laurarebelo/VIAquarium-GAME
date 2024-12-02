@@ -77,7 +77,7 @@ public class FishController : MonoBehaviour
 
     private void ChangeHueDependingOnTime()
     {
-        SetFishColor(BackgroundManager.GetFishColorForTimeOfDay());
+        SetFishColor(BackgroundManager.GetColorForTimeOfDay());
     }
 
     public void SetFishColor(Color color)

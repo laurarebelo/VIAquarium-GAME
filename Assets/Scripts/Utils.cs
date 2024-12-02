@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public static class Utils
 {
-    public static float margin = 50f;
+    public static float margin = 100f;
 
     public static Vector3 GetRandomPosition()
     {
