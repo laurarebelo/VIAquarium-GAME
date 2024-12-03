@@ -21,11 +21,9 @@ public class DrawingGUIManager : MonoBehaviour
     private FishAPI fishApi;
     public RenderTexture renderTexture;
     private List<FishGetObject> fishList;
-    
     public int NameSize = 30;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();

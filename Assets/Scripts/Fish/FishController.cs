@@ -27,6 +27,7 @@ public class FishController : MonoBehaviour
         if (level < 0) level = 0;
         if (level > 100) level = 100;
         hungerLevel = level;
+        FishStore.Instance.UpdateStoredFishHunger(fishId, level);
     }
 
     public void SetSocialLevel(int level)
@@ -34,6 +35,7 @@ public class FishController : MonoBehaviour
         if (level < 0) level = 0;
         if (level > 100) level = 100;
         socialLevel = level;
+        FishStore.Instance.UpdateStoredFishSocial(fishId, level);
     }
 
     public void Select()
