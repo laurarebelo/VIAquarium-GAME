@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Model;
 using UnityEngine;
@@ -52,7 +53,9 @@ namespace Fish
                     fishEmotions.SetEmotion(FishEmotions.Emotion.Loved);
                     StopCoroutine(holdCounterCoroutine);
                     _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
-                    fishController.SetSocialLevel(fishController.socialLevel + holdCounter);
+                    int newSocialLevel = Math.Min(fishController.socialLevel + holdCounter, 100);
+                    fishController.SetSocialLevel(newSocialLevel);
+                    Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Social, newSocialLevel);
                     holdCounter = 0;
                 }
             }

@@ -108,8 +108,9 @@ public class FishFoodSeek : MonoBehaviour
             fishEmotions.SetEmotion(FishEmotions.Emotion.Happy);
             fishState.StartIdling();
             _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
-            fishController.SetHungerLevel(fishController.hungerLevel + rampageCount);
-
+            int newHungerLevel = fishController.hungerLevel + rampageCount;
+            fishController.SetHungerLevel(newHungerLevel);
+            Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Hunger, newHungerLevel);
             rampageCount = 0;
         }
     }
