@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BackgroundManager : MonoBehaviour
 {
     public Image backgroundImage;
+    public Image floorImage;
     public Sprite backgroundDawn;
     public Sprite backgroundDay;
     public Sprite backgroundDusk;
@@ -43,9 +44,11 @@ public class BackgroundManager : MonoBehaviour
         {
             backgroundImage.sprite = backgroundNight;
         }
+
+        floorImage.color = GetColorForTimeOfDay();
     }
 
-    public static Color GetFishColorForTimeOfDay()
+    public static Color GetColorForTimeOfDay()
     {
         TimeSpan currentTime = DateTime.Now.TimeOfDay;
 
