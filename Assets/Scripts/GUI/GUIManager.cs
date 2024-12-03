@@ -13,6 +13,7 @@ public class GUIManager : MonoBehaviour
     public Button DeleteButton;
     public Button FeedButton;
     public Button ContinueButton;
+    public Button GraveyardButton;
 
     public GameObject AddFishCanvas;
     public FishTemplateProvider fishTemplateProvider;
@@ -30,6 +31,7 @@ public class GUIManager : MonoBehaviour
         ContinueButton.interactable = false;
         DeleteButton.onClick.AddListener(DeleteFish);
         FeedButton.onClick.AddListener(ToggleFeedingMode);
+        GraveyardButton.onClick.AddListener(GoToGraveyard);
     }
 
     void DeleteFish()
@@ -47,13 +49,11 @@ public class GUIManager : MonoBehaviour
 
     public void SelectFish(FishController fish)
     {
-        // Deselect the currently selected fish, if any
         if (selectedFish != null)
         {
             DeselectFish();
         }
 
-        // Set the new selected fish and stop idling
         selectedFish = fish;
         selectedFish.GetComponent<FishState>().StopIdling();
         selectedFish.Select();
@@ -86,6 +86,11 @@ public class GUIManager : MonoBehaviour
     void GoToFishPainting()
     {
         SceneManager.LoadScene("DrawingCanvas");
+    }
+    
+    void GoToGraveyard()
+    {
+        SceneManager.LoadScene("Graveyard");
     }
 
     void UpdateContinueButtonState(bool isTemplateSelected)
