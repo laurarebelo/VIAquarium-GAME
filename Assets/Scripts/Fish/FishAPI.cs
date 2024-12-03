@@ -83,13 +83,11 @@ namespace Model
                 try
                 {
                     string jsonResponse = webRequest.downloadHandler.text;
-                    // Wrap the response into a list format for deserialization
                     string[] eachFishJson = ParseFishListResponse(jsonResponse);
                     List<T> fishList = new List<T>();
 
                     foreach (var fishJson in eachFishJson)
                     {
-                        // Deserialize each individual fish object
                         T fishObject = JsonUtility.FromJson<T>(fishJson);
                         fishList.Add(fishObject);
                     }
@@ -103,72 +101,7 @@ namespace Model
                 }
             }
         }
-
-
-        // public async Task<List<FishGetObject>> GetAllFishAlive(string fishType = "alive")
-        // {
-        //     using (UnityWebRequest webRequest = UnityWebRequest.Get($"{url}/{fishType}"))
-        //     {
-        //         var asyncOperation = webRequest.SendWebRequest();
-        //         while (!asyncOperation.isDone)
-        //         {
-        //             await Task.Yield();
-        //         }
-        //
-        //         if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
-        //             webRequest.result == UnityWebRequest.Result.ProtocolError)
-        //         {
-        //             Debug.LogError($"Error: {webRequest.error}");
-        //             return new List<FishGetObject>();
-        //         }
-        //         else
-        //         {
-        //             string jsonResponse = webRequest.downloadHandler.text;
-        //             string[] eachFishJson = ParseFishListResponse(jsonResponse);
-        //             List<FishGetObject> fishList = new List<FishGetObject>();
-        //             foreach (var fishJson in eachFishJson)
-        //             {
-        //                 FishGetObject fishObject = JsonUtility.FromJson<FishGetObject>(fishJson);
-        //                 fishList.Add(fishObject);
-        //             }
-        //
-        //             return fishList;
-        //         }
-        //     }
-        // }
-        //
-        // public async Task<List<DeadFishGetObject>> GetAllFishDead(string fishType = "Dead")
-        // {
-        //     using (UnityWebRequest webRequest = UnityWebRequest.Get($"{url}/{fishType}"))
-        //     {
-        //         var asyncOperation = webRequest.SendWebRequest();
-        //         while (!asyncOperation.isDone)
-        //         {
-        //             await Task.Yield();
-        //         }
-        //
-        //         if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
-        //             webRequest.result == UnityWebRequest.Result.ProtocolError)
-        //         {
-        //             Debug.LogError($"Error: {webRequest.error}");
-        //             return new List<DeadFishGetObject>();
-        //         }
-        //         else
-        //         {
-        //             string jsonResponse = webRequest.downloadHandler.text;
-        //             string[] eachDeadFishJson = ParseFishListResponse(jsonResponse);
-        //             List<DeadFishGetObject> deadFishList = new List<DeadFishGetObject>();
-        //             foreach (var deadFishJson in eachDeadFishJson)
-        //             {
-        //                 DeadFishGetObject deadFishObject = JsonUtility.FromJson<DeadFishGetObject>(deadFishJson);
-        //                 deadFishList.Add(deadFishObject);
-        //             }
-        //
-        //             return deadFishList;
-        //         }
-        //     }
-        // }
-
+        
         string[] ParseFishListResponse(string jsonResponse)
         {
             string trimmedJson = jsonResponse.Trim(new char[] { '[', ']' });
