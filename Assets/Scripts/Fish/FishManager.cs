@@ -31,7 +31,7 @@ public class FishManager : MonoBehaviour
         else
         {
             ShowLoadingScreen(true);
-            var allFish = await fishApi.FishGetAll();
+            var allFish = await fishApi.GetAllFishAlive();
             FishStore.Instance.StoreFishList(allFish);
             InstantiateFishList(allFish);
             ShowLoadingScreen(false);
