@@ -36,6 +36,26 @@ public class FishStore : MonoBehaviour
         storedFish.Add(fish);
     }
 
+    public void UpdateStoredFishHunger(int fishId, int hungerLevel)
+    {
+        FishGetObject fishToUpdate = storedFish.Find(fish => fish.id == fishId);
+        if (fishToUpdate != null)
+        {
+            fishToUpdate.hungerLevel = hungerLevel;
+            fishToUpdate.lastUpdatedHunger = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+    }
+
+    public void UpdateStoredFishSocial(int fishId, int socialLevel)
+    {
+        FishGetObject fishToUpdate = storedFish.Find(fish => fish.id == fishId);
+        if (fishToUpdate != null)
+        {
+            fishToUpdate.socialLevel = socialLevel;
+            fishToUpdate.lastUpdatedSocial = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+    }
+
     public void StoreFishList(List<FishGetObject> fishList)
     {
         storedFish.AddRange(fishList);
