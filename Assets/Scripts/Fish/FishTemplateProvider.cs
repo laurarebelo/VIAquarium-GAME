@@ -101,24 +101,24 @@ public class FishTemplateProvider : MonoBehaviour
         OnTemplateSelectionChanged.Invoke(false);
     }
 
-    public static float GetRectTransformHeightForTemplateType(string templateName)
+    public static float GetPosYForTemplateType(string templateName)
     {
         switch (templateName.ToLower())
         {
             case "jellyfish":
-                return 2.4f;
+                return 1f;
             case "pufferfish":
             case "angelfish":
             case "anglerfish":
             case "starfish":
-                return 2.2f;
+                return 0.9f;
             case "default":
             case "clownfish":
-                return 1.8f;
+                return 0.75f;
             case "sardine":
-                return 1.6f;
+                return 0.55f;
             default:
-                return 2f;
+                return 0.9f;
         }
     }
 

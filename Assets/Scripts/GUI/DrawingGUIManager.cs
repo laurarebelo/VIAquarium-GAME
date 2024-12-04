@@ -33,6 +33,7 @@ public class DrawingGUIManager : MonoBehaviour
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
         fishList = FishStore.Instance.GetStoredFish();
+        nameInputField.characterLimit = NameSize;
     }
 
     private void GoBack()

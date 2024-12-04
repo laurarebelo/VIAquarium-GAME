@@ -20,6 +20,21 @@ public static class Utils
         return worldPosition;
     }
 
+    public static Sprite GetSpriteFromEncodedString(string encodedSprite)
+    {
+        byte[] imageBytes = System.Convert.FromBase64String(encodedSprite);
+        Texture2D texture = new Texture2D(2, 2);
+        if (texture.LoadImage(imageBytes))
+        {
+            texture.filterMode = FilterMode.Point;
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f));
+            return sprite;
+        }
+
+        throw new Exception("Something went wrong when getting sprite from encoded string...");
+    }
+
     public static Color GetRandomColor()
     {
         float minValue = 0.2f;
