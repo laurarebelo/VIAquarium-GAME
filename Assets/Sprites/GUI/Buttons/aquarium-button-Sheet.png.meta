@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 706cfe08c3b14754ebd8ed6732faecf2
-      internalID: 1459872098
+      spriteID: bd2b053a2cd13b8409dddec6778a421b
+      internalID: 1916110690
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428b36465b4441e4ba1c03a870af5ecb
-      internalID: 2117827849
+      spriteID: e32005798566b084b9a760435c1b20a7
+      internalID: 511568028
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      aquarium-button-Sheet_0: 1459872098
-      aquarium-button-Sheet_1: 2117827849
+      aquarium-button-Sheet_0: 1916110690
+      aquarium-button-Sheet_1: 511568028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

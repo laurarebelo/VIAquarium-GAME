@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24c4ec50926b659498e748d889a92a66
-      internalID: 617954014
+      spriteID: b97827f2bed12054ba823c327f235c26
+      internalID: 449913908
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 584be7f4cd8946446a613322ca74bbed
-      internalID: 1490356095
+      spriteID: c121b0b5ecda26f4f935f3a8dec2c6a6
+      internalID: 537973516
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      graveyard-button-Sheet_0: 617954014
-      graveyard-button-Sheet_1: 1490356095
+      graveyard-button-Sheet_0: 449913908
+      graveyard-button-Sheet_1: 537973516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
