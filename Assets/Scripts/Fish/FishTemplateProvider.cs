@@ -101,25 +101,35 @@ public class FishTemplateProvider : MonoBehaviour
         OnTemplateSelectionChanged.Invoke(false);
     }
 
-    public static float GetRectTransformHeightForTemplateType(string templateName)
+    public static float GetRectTransformHeightForTemplateType(string templateName, string fishName)
     {
+        float height = 1.7f;
         switch (templateName.ToLower())
         {
             case "jellyfish":
-                return 2.4f;
+                height= 2.2f;
+                break;
             case "pufferfish":
             case "angelfish":
             case "anglerfish":
             case "starfish":
-                return 2.2f;
+                height= 1.9f;
+                break;
             case "default":
             case "clownfish":
-                return 1.8f;
+                height= 1.5f;
+                break;
             case "sardine":
-                return 1.6f;
-            default:
-                return 2f;
+                height = 1.2f;
+                break;
         }
+
+        if (fishName.Length > 10)
+        {
+            height += 0.5f;
+        }
+
+        return height;
     }
 
     public static Vector3 GetLocalTransformForEmotionsBubble(string templateName)

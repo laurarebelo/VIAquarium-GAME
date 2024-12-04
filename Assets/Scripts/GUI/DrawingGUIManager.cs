@@ -21,7 +21,7 @@ public class DrawingGUIManager : MonoBehaviour
     private FishAPI fishApi;
     public RenderTexture renderTexture;
     private List<FishGetObject> fishList;
-    public int NameSize = 30;
+    public int NameSize = 20;
 
 
     void Start()
@@ -33,6 +33,7 @@ public class DrawingGUIManager : MonoBehaviour
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
         fishList = FishStore.Instance.GetStoredFish();
+        nameInputField.characterLimit = NameSize;
     }
 
     private void GoBack()

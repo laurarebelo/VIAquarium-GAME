@@ -71,7 +71,7 @@ public class FishController : MonoBehaviour
 
     private void AdjustNameHeight()
     {
-        float height = FishTemplateProvider.GetRectTransformHeightForTemplateType(fishSprites.name);
+        float height = FishTemplateProvider.GetRectTransformHeightForTemplateType(fishSprites.name, fishName);
         var sizeDelta = fishNameText.rectTransform.sizeDelta;
         sizeDelta.y = height;
         fishNameText.rectTransform.sizeDelta = sizeDelta;
@@ -89,20 +89,9 @@ public class FishController : MonoBehaviour
 
     public void SetFishSprite(string encodedSprite)
     {
-        byte[] imageBytes = System.Convert.FromBase64String(encodedSprite);
-        Texture2D texture = new Texture2D(2, 2);
-        if (texture.LoadImage(imageBytes))
-        {
-            texture.filterMode = FilterMode.Point;
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
-                new Vector2(0.5f, 0.5f));
-            fishColorSpriteRenderer.color = Color.white;
-            fishColorSpriteRenderer.sprite = sprite;
-        }
-        else
-        {
-            Debug.LogError("Failed to load image from Base64 string.");
-        }
+        Sprite sprite = Utils.GetSpriteFromEncodedString(encodedSprite);
+        fishColorSpriteRenderer.color = Color.white;
+        fishColorSpriteRenderer.sprite = sprite;
         ChangeHueDependingOnTime();
     }
 
