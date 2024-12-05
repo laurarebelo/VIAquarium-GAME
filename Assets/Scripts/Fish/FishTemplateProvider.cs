@@ -29,10 +29,7 @@ public class FishTemplateProvider : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    private void Start()
-    {
+        
         namedSpritesDictionary = new Dictionary<string, NamedSprite>();
         foreach (var namedSprite in namedSprites)
         {
@@ -45,7 +42,10 @@ public class FishTemplateProvider : MonoBehaviour
         }
         else
         {
-            selectedTemplate.SetTemplate(namedSpritesDictionary["default"]);
+            if (selectedTemplate != null)
+            {
+                selectedTemplate.SetTemplate(namedSpritesDictionary["default"]);
+            }
         }
     }
 
