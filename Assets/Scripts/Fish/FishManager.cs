@@ -51,7 +51,7 @@ public class FishManager : MonoBehaviour
         }
     }
 
-public void InstantiateFish(FishGetObject newFish)
+    public void InstantiateFish(FishGetObject newFish)
     {
         Vector3 position = Utils.GetRandomPosition();
         position.z = z;
@@ -63,7 +63,7 @@ public void InstantiateFish(FishGetObject newFish)
         fishController.SetHungerLevel(newFish.hungerLevel);
         fishController.SetSocialLevel(newFish.socialLevel);
 
-        
+
         NamedSprite spritePair = fishTemplateProvider.GetSpritePair(newFish.template);
         fishController.SetFishTemplate(spritePair);
         if (newFish.sprite != "") fishController.SetFishSprite(newFish.sprite);

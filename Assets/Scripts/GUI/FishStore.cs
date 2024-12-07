@@ -5,6 +5,7 @@ public class FishStore : MonoBehaviour
 {
     private static FishStore instance;
     private List<FishGetObject> storedFish;
+    private List<DeadFishGetObject> storedDeadFish;
 
     void Awake()
     {
@@ -13,6 +14,7 @@ public class FishStore : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             storedFish = new List<FishGetObject>();
+            storedDeadFish = new List<DeadFishGetObject>();
         }
         else
         {
@@ -31,9 +33,27 @@ public class FishStore : MonoBehaviour
         }
     }
 
+    public void RemoveDeadFish(int fishId)
+    {
+        DeadFishGetObject fishToRemove = storedDeadFish.Find(fish => fish.id == fishId);
+        if (fishToRemove != null)
+        {
+            storedDeadFish.Remove(fishToRemove);
+        }
+    }
+
     public void StoreFish(FishGetObject fish)
     {
         storedFish.Add(fish);
+    }
+
+    public void StoreDeadFish(DeadFishGetObject fish)
+    {
+        if (!storedDeadFish.Exists(f => f.id == fish.id))
+        {
+            storedDeadFish.Add(fish);
+            Debug.Log($"Stored dead fish: {fish.name}");
+        }
     }
 
     public void UpdateStoredFishHunger(int fishId, int hungerLevel)
@@ -61,13 +81,28 @@ public class FishStore : MonoBehaviour
         storedFish.AddRange(fishList);
     }
 
+    public void StoreDeadFishList(List<DeadFishGetObject> fishList)
+    {
+        storedDeadFish.AddRange(fishList);
+    }
+
     public List<FishGetObject> GetStoredFish()
     {
         return new List<FishGetObject>(storedFish);
     }
 
+    public List<DeadFishGetObject> GetStoredDeadFish()
+    {
+        return new List<DeadFishGetObject>(storedDeadFish);
+    }
+
     public bool HasStoredFish()
     {
         return storedFish.Count > 0;
+    }
+
+    public bool HasStoredDeadFish()
+    {
+        return storedDeadFish.Count > 0;
     }
 }

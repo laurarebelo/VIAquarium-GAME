@@ -9,6 +9,20 @@ namespace Model
     public class FishAPI : MonoBehaviour
     {
         private static FishAPI instance;
+
+        // Public property to access the instance
+        public static FishAPI Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    Debug.LogError("FishAPI instance is not set!");
+                }
+                return instance;
+            }
+        }
+
         private string url = "http://localhost:5296/api/fish";
 
         void Awake()
@@ -60,7 +74,7 @@ namespace Model
 
         public Task<List<DeadFishGetObject>> GetAllFishDead()
         {
-            return FetchFishData<DeadFishGetObject>("Dead");
+            return FetchFishData<DeadFishGetObject>("dead");
         }
 
         private async Task<List<T>> FetchFishData<T>(string fishType)

@@ -10,7 +10,7 @@ public class IdleSwimScript : MonoBehaviour
     public float margin = 10f;
     private Vector3 direction;
     private float originalY;
-    private Camera camera;
+    private Camera mainCamera;
     private FishFlip fishFlip;
     private float swayTime;
 
@@ -24,7 +24,7 @@ public class IdleSwimScript : MonoBehaviour
     {
         // Initialize the fish's horizontal direction (randomly left or right)
         originalY = transform.position.y;
-        camera = Camera.main;
+        mainCamera = Camera.main;
         FlipFishToFaceDirection();
     }
 
@@ -50,7 +50,7 @@ public class IdleSwimScript : MonoBehaviour
 
     void KeepWithinScreenBounds()
     {
-        Vector3 screenPosition = camera.WorldToScreenPoint(transform.position);
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
 
         if (screenPosition.x <= margin)
         {
