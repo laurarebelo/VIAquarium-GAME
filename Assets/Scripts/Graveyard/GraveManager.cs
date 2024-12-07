@@ -22,18 +22,18 @@ public class GraveManager : MonoBehaviour
 
     public async void InitializeGraves()
     {
-        if (FishStore.Instance.HasStoredDeadFish())
-        {
-            InstantiateDeadFishList(FishStore.Instance.GetStoredDeadFish());
-        }
-        else
-        {
-            ShowLoadingScreen(true);
+        // if (FishStore.Instance.HasStoredDeadFish())
+        // {
+        //     InstantiateDeadFishList(FishStore.Instance.GetStoredDeadFish());
+        // }
+        // else
+        // {
+        //     ShowLoadingScreen(true);
             var allFish = await fishApi.GetAllFishDead();
-            FishStore.Instance.StoreDeadFishList(allFish);
+           // FishStore.Instance.StoreDeadFishList(allFish);
             InstantiateDeadFishList(allFish);
-            ShowLoadingScreen(false);
-        }
+           // ShowLoadingScreen(false);
+        //}
     }
 
     private void InstantiateDeadFishList(List<DeadFishGetObject> allFish)

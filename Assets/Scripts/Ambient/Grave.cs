@@ -1,8 +1,10 @@
 using System;
-using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 
-public class GraveController : MonoBehaviour
+public class Grave : MonoBehaviour
 {
     public TMP_Text fishNameText;
     public TMP_Text birthDateText;
@@ -21,15 +23,13 @@ public class GraveController : MonoBehaviour
         templateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
     }
 
-       public void InitializeGrave(DeadFishGetObject deadFishGetObject)
+    public void InitializeGrave(DeadFishGetObject deadFishGetObject)
     {
         fishNameText.text = deadFishGetObject.name;
         birthDateText.text = GetDateMiniString(deadFishGetObject.dateOfBirth);
         deathDateText.text = GetDateMiniString(deadFishGetObject.dateOfDeath);
         respectCountText.text = deadFishGetObject.respectCount.ToString();
-
         AdjustPosXDependingOnRespectCountDigits();
-
         outlineSpriteRenderer.sprite = templateProvider.GetSpritePair(deadFishGetObject.template).outlineSprite;
         colorSpriteRenderer.sprite = Utils.GetSpriteFromEncodedString(deadFishGetObject.sprite);
         colorSpriteRenderer.color = Color.white;
@@ -48,6 +48,7 @@ public class GraveController : MonoBehaviour
 
         respectParentRT.localPosition = new Vector3(newX, respectParentRT.localPosition.y, respectParentRT.localPosition.z);
     }
+
 
     public string GetDateMiniString(string dateStringYYYYMMDD)
     {
