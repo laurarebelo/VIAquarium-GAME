@@ -158,10 +158,10 @@ MonoBehaviour:
   fishNameText: {fileID: 6689420630780696972}
   birthDateText: {fileID: 8877103260475089981}
   deathDateText: {fileID: 692617599770623752}
-  respectCountText: {fileID: 0}
+  respectCountText: {fileID: 3934582782199339642}
   outlineSpriteRenderer: {fileID: 949740854243368076}
   colorSpriteRenderer: {fileID: 8975014788262413692}
-  respectParentRT: {fileID: 0}
+  respectParentRT: {fileID: 3791685403308524424}
 --- !u!1 &1000013283074672982
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -29,8 +30,6 @@ namespace Model
         public async Task<FishGetObject> FishPost(FishPostObject fishPostObject)
         {
             string json = JsonUtility.ToJson(fishPostObject);
-            Debug.Log("Json that im sending...");
-            Debug.Log(json);
             using (UnityWebRequest www = UnityWebRequest.Post(url, json, "application/json"))
             {
                 var operation = www.SendWebRequest();
@@ -58,10 +57,38 @@ namespace Model
             return FetchFishData<FishGetObject>("alive");
         }
 
-        public Task<List<DeadFishGetObject>> GetAllFishDead()
+        public Task<List<DeadFishGetObject>> GetDeadFish([CanBeNull] string sortBy, [CanBeNull] string searchName, int? startIndex, int? endIndex)
         {
-            return FetchFishData<DeadFishGetObject>("Dead");
+            string urlAddon = "dead";
+
+            bool firstParam = true;
+
+            if (sortBy != null)
+            {
+                urlAddon += $"?sortBy={sortBy}";
+                firstParam = false;
+            }
+
+            if (searchName != null)
+            {
+                urlAddon += firstParam ? $"?searchName={searchName}" : $"&searchName={searchName}";
+                firstParam = false;
+            }
+
+            if (startIndex != null)
+            {
+                urlAddon += firstParam ? $"?startIndex={startIndex}" : $"&startIndex={startIndex}";
+                firstParam = false;
+            }
+
+            if (endIndex != null)
+            {
+                urlAddon += firstParam ? $"?endIndex={endIndex}" : $"&endIndex={endIndex}";
+            }
+
+            return FetchFishData<DeadFishGetObject>(urlAddon);
         }
+
 
         private async Task<List<T>> FetchFishData<T>(string fishType)
         {
@@ -104,6 +131,10 @@ namespace Model
         
         string[] ParseFishListResponse(string jsonResponse)
         {
+            if (string.IsNullOrEmpty(jsonResponse) || jsonResponse == "[]")
+            {
+                return Array.Empty<string>();
+            }
             string trimmedJson = jsonResponse.Trim(new char[] { '[', ']' });
             string[] jsonObjects = trimmedJson.Split(new string[] { "},{" }, StringSplitOptions.None);
             for (int i = 0; i < jsonObjects.Length; i++)

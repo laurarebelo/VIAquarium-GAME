@@ -5,6 +5,7 @@ public class FishStore : MonoBehaviour
 {
     private static FishStore instance;
     private List<FishGetObject> storedFish;
+    private List<DeadFishGetObject> storedDeadFish;
 
     void Awake()
     {
@@ -13,6 +14,7 @@ public class FishStore : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             storedFish = new List<FishGetObject>();
+            storedDeadFish = new List<DeadFishGetObject>();
         }
         else
         {
@@ -30,10 +32,54 @@ public class FishStore : MonoBehaviour
             storedFish.Remove(fishToRemove);
         }
     }
+    
+    // Alive fish
 
     public void StoreFish(FishGetObject fish)
     {
         storedFish.Add(fish);
+    }
+    
+    public void StoreFishList(List<FishGetObject> fishList)
+    {
+        storedFish.AddRange(fishList);
+    }
+    
+    public List<FishGetObject> GetStoredFish()
+    {
+        return new List<FishGetObject>(storedFish);
+    }
+
+    public bool HasStoredFish()
+    {
+        return storedFish.Count > 0;
+    }
+    
+    // Dead fish
+
+    public void StoreDeadFish(DeadFishGetObject deadFish)
+    {
+        storedDeadFish.Add(deadFish);
+    }
+
+    public void StoreDeadFishList(List<DeadFishGetObject> deadFishList)
+    {
+        storedDeadFish.AddRange(deadFishList);
+    }
+
+    public void SetStoredDeadFish(List<DeadFishGetObject> deadFishList)
+    {
+        storedDeadFish = new List<DeadFishGetObject>(deadFishList);
+    }
+
+    public List<DeadFishGetObject> GetStoredDeadFish()
+    {
+        return new List<DeadFishGetObject>(storedDeadFish);
+    }
+
+    public bool HasDeadStoredFish()
+    {
+        return storedDeadFish.Count > 0;
     }
 
     public void UpdateStoredFishHunger(int fishId, int hungerLevel)
@@ -55,19 +101,7 @@ public class FishStore : MonoBehaviour
             fishToUpdate.lastUpdatedSocial = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
+   
 
-    public void StoreFishList(List<FishGetObject> fishList)
-    {
-        storedFish.AddRange(fishList);
-    }
-
-    public List<FishGetObject> GetStoredFish()
-    {
-        return new List<FishGetObject>(storedFish);
-    }
-
-    public bool HasStoredFish()
-    {
-        return storedFish.Count > 0;
-    }
+    
 }
