@@ -60,7 +60,7 @@ namespace Model
 
         public Task<List<DeadFishGetObject>> GetAllFishDead()
         {
-            return FetchFishData<DeadFishGetObject>("Dead");
+            return FetchFishData<DeadFishGetObject>("dead");
         }
 
         private async Task<List<T>> FetchFishData<T>(string fishType)

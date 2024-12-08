@@ -18,13 +18,9 @@ public class Grave : MonoBehaviour
 
     private FishTemplateProvider templateProvider;
 
-    private void Start()
+    private void Awake()
     {
         templateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
-        DeadFishGetObject testObj = new DeadFishGetObject(44, "blood", "2024-12-01T00:00:00", "2024-12-03T00:00:00", 2,
-            0, "Loneliness", "Angelfish",
-            "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABKElEQVRYCe2WSw7CMAxEKYIr9P7n4wosiryw5Iy/catmQzf51DPzYlpgO47jsfJ6rgyn7D/A8g68qs/Ad9/Np/X9+WxVD6tum3kLPAgy7oIMH0EUYNHLPdJ29AMAGUYm3VNKUJwrACyYXc92YgDgE0ZdqAJVPQaAzLxqyj6VehcAxbjmkGzMdC6ANM5MZK01j/TqeyAqtsxn9vgZk5pSB6TgzNw63K0AFrwCsNpkCbt72AUFgAXdoKpOAVSF3Trs8K0AGE6HSAEsUef0no8LQAIW8dgJJk2kdwEwLDLBWrnOdGUAMs3MZHC1fvhPyK+gF8T3MQjXnh7raD0A0MaMmOrl1dGqHyNpKOfR6TvB7K06wDfk6IWfCWb/cgdYcPU49RZcHU5+ywF+X5VxW1xakyIAAAAASUVORK5CYII=");
-        InitializeGrave(testObj);
     }
 
     public void InitializeGrave(DeadFishGetObject deadFishGetObject)
