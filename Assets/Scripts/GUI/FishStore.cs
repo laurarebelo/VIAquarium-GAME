@@ -67,6 +67,11 @@ public class FishStore : MonoBehaviour
         storedDeadFish.AddRange(deadFishList);
     }
 
+    public void SetStoredDeadFish(List<DeadFishGetObject> deadFishList)
+    {
+        storedDeadFish = new List<DeadFishGetObject>(deadFishList);
+    }
+
     public List<DeadFishGetObject> GetStoredDeadFish()
     {
         return new List<DeadFishGetObject>(storedDeadFish);

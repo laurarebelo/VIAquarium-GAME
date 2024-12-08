@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DragCamera : MonoBehaviour
+public class CameraDragMovement : MonoBehaviour
 {
     private Vector2 initialDragPosition;
     private bool isDragging = false;
@@ -20,8 +20,11 @@ public class DragCamera : MonoBehaviour
     private Vector3 initialCameraPosition;
     private Vector3 lastPosition;
 
+    private CameraBounds cameraBounds;
+
     private void Start()
     {
+        cameraBounds = GetComponent<CameraBounds>();
         lastPosition = transform.position;
     }
 
@@ -44,6 +47,13 @@ public class DragCamera : MonoBehaviour
             
 
             transform.position = initialCameraPosition + new Vector3(dragDelta.x, 0, 0) * dragMultiplier;
+            
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, cameraBounds.MinX, cameraBounds.MaxX),
+                transform.position.y,
+                transform.position.z
+            );
+            
             velocity = (transform.position - lastPosition) / Time.deltaTime * dragMultiplier;
             if (velocity.magnitude > maxVelocity.magnitude)
             {
@@ -68,6 +78,12 @@ public class DragCamera : MonoBehaviour
         if (!isDragging && velocity != Vector3.zero)
         {
             transform.position += velocity;
+            
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, cameraBounds.MinX, cameraBounds.MaxX),
+                transform.position.y,
+                transform.position.z
+            );
         
             velocity *= deceleration;
             if (velocity.magnitude < 0.001f) 

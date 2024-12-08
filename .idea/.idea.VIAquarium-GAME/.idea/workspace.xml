@@ -6,12 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/GothicPixels SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/GothicPixels SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/tiny-3x5 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/tiny-3x5 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FishGrave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FishGrave.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/S10-Graveyard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/S10-Graveyard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/GUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/GUIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraArrowMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraMovement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraArrowMovement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/DragCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraDragMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/DragCamera.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/CameraDragMovement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/SortDeadFish.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/SortDeadFish.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Graveyard/DeadFishManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Graveyard/DeadFishManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +50,12 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ambient/BackgroundManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ambient/CameraMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ambient/CameraArrowMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ambient/CameraBounds.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ambient/CameraReset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fish/FishFlip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fish/FishKnockReaction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fish/FishMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fish/SortDeadFish.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/Banner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/ButtonWithTextMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -55,7 +63,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/FishTemplateSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/Knocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Graveyard/DeadFishManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/SideScrollCameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Graveyard/GraveyardSearch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.1.0/Editor/Utilities/ImportUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/Interface/ITexture.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/SpriteEditor/SpriteEditorMenu.cs" root0="SKIP_HIGHLIGHTING" />
@@ -107,7 +115,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -194,7 +202,7 @@
       <workItem from="1733333034792" duration="1603000" />
       <workItem from="1733355956532" duration="2791000" />
       <workItem from="1733414652069" duration="382000" />
-      <workItem from="1733668251360" duration="8060000" />
+      <workItem from="1733668251360" duration="17873000" />
     </task>
     <servers />
   </component>
