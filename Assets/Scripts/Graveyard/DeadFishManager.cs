@@ -14,6 +14,7 @@ public class DeadFishManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Entered dead fish manager start method");
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         _ = InitializeDeadFish();
@@ -21,7 +22,7 @@ public class DeadFishManager : MonoBehaviour
 
     async Task InitializeDeadFish()
     {
-        if (FishStore.Instance.HasStoredFish())
+        if (FishStore.Instance.HasDeadStoredFish())
         {
             InstantiateDeadFishList(FishStore.Instance.GetStoredDeadFish());
         }
@@ -48,7 +49,6 @@ public class DeadFishManager : MonoBehaviour
 
     void InstantiateDeadFish(DeadFishGetObject deadFish, int index)
     {
-        Debug.Log("Called instantiate dead fish");
         Vector3 position = GetGravePosition(index);
         GameObject newDeadFishGo = Instantiate(gravePrefab, position, Quaternion.identity, foregroundParentGo);
         Grave graveController = newDeadFishGo.GetComponent<Grave>();
@@ -59,7 +59,6 @@ public class DeadFishManager : MonoBehaviour
     {
         for (int i = 0; i < deadFishList.Count; i++)
         {
-            Debug.Log($"Instantiating dead fish index {i} name {deadFishList[i].name}");
             InstantiateDeadFish(deadFishList[i], i);
         }
     }

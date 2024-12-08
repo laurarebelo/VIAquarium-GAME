@@ -2770,7 +2770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1810532631
 Transform:
   m_ObjectHideFlags: 0
@@ -2907,6 +2907,7 @@ GameObject:
   - component: {fileID: 1866884693}
   - component: {fileID: 1866884694}
   - component: {fileID: 1866884696}
+  - component: {fileID: 1866884697}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3000,7 +3001,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3502587b0a4734edfa62c0369efd08ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
+--- !u!114 &1866884697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866884692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a1205f85f0f4de39d5b9f6fce1f3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocityDuration: 0.2
+  dragMultiplier: 0.015
+  velocityMultiplier: 0.01
+  deceleration: 0.95
 --- !u!1 &1885585539
 GameObject:
   m_ObjectHideFlags: 0

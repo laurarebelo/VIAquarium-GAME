@@ -90,7 +90,7 @@ public class GUIManager : MonoBehaviour
     
     void GoToGraveyard()
     {
-        SceneManager.LoadScene("Graveyard");
+        SceneManager.LoadScene("S10-Graveyard");
     }
 
     void UpdateContinueButtonState(bool isTemplateSelected)
