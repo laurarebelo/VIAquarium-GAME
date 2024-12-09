@@ -17,6 +17,7 @@ public class Grave : MonoBehaviour
     public RectTransform respectParentRT;
 
     private FishTemplateProvider templateProvider;
+    public int deadFishId;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class Grave : MonoBehaviour
         outlineSpriteRenderer.sprite = templateProvider.GetSpritePair(deadFishGetObject.template).outlineSprite;
         colorSpriteRenderer.sprite = Utils.GetSpriteFromEncodedString(deadFishGetObject.sprite);
         colorSpriteRenderer.color = Color.white;
+        deadFishId = deadFishGetObject.id;
     }
 
     private void AdjustPosXDependingOnRespectCountDigits()

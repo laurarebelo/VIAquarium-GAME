@@ -33,7 +33,7 @@
         <ui:VisualElement name="ColorPickerTool" style="flex-grow: 0; position: absolute; width: 331px; height: 624px; top: auto; left: 0; bottom: 0; background-color: rgb(255, 255, 255); padding-top: 15px; padding-bottom: 15px; justify-content: space-between; padding-right: 15px; padding-left: 15px; background-image: url(&apos;project://database/Assets/Sprites/Drawing/Kenney%20ui%20pack%20pixel%20adventure/Tiles/Large%20tiles/Thin%20outline/tile_0002.png?fileID=-2727194386381995188&amp;guid=c4139d9b5f7bdcc43b92c634da2df6ba&amp;type=3#tile_0002_0&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); display: flex;">
             <ui:VisualElement name="ColorSelector" style="flex-grow: 0; width: 300px; height: 300px; flex-shrink: 0; align-items: center; align-self: center; background-image: url(&apos;project://database/Assets/RenderTextures/ColorSelectorTexture.renderTexture?fileID=8400000&amp;guid=e12b318eda5c62c408542e758bf78fbc&amp;type=2#ColorSelectorTexture&apos;);" />
             <ui:VisualElement name="Sliders" style="flex-grow: 1; width: 300px; height: 222px;">
-                <ui:Slider label="Hue" value="0" high-value="360" name="HueSlider" class="label_Text" style="font-size: 18px; height: 37px;" />
+                <ui:VisualElement name="HueStrip" style="flex-grow: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; background-image: url(&apos;project://database/Assets/RenderTextures/HueSliderRenderTexture.renderTexture?fileID=8400000&amp;guid=22a272be59cfe476bb08634add9458c2&amp;type=2#HueSliderRenderTexture&apos;); background-color: rgb(255, 255, 255);" />
                 <ui:Slider label="Saturation" value="0" high-value="100" name="SaturationSlider" class="label_Text" style="font-size: 18px; height: 37px;" />
                 <ui:Slider label="Value&#10;" value="0" high-value="100" name="ValueSlider" class="label_Text" style="font-size: 18px; height: 37px;" />
                 <ui:Slider label="Alpha" value="100" high-value="100" name="AlphaSlider" class="label_Text" style="font-size: 18px;" />
@@ -43,15 +43,15 @@
             </ui:VisualElement>
             <ui:VisualElement name="Values" style="flex-grow: 1; flex-direction: row;">
                 <ui:VisualElement name="HueLabel" style="flex-grow: 1; flex-direction: column; width: 62px; align-self: stretch; align-items: stretch;">
-                    <ui:Label text="H&#10;" name="Label" class="label_Text" style="-unity-text-align: upper-center; white-space: pre-wrap;" />
+                    <ui:Label text="H" name="Label" class="label_Text" style="-unity-text-align: upper-center; white-space: pre-wrap;" />
                     <ui:IntegerField value="0" max-length="100" name="HueField" style="width: 68px; flex-wrap: wrap; align-content: flex-start; white-space: normal; text-overflow: ellipsis; flex-direction: row; align-items: flex-start; justify-content: space-between; align-self: flex-start; height: 72px; flex-grow: 1;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="SaturationLabel" style="flex-grow: 1; flex-direction: column; width: 62px;">
-                    <ui:Label text="S&#10;" class="label_Text" style="-unity-text-align: upper-center;" />
+                    <ui:Label text="S" class="label_Text" style="-unity-text-align: upper-center;" />
                     <ui:IntegerField value="0" max-length="100" name="SaturationField" style="width: 68px; flex-wrap: wrap; align-content: flex-start; white-space: normal; text-overflow: ellipsis; flex-direction: row-reverse; align-items: flex-start; justify-content: flex-start; align-self: flex-start; height: 72px; flex-grow: 1;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="ValueLabel" style="flex-grow: 1; flex-direction: column; width: 62px;">
-                    <ui:Label text="V&#10;" class="label_Text" style="-unity-text-align: upper-center;" />
+                    <ui:Label text="V" class="label_Text" style="-unity-text-align: upper-center;" />
                     <ui:IntegerField value="100" max-length="100" name="ValueField" style="width: auto; flex-wrap: wrap; align-content: flex-start; white-space: normal; text-overflow: ellipsis; flex-direction: row-reverse; align-items: flex-start; justify-content: flex-start; align-self: stretch; height: 72px; flex-grow: 1;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="AlphaLabel" style="flex-grow: 1; flex-direction: column; width: 62px; align-self: stretch; align-items: stretch;">

@@ -466,7 +466,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4.444444, y: 4.44444, z: 4.44444}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9110708007631738298}
@@ -615,8 +615,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.3
-  m_fontSizeBase: 0.3
+  m_fontSize: 0.355
+  m_fontSizeBase: 0.355
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -684,7 +684,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4.444444, y: 4.44444, z: 4.44444}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9110708007631738298}
@@ -769,8 +769,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.05, y: 0.5, z: -0.52104187}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4.444444, y: 4.44444, z: 0.888888}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9110708007631738298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

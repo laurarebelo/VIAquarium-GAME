@@ -162,6 +162,7 @@ MonoBehaviour:
   outlineSpriteRenderer: {fileID: 949740854243368076}
   colorSpriteRenderer: {fileID: 8975014788262413692}
   respectParentRT: {fileID: 3791685403308524424}
+  deadFishId: 0
 --- !u!1 &1000013283074672982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1541,7 @@ GameObject:
   - component: {fileID: 9047771811088686561}
   - component: {fileID: 3643603233492875477}
   - component: {fileID: 7964081708685625082}
+  - component: {fileID: 1515898267293953562}
   m_Layer: 5
   m_Name: RespectButton
   m_TagString: Untagged
@@ -1650,6 +1652,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1515898267293953562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432308091988615197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa654e1e00e8748a7bd8df381c35a8e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grave: {fileID: 950122720740385606}
 --- !u!1 &8047209317599968013
 GameObject:
   m_ObjectHideFlags: 0

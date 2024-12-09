@@ -2492,9 +2492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52138f07c93c84f75acb3c3da6852cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadFishManager: {fileID: 0}
-  inputField: {fileID: 0}
-  searchButton: {fileID: 1718481971}
 --- !u!1 &1532883364
 GameObject:
   m_ObjectHideFlags: 0

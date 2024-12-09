@@ -24,9 +24,9 @@ public class UIController : MonoBehaviour
     public UnityEngine.UI.Button redoButton;
     public UnityEngine.UI.Button clearButton;
 
-    private Slider m_hueSlider, m_saturationSlider, m_valueSlider, m_alphaSlider;
+    private Slider m_saturationSlider, m_valueSlider, m_alphaSlider;
     private IntegerField m_hueField, m_saturationField, m_valueField, m_alphaField;
-    private VisualElement m_colorSquare, m_selectedColor;
+    private VisualElement m_colorSquare, m_selectedColor, m_hueStrip;
 
     public event Action<Vector2> OnPointerDown, OnPointerMoved, OnPointerEntered, OnPointerReleased;
 
@@ -40,10 +40,11 @@ public class UIController : MonoBehaviour
 
     public event Action OnUndoButtonClicked, OnRedoButtonClicked;
 
-    public event Action<Vector2> OnColorSelected;
+    public event Action<Vector2> OnColorSelected, OnHueSelected;
     public event Action<int> OnHueChanged, OnAlphaChanged, OnSaturationChanged, OnValueChanged;
 
     private bool m_pointerColorSquareHeld = false;
+    private bool m_pointerHueStripHeld = false;
 
     /// <summary>
     /// Simple solution to ensure that the selected tool is highlighted by being able to loop through all the buttons and disable the highlight
@@ -65,7 +66,8 @@ public class UIController : MonoBehaviour
         m_colorPickerButton = m_uiDocument.rootVisualElement.Q<VisualElement>("ColorPickerButtonBackground");
         m_bucketButton = m_uiDocument.rootVisualElement.Q<VisualElement>("BucketButtonBackground");
 
-        m_hueSlider = m_uiDocument.rootVisualElement.Q<Slider>("HueSlider");
+        m_hueStrip = m_uiDocument.rootVisualElement.Q<VisualElement>("HueStrip");
+
         m_saturationSlider = m_uiDocument.rootVisualElement.Q<Slider>("SaturationSlider");
         m_valueSlider = m_uiDocument.rootVisualElement.Q<Slider>("ValueSlider");
         m_alphaSlider = m_uiDocument.rootVisualElement.Q<Slider>("AlphaSlider");
@@ -119,7 +121,15 @@ public class UIController : MonoBehaviour
             TrickleDown.TrickleDown);
         m_colorSquare.RegisterCallback<PointerLeaveEvent>((arg) => m_pointerColorSquareHeld = false,
             TrickleDown.TrickleDown);
-        m_hueSlider.RegisterValueChangedCallback(ChangeHue);
+
+        m_hueStrip.RegisterCallback<PointerDownEvent>(HandleHueStripClicked);
+        m_hueStrip.RegisterCallback<PointerMoveEvent>(HandleHueStripHeld, TrickleDown.TrickleDown);
+        m_hueStrip.RegisterCallback<PointerUpEvent>((arg) => m_pointerHueStripHeld = false,
+            TrickleDown.TrickleDown);
+        m_hueStrip.RegisterCallback<PointerLeaveEvent>((arg) => m_pointerHueStripHeld = false,
+            TrickleDown.TrickleDown);
+
+
         m_hueField.RegisterValueChangedCallback(ChangeHue);
         m_alphaSlider.RegisterValueChangedCallback(ChangeAlpha);
         m_alphaField.RegisterValueChangedCallback(ChangeAlpha);
@@ -154,6 +164,14 @@ public class UIController : MonoBehaviour
             return;
         Vector2 normalizedPosition = ProcessPosition(evt.localPosition, m_colorSquare);
         OnColorSelected?.Invoke(normalizedPosition);
+    }
+
+    private void HandleHueStripHeld(PointerMoveEvent evt)
+    {
+        if (m_pointerHueStripHeld == false)
+            return;
+        Vector2 normalizedPosition = ProcessPosition(evt.localPosition, m_hueStrip);
+        OnHueSelected?.Invoke(normalizedPosition);
     }
 
     // Helper methods that allows me to control the input value of the field (to clamp it) and to inform about this event
@@ -200,12 +218,6 @@ public class UIController : MonoBehaviour
         OnHueChanged?.Invoke(m_hueField.value);
     }
 
-    private void ChangeHue(ChangeEvent<float> evt)
-    {
-        SetHue(Mathf.RoundToInt(evt.newValue));
-        OnHueChanged?.Invoke(m_hueField.value);
-    }
-
     /// <summary>
     /// Sets the color when we click on the color square
     /// </summary>
@@ -215,6 +227,13 @@ public class UIController : MonoBehaviour
         m_pointerColorSquareHeld = true;
         Vector2 normalizedPosition = ProcessPosition(evt.localPosition, m_colorSquare);
         OnColorSelected?.Invoke(normalizedPosition);
+    }
+
+    private void HandleHueStripClicked(PointerDownEvent evt)
+    {
+        m_pointerHueStripHeld = true;
+        Vector2 normalizedPosition = ProcessPosition(evt.localPosition, m_hueStrip);
+        OnHueSelected?.Invoke(normalizedPosition);
     }
 
     /// <summary>
@@ -235,7 +254,7 @@ public class UIController : MonoBehaviour
     {
         Color.RGBToHSV(colorRGB, out float hue, out float saturation, out float value);
         m_hueField.SetValueWithoutNotify(Mathf.RoundToInt(hue * 360f));
-        m_hueSlider.SetValueWithoutNotify(Mathf.RoundToInt(hue * 360f));
+        // TODO HUE SLIDER m_hueSlider.SetValueWithoutNotify(Mathf.RoundToInt(hue * 360f));
         m_saturationField.SetValueWithoutNotify(Mathf.RoundToInt(saturation * 100));
         m_saturationSlider.SetValueWithoutNotify(Mathf.RoundToInt(saturation * 100));
         m_valueField.SetValueWithoutNotify(Mathf.RoundToInt(value * 100));
@@ -251,7 +270,7 @@ public class UIController : MonoBehaviour
     {
         m_hueField.SetValueWithoutNotify(Mathf.Clamp(hue, 0, 360));
 
-        m_hueSlider.SetValueWithoutNotify(m_hueField.value);
+        // TODO HUE SLIDER m_hueSlider.SetValueWithoutNotify(m_hueField.value);
     }
 
     public void SetSaturation(int saturation)
