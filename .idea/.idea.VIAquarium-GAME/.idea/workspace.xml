@@ -6,23 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelBreit SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelBreit SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelHalbfett SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelHalbfett SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelKlein SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelKlein SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelSchmal SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/DePixelSchmal SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Devil Children GBC English Patch Font SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Devil Children GBC English Patch Font SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Gamer SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Gamer SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/GothicPixels SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/GothicPixels SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Mario-Kart-DS SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/Mario-Kart-DS SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PrStart SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PrStart SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PressStart2P SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/PressStart2P SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/nokiafc22 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/nokiafc22 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/prstartk SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/prstartk SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/retro_computer_personal_use SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/retro_computer_personal_use SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/tiny-3x5 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/tiny-3x5 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/S8-Visuals.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/S8-Visuals.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/SetActiveOnClickButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/SetActiveOnClickButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FishGrave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FishGrave.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/Grave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/Grave.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +47,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fish/FishMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/Banner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/ButtonWithTextMove.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/DisableOnClickButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/FishTemplateSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/Knocker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/RespectButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GUI/SetActiveOnClickButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Graveyard/DeadFishManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.1.0/Editor/Utilities/ImportUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/Interface/ITexture.cs" root0="SKIP_HIGHLIGHTING" />
@@ -214,7 +200,7 @@
       <workItem from="1733355956532" duration="2791000" />
       <workItem from="1733414652069" duration="382000" />
       <workItem from="1733668251360" duration="18876000" />
-      <workItem from="1733738486062" duration="5697000" />
+      <workItem from="1733738486062" duration="7029000" />
     </task>
     <servers />
   </component>
