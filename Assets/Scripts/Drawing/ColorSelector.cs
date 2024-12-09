@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Draws a color square (color wheel) texture and allows to select a color from it.
@@ -7,11 +8,13 @@ using UnityEngine;
 /// </summary>
 public class ColorSelector : MonoBehaviour
 {
-    [SerializeField]
-    private RenderTexture m_colorSquareTexture;
-
-    private Texture2D m_colorsTexture;
-    private Color[] m_colors;
+    public RenderTexture m_colorSquareRenderTexture;
+    private Texture2D m_colorSquareTexture;
+    private Color[] m_colorSquareColors;
+    
+    public RenderTexture m_hueStripRenderTexture;
+    private Texture2D m_hueStripTexture;
+    private Color[] m_hueStripColors;
 
     private TextureRendererHelper m_textureRendererHelper;
 
@@ -43,8 +46,12 @@ public class ColorSelector : MonoBehaviour
     private void Awake()
     {
         m_textureRendererHelper = new TextureRendererHelper();
-        m_colorsTexture = new Texture2D(m_colorSquareTexture.width, m_colorSquareTexture.height);
-        m_colors = new Color[m_colorSquareTexture.width * m_colorSquareTexture.height];
+        
+        m_colorSquareTexture = new Texture2D(m_colorSquareRenderTexture.width, m_colorSquareRenderTexture.height);
+        m_colorSquareColors = new Color[m_colorSquareRenderTexture.width * m_colorSquareRenderTexture.height];
+        
+        m_hueStripTexture = new Texture2D(m_hueStripRenderTexture.width, m_hueStripRenderTexture.height);
+        m_hueStripColors = new Color[m_hueStripRenderTexture.width * m_hueStripRenderTexture.height];
     }
 
     /// <summary>
@@ -53,10 +60,18 @@ public class ColorSelector : MonoBehaviour
     /// <param name="hue"></param>
     private void UpdateColorSquare(float hue)
     {
-        GenerateColorSquare(hue, new Vector2Int(m_colorSquareTexture.width, m_colorSquareTexture.height), m_colors);
-        m_colorsTexture.SetPixels(m_colors);
-        m_colorsTexture.Apply();
-        m_textureRendererHelper.UpdateRenderTexture(m_colorSquareTexture, m_colorsTexture);
+        GenerateColorSquare(hue, new Vector2Int(m_colorSquareRenderTexture.width, m_colorSquareRenderTexture.height), m_colorSquareColors);
+        m_colorSquareTexture.SetPixels(m_colorSquareColors);
+        m_colorSquareTexture.Apply();
+        m_textureRendererHelper.UpdateRenderTexture(m_colorSquareRenderTexture, m_colorSquareTexture);
+    }
+
+    public void UpdateHueStrip()
+    {
+        GenerateHueStrip(new Vector2Int(m_hueStripRenderTexture.width, m_hueStripRenderTexture.height), m_hueStripColors);
+        m_hueStripTexture.SetPixels(m_hueStripColors);
+        m_hueStripTexture.Apply();
+        m_textureRendererHelper.UpdateRenderTexture(m_hueStripRenderTexture, m_hueStripTexture);
     }
 
     /// <summary>
@@ -74,6 +89,23 @@ public class ColorSelector : MonoBehaviour
                 float saturation = (float)x / textureSize.x;  // X axis for saturation (S)
                 float value = (float)y / textureSize.y;       // Y axis for value (V)
                 colors[y * textureSize.x + x] = ColorFromHSV(hue, saturation, value);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Generates a horizontal hue strip texture.
+    /// </summary>
+    /// <param name="textureSize">The size of the texture.</param>
+    /// <param name="colors">The array to hold the color data.</param>
+    public void GenerateHueStrip(Vector2Int textureSize, Color[] colors)
+    {
+        for (int y = 0; y < textureSize.y; y++)
+        {
+            for (int x = 0; x < textureSize.x; x++)
+            {
+                float hue = (float)x / textureSize.x;
+                colors[y * textureSize.x + x] = ColorFromHSV(hue, 1f, 1f);
             }
         }
     }
@@ -120,11 +152,25 @@ public class ColorSelector : MonoBehaviour
     /// <param name="vector"></param>
     public void SetColor(Vector2 vector)
     {
-        Vector2Int texturePosition = TextureRendererHelper.CalculateTexturePosition(vector, m_colorSquareTexture);
-        Color newColor = m_colors[texturePosition.y * m_colorSquareTexture.width + texturePosition.x];
+        Vector2Int texturePosition = TextureRendererHelper.CalculateTexturePosition(vector, m_colorSquareRenderTexture);
+        Color newColor = m_colorSquareColors[texturePosition.y * m_colorSquareRenderTexture.width + texturePosition.x];
         newColor.a = DrawColor.a; // Preserve original alpha
         DrawColor = newColor;
         OnColorChanged?.Invoke(DrawColor);
+    }
+
+    public void SetHueByVector(Vector2 vector)
+    {
+        Vector2Int texturePosition = TextureRendererHelper.CalculateTexturePosition(vector, m_hueStripRenderTexture);
+        Color newColor = m_hueStripColors[texturePosition.y * m_hueStripRenderTexture.width + texturePosition.x];
+        // change the color square to be in that hue
+        Color.RGBToHSV(newColor,out float h,out float s, out float v);
+        OnHueChanged?.Invoke(Mathf.RoundToInt(h * 360));
+        
+        // change the selected color to be that hue
+        Color.RGBToHSV(DrawColor,out float wtv,out s, out v);
+        Color newDrawColor = Color.HSVToRGB(h, s, v);
+        SetColor(newDrawColor);
     }
 
 
@@ -133,7 +179,7 @@ public class ColorSelector : MonoBehaviour
     /// We call events specific to the parameter changed to avoid locking slider (since if Value == 0 Hue and saturation are converted to 0 by RGBToHSV method)
     /// </summary>
     /// <param name="hue"></param>
-    public void SetHue(int hue)
+    public void SetHueByNumber(int hue)
     {
         float h, s, v;
         Color.RGBToHSV(DrawColor, out h, out s, out v);

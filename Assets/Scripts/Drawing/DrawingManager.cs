@@ -41,7 +41,10 @@ public class DrawingManager : MonoBehaviour
         m_uiController.OnBucketClicked += SetBucket;
 
         m_uiController.OnColorSelected += m_colorSelector.SetColor;
-        m_uiController.OnHueChanged += m_colorSelector.SetHue;
+        m_uiController.OnHueSelected += m_colorSelector.SetHueByVector;
+        m_uiController.OnHueSelected += (val) => m_uiController.SetColor(m_colorSelector.DrawColor);
+        
+        m_uiController.OnHueChanged += m_colorSelector.SetHueByNumber;
         m_uiController.OnSaturationChanged += m_colorSelector.SetSaturation;
         m_uiController.OnValueChanged += m_colorSelector.SetValue;
         m_uiController.OnAlphaChanged += m_colorSelector.SetAlpha;
@@ -57,7 +60,7 @@ public class DrawingManager : MonoBehaviour
         m_colorSelector.OnAlphaChanged += m_uiController.SetAlpha;
         m_colorSelector.OnAlphaChanged += (val) => m_uiController.SetColor(m_colorSelector.DrawColor);
         m_colorSelector.SetColor(m_selectedColor);
-
+        m_colorSelector.UpdateHueStrip();
     }
 
     /// <summary>
