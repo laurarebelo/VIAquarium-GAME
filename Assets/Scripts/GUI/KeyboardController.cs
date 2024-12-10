@@ -12,8 +12,8 @@ namespace GUI
         private RectTransform rectTransform;
 
         public float onScreen;
-        public float offScreen ;
-        
+        public float offScreen;
+
         public bool moveOnXAxis = false;
 
         private bool isMoving = false;
@@ -23,23 +23,43 @@ namespace GUI
             rectTransform = GetComponent<RectTransform>();
         }
 
+        public void Toggle()
+        {
+            if (moveOnXAxis)
+            {
+                if (Mathf.Abs(rectTransform.anchoredPosition.x - offScreen) < distanceThreshold)
+                {
+                    Appear();
+                }
+                else if (Mathf.Abs(rectTransform.anchoredPosition.x - onScreen) < distanceThreshold)
+                {
+                    Disappear();
+                }
+            }
+            else
+            {
+                if (Mathf.Abs(rectTransform.anchoredPosition.y - offScreen) < distanceThreshold)
+                {
+                    Appear();
+                }
+                else if (Mathf.Abs(rectTransform.anchoredPosition.y - onScreen) < distanceThreshold)
+                {
+                    Disappear();
+                }
+            }
+        }
+
         public void Appear()
         {
             if (!isMoving)
             {
                 if (moveOnXAxis)
                 {
-                    if (Mathf.Abs(rectTransform.anchoredPosition.x - onScreen) > distanceThreshold)
-                    {
-                        StartMove(onScreen);
-                    }
+                    StartMove(onScreen);
                 }
                 else
                 {
-                    if (Mathf.Abs(rectTransform.anchoredPosition.y - onScreen) > distanceThreshold)
-                    {
-                        StartMove(onScreen);
-                    }
+                    StartMove(onScreen);
                 }
             }
         }
@@ -48,13 +68,12 @@ namespace GUI
         {
             if (moveOnXAxis)
             {
-                rectTransform.anchoredPosition = new Vector2(offScreen, rectTransform.anchoredPosition.y);
+                StartMove(offScreen);
             }
             else
             {
-                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, offScreen);
+                StartMove(offScreen);
             }
-            isMoving = false;
         }
 
         public void AddLetter(string letter)
@@ -99,8 +118,9 @@ namespace GUI
         {
             isMoving = true;
 
-            Vector2 targetPos = moveOnXAxis ? new Vector2(targetPosition, rectTransform.anchoredPosition.y) :
-                                              new Vector2(rectTransform.anchoredPosition.x, targetPosition);
+            Vector2 targetPos = moveOnXAxis
+                ? new Vector2(targetPosition, rectTransform.anchoredPosition.y)
+                : new Vector2(rectTransform.anchoredPosition.x, targetPosition);
 
             while (Vector2.Distance(rectTransform.anchoredPosition, targetPos) > distanceThreshold)
             {
