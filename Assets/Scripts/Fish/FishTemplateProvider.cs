@@ -101,7 +101,7 @@ public class FishTemplateProvider : MonoBehaviour
         OnTemplateSelectionChanged.Invoke(false);
     }
 
-    public static float GetRectTransformHeightForTemplateType(string templateName, string fishName)
+    public static float GetRectTransformHeightForTemplateType(string templateName)
     {
         float height = 1.7f;
         switch (templateName.ToLower())
@@ -124,12 +124,26 @@ public class FishTemplateProvider : MonoBehaviour
                 break;
         }
 
-        if (fishName.Length > 10)
-        {
-            height += 0.5f;
-        }
-
         return height;
+    }
+
+    public static float GetPosYForName(string fishName)
+    {
+        int maxCharsPerLine = 10;
+        int maxWordLength = 5;
+        string[] words = fishName.Split(' ');
+        foreach (string word in words)
+        {
+            if (fishName.Contains(' ') && word.Length > maxWordLength)
+            {
+                return 0.3f; 
+            }
+        }
+        if (fishName.Length > maxCharsPerLine)
+        {
+            return 0.3f; 
+        }
+        return 0f;
     }
 
     public static Vector3 GetLocalTransformForEmotionsBubble(string templateName)
