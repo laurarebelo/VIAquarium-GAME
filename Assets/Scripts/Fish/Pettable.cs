@@ -13,6 +13,7 @@ namespace Fish
         private CursorManager _cursorManager;
         private FishEmotions fishEmotions;
         private FishDeath fishDeath;
+        private HandState handState;
 
         private int holdCounter = 0;
         private int minutesToGetLonely = 144;
@@ -21,6 +22,7 @@ namespace Fish
         private void Start()
         {
             fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
+            handState = GameObject.Find("HandState").GetComponent<HandState>();
             fishController = GetComponent<FishController>();
             fishEmotions = GetComponent<FishEmotions>();
             fishDeath = GetComponent<FishDeath>();
@@ -39,11 +41,13 @@ namespace Fish
             {
                 _cursorManager.SetActiveCursorType(CursorManager.CursorType.Petting);
                 holdCounterCoroutine = StartCoroutine(CountHoldTime());
+                handState.isPetting = true;
             }
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            handState.isPetting = false;
             if (_cursorManager != null)
             {
                 _cursorManager.SetActiveCursorType(CursorManager.CursorType.DefaultHand);
