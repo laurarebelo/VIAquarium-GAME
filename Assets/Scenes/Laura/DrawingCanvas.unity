@@ -3296,6 +3296,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8775345897462773209, guid: a98044bd3d3ad6247b10df885aa80388, type: 3}
+      propertyPath: onScreen
+      value: -256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775345897462773209, guid: a98044bd3d3ad6247b10df885aa80388, type: 3}
+      propertyPath: offScreen
+      value: -790
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775345897462773209, guid: a98044bd3d3ad6247b10df885aa80388, type: 3}
       propertyPath: textField
       value: 
       objectReference: {fileID: 650223962}
