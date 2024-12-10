@@ -45,6 +45,7 @@ public class FishManager : MonoBehaviour
 
     public void InstantiateFishList(List<FishGetObject> fishList)
     {
+        z = fishList.Count;
         foreach (var fish in fishList)
         {
             InstantiateFish(fish);
@@ -55,7 +56,7 @@ public void InstantiateFish(FishGetObject newFish)
     {
         Vector3 position = Utils.GetRandomPosition();
         position.z = z;
-        z++;
+        z--;
         GameObject newFishGo = Instantiate(fishPrefab, position, Quaternion.identity);
         FishController fishController = newFishGo.GetComponent<FishController>();
         fishController.SetFishName(newFish.name);

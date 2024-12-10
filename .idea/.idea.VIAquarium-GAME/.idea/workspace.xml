@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/FlakeBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/FlakeBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/FlakeParticleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/FlakeParticleSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ambient/Grave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ambient/Grave.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/RespectButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/RespectButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +199,7 @@
       <workItem from="1733414652069" duration="382000" />
       <workItem from="1733668251360" duration="18876000" />
       <workItem from="1733738486062" duration="10589000" />
-      <workItem from="1733849283724" duration="911000" />
+      <workItem from="1733849283724" duration="1550000" />
     </task>
     <servers />
   </component>
