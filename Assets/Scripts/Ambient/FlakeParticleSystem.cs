@@ -16,7 +16,7 @@ public class FlakeParticleSystem : MonoBehaviour
 
     [Header("Emission")]
     public int emissionRate = 20;
-    public float emissionInterval = 0.02f; // Emit every 0.1 seconds
+    public float emissionInterval = 0.02f;
     private float emissionTimer = 0f;
 
 
@@ -29,7 +29,6 @@ public class FlakeParticleSystem : MonoBehaviour
 
     void Start()
     {
-        // Set the color gradient
         startColor = new Gradient();
         GradientColorKey[] colorKeys = new GradientColorKey[3];
         colorKeys[0] = new GradientColorKey(Color.green, 0.0f);
@@ -46,12 +45,12 @@ public class FlakeParticleSystem : MonoBehaviour
         if (emissionTimer >= emissionInterval)
         {
             InstantiateParticle();
-            emissionTimer = 0f; // Reset timer
+            emissionTimer = 0f;
         }
 
         if (elapsedTime >= startDelay && elapsedTime >= duration)
         {
-            Destroy(gameObject); // Destroy the system after its duration
+            Destroy(gameObject);
         }
     }
 

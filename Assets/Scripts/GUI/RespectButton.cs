@@ -51,10 +51,18 @@ public class RespectButton : MonoBehaviour
         isWaiting = false;
     }
     
-    private void SendRespectData()
+    private async void SendRespectData()
     {
-        Debug.Log($"Sending {respectsSentInInterval} respects to fish {grave.deadFishId}");
-        // fishApi.SendRespectRequest(grave.deadFishId, respectsSentInInterval);
+        await fishApi.RespectDeadFish(grave.deadFishId, respectsSentInInterval);
+        FishStore.Instance.IncrementDeadFishRespectLevel(grave.deadFishId, respectsSentInInterval);
         respectsSentInInterval = 0;
+    }
+    
+    private void OnDestroy()
+    {
+        if (respectsSentInInterval > 0)
+        {
+            SendRespectData();
+        }
     }
 }
