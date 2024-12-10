@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Backspace : MonoBehaviour
+namespace GUI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BackspaceKey : MonoBehaviour
     {
-        
-    }
+        private KeyboardController keyboardController;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Start()
+        {
+            keyboardController = GetComponentInParent<KeyboardController>();
+            if (keyboardController == null)
+            {
+                Debug.LogError("KeyboardController not found in parent keyboard!");
+            }
+        }
+
+        public void OnBackspacePressed()
+        {
+            if (keyboardController != null)
+            {
+                keyboardController.RemoveLetterAtCaret();
+            }
+        }
     }
 }
