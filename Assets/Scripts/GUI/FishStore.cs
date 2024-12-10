@@ -101,6 +101,17 @@ public class FishStore : MonoBehaviour
             fishToUpdate.lastUpdatedSocial = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
+
+    public void IncrementDeadFishRespectLevel(int fishId, int respectCount)
+    {
+        DeadFishGetObject deadFishToUpdate = storedDeadFish.Find(fish => fish.id == fishId);
+        {
+            if (deadFishToUpdate != null)
+            {
+                deadFishToUpdate.respectCount += respectCount;
+            }
+        }
+    }
    
 
     

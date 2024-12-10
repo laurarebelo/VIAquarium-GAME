@@ -233,5 +233,24 @@ namespace Model
                 }
             }
         }
+
+        public async Task RespectDeadFish(int fishId, int respectCount)
+        {
+            string fullUrl = $"{url}/dead/{fishId}/respect?howMuch={respectCount}";
+            using (UnityWebRequest www = UnityWebRequest.PostWwwForm(fullUrl, ""))
+            {
+                var operation = www.SendWebRequest();
+                while (!operation.isDone)
+                {
+                    await Task.Yield();
+                }
+
+                if (www.result == UnityWebRequest.Result.ConnectionError || 
+                    www.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogError($"Error respecting dead fish: {www.error}");
+                }
+            }
+        }
     }
 }

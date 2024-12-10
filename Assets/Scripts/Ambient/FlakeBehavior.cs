@@ -9,7 +9,7 @@ public class FlakeBehavior : MonoBehaviour
     private float size;
     private Gradient colorGradient;
 
-    private Vector3 moveDirection; // New: random movement direction
+    private Vector3 moveDirection;
     private float lifetimeCounter;
     private SpriteRenderer particleSpriteRenderer;
     public int fishClaimed;
