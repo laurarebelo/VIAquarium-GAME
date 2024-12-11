@@ -13,6 +13,7 @@ namespace Fish
         private CursorManager _cursorManager;
         private FishEmotions fishEmotions;
         private FishDeath fishDeath;
+        private FishAudioPlayer audioPlayer;
 
         private int holdCounter = 0;
         private int minutesToGetLonely = 144;
@@ -24,7 +25,9 @@ namespace Fish
             fishController = GetComponent<FishController>();
             fishEmotions = GetComponent<FishEmotions>();
             fishDeath = GetComponent<FishDeath>();
+            audioPlayer = GetComponent<FishAudioPlayer>();
             _cursorManager = FindObjectOfType<CursorManager>();
+            
         
             if (_cursorManager == null)
             {
@@ -38,8 +41,9 @@ namespace Fish
             if (_cursorManager != null)
             {
                 _cursorManager.SetActiveCursorType(CursorManager.CursorType.Petting);
-                holdCounterCoroutine = StartCoroutine(CountHoldTime());
             }
+            holdCounterCoroutine = StartCoroutine(CountHoldTime());
+            audioPlayer.StartPlayingPettingClip();
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -47,18 +51,19 @@ namespace Fish
             if (_cursorManager != null)
             {
                 _cursorManager.SetActiveCursorType(CursorManager.CursorType.DefaultHand);
-
-                if (holdCounterCoroutine != null && holdCounter >= 5)
-                {
-                    fishEmotions.SetEmotion(FishEmotions.Emotion.Loved);
-                    StopCoroutine(holdCounterCoroutine);
-                    _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
-                    int newSocialLevel = Math.Min(fishController.socialLevel + holdCounter, 100);
-                    fishController.SetSocialLevel(newSocialLevel);
-                    Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Social, newSocialLevel);
-                    holdCounter = 0;
-                }
             }
+            if (holdCounterCoroutine != null && holdCounter >= 5)
+            {
+                fishEmotions.SetEmotion(FishEmotions.Emotion.Loved);
+                StopCoroutine(holdCounterCoroutine);
+                _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
+                int newSocialLevel = Math.Min(fishController.socialLevel + holdCounter, 100);
+                fishController.SetSocialLevel(newSocialLevel);
+                Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Social, newSocialLevel);
+                holdCounter = 0;
+                audioPlayer.PlayBeenPetClip();
+            }
+            audioPlayer.StopPlayingPettingClip();
         }
         
         private IEnumerator GetLonelyOverTime()
