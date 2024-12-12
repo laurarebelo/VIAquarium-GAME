@@ -26,7 +26,8 @@ public class FishTemplateSelector : MonoBehaviour
         namedSprite = template;
         fishNameText.text = template.name;
         outlineSprite.sprite = template.outlineSprite;
-        colorSprite.sprite = template.colorSprite;
+        colorSprite.sprite = template.defaultSprite;
+        colorSprite.color = Color.white;
     }
 
     public string TemplateName()
