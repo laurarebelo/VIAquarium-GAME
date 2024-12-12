@@ -5,11 +5,18 @@ using UnityEngine;
 public class CapsLock : MonoBehaviour
 {
     public bool isCapsLockOn = false;
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponentInParent<AudioSource>();
+    }
 
     public void ToggleCapsLock()
     {
         isCapsLockOn = !isCapsLockOn;
         UpdateButtonTexts();
+        audioSource.Play();
     }
 
     private void UpdateButtonTexts()

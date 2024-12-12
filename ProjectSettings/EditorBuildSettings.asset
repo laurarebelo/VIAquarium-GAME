@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Laura/S10-Graveyard.unity
     guid: d4322f682a00848fb97f262a705e03d6
+  - enabled: 1
+    path: Assets/Scenes/Laura/S11-Audio.unity
+    guid: 00815cbdaeb614c2782028c0adc1148a
   m_configObjects: {}

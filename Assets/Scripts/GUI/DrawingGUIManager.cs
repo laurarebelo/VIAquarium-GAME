@@ -38,7 +38,7 @@ public class DrawingGUIManager : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene("S8-Visuals");
+        SceneManager.LoadScene("S11-Audio");
     }
 
     private IEnumerator SubmitFishCoroutine()

@@ -161,7 +161,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &837105690725915532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 620259591926745946}
   - component: {fileID: 1327176311516446268}
   - component: {fileID: 1070012549518336100}
+  - component: {fileID: 8331917784158680162}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -608,3 +609,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8331917784158680162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8246927707135720525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9a5a3c07d814043bf390b9db4dfa43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

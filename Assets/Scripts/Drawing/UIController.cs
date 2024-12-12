@@ -46,6 +46,8 @@ public class UIController : MonoBehaviour
     private bool m_pointerColorSquareHeld = false;
     private bool m_pointerHueStripHeld = false;
 
+    private AudioSource buttonClickSound;
+
     /// <summary>
     /// Simple solution to ensure that the selected tool is highlighted by being able to loop through all the buttons and disable the highlight
     /// </summary>
@@ -137,6 +139,8 @@ public class UIController : MonoBehaviour
         m_saturationField.RegisterValueChangedCallback(SaturationChanged);
         m_valueSlider.RegisterValueChangedCallback(ValueChanged);
         m_valueField.RegisterValueChangedCallback(ValueChanged);
+
+        buttonClickSound = GameObject.Find("ButtonClickSound").GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -152,6 +156,7 @@ public class UIController : MonoBehaviour
         }
 
         element.style.unityBackgroundImageTintColor = Color.yellow;
+        buttonClickSound.Play();
     }
 
     /// <summary>
