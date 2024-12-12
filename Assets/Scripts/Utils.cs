@@ -7,17 +7,12 @@ public static class Utils
 {
     public static float margin = 100f;
 
-    public static Vector3 GetRandomPosition()
+    public static Vector3 GetRandomPosition(Vector3 topLeftBoundary, Vector3 bottomRightBoundary)
     {
-        float screenX = Random.Range(margin, Screen.width - margin);
-        float screenY = Random.Range(margin, Screen.height - margin);
-
-        Vector3 randomScreenPosition = new Vector3(screenX, screenY, Camera.main.nearClipPlane);
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(randomScreenPosition);
-
-        worldPosition.z = 0;
-
-        return worldPosition;
+        float randomX = Random.Range(topLeftBoundary.x, bottomRightBoundary.x);
+        float randomY = Random.Range(bottomRightBoundary.y, topLeftBoundary.y);
+        Vector3 randomPosition = new Vector3(randomX, randomY, 0);
+        return randomPosition;
     }
 
     public static Sprite GetSpriteFromEncodedString(string encodedSprite)

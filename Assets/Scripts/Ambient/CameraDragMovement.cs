@@ -13,19 +13,25 @@ public class CameraDragMovement : MonoBehaviour
     private Vector3 maxVelocity;
     public float maxVelocityDuration = 0.2f;
     private float velocityTimer = 0f;
-    public float dragMultiplier = 1f;
-    public float velocityMultiplier = 0.01f;
+    public float dragMultiplier = 0.0075f;
+    public float velocityMultiplier = 0.005f;
     public float deceleration = 0.95f;
     
     private Vector3 initialCameraPosition;
     private Vector3 lastPosition;
 
     private CameraBounds cameraBounds;
+    private HandState handState;
 
     private void Start()
     {
         cameraBounds = GetComponent<CameraBounds>();
         lastPosition = transform.position;
+        GameObject handStateGo = GameObject.Find("HandState");
+        if (handStateGo)
+        {
+            handState = handStateGo.GetComponent<HandState>();
+        }
     }
 
 
@@ -33,6 +39,7 @@ public class CameraDragMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (handState != null && handState.isPetting) return;
             initialDragPosition = Input.mousePosition;
             initialCameraPosition = transform.position;
             isDragging = true;
