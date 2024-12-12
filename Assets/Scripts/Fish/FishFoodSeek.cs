@@ -33,7 +33,7 @@ public class FishFoodSeek : MonoBehaviour
         fishFlip = GetComponent<FishFlip>();
         fishState = GetComponent<FishState>();
         fishEmotions = GetComponent<FishEmotions>();
-        audioPlayer = GetComponent<FishAudioPlayer>();
+        audioPlayer = GameObject.Find("FishAudioPlayer").GetComponent<FishAudioPlayer>();
         fishDeath = GetComponent<FishDeath>();
         potentialHunger = fishController.hungerLevel;
         StartCoroutine(DecreaseHungerOverTime());

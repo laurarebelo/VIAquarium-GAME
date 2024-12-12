@@ -42,7 +42,7 @@ public class Banner : MonoBehaviour
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        audioPlayer = GetComponent<FishAudioPlayer>();
+        audioPlayer = GameObject.Find("FishAudioPlayer").GetComponent<FishAudioPlayer>();
     }
 
     void Update()

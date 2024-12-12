@@ -6,14 +6,12 @@ public class FishAsk : MonoBehaviour
 {
     private FishController fishController;
     private FishEmotions fishEmotions;
-    private FishAudioPlayer audioPlayer;
 
     public float checkInterval = 30f;
     void Start()
     {   
         fishController = GetComponent<FishController>();
         fishEmotions = GetComponent<FishEmotions>();
-        audioPlayer = GetComponent<FishAudioPlayer>();
         StartCoroutine(CheckFishStatusCoroutine());
     }
 

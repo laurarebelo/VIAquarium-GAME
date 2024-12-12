@@ -11,10 +11,11 @@ public class FishAudioPlayer : MonoBehaviour
     public AudioClip lonelyClip;
     public AudioClip hungryClip;
     public AudioClip[] eatClips;
+    public bool shouldPlay = true;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("FishAudioPlayer").GetComponent<AudioSource>();
     }
 
     private void PlayClip(AudioClip clip, float volumePercentage = 100f, bool loop = false)

@@ -15,7 +15,7 @@ public class FeedingManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("FishAudioPlayer").GetComponent<AudioSource>();
     }
 
     public void ToggleFeedingMode()
