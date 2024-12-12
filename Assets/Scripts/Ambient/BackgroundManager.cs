@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class BackgroundManager : MonoBehaviour
 {
-    public Image backgroundImage;
-    public Image floorImage;
+    public SpriteRenderer backgroundImage;
+    public SpriteRenderer floorImage;
     public Sprite backgroundDawn;
     public Sprite backgroundDay;
     public Sprite backgroundDusk;

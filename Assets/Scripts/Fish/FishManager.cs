@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Model;
 using TMPro;
@@ -14,10 +15,12 @@ public class FishManager : MonoBehaviour
     private int z;
     private FishTemplateProvider fishTemplateProvider;
     public GameObject loadingScreen;
+    private SceneSizeManager sceneSizeManager;
 
 
     void Start()
     {
+        sceneSizeManager = GameObject.Find("SceneSizeManager").GetComponent<SceneSizeManager>();
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         _ = InitializeFish();
     }
@@ -45,6 +48,7 @@ public class FishManager : MonoBehaviour
 
     public void InstantiateFishList(List<FishGetObject> fishList)
     {
+        sceneSizeManager.SetBoundsForFishNumber(fishList.Count);
         z = fishList.Count;
         foreach (var fish in fishList)
         {
@@ -54,7 +58,7 @@ public class FishManager : MonoBehaviour
 
 public void InstantiateFish(FishGetObject newFish)
     {
-        Vector3 position = Utils.GetRandomPosition();
+        Vector3 position = Utils.GetRandomPosition(sceneSizeManager.MinBounds.position, sceneSizeManager.MaxBounds.position);
         position.z = z;
         z--;
         GameObject newFishGo = Instantiate(fishPrefab, position, Quaternion.identity);
