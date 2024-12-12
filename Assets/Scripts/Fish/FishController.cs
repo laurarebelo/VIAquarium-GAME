@@ -71,10 +71,14 @@ public class FishController : MonoBehaviour
 
     private void AdjustNameHeight()
     {
-        float height = FishTemplateProvider.GetRectTransformHeightForTemplateType(fishSprites.name, fishName);
+        float height = FishTemplateProvider.GetRectTransformHeightForTemplateType(fishSprites.name);
+        float offset = FishTemplateProvider.GetPosYForName(fishName);
         var sizeDelta = fishNameText.rectTransform.sizeDelta;
         sizeDelta.y = height;
         fishNameText.rectTransform.sizeDelta = sizeDelta;
+        Vector3 newRectPos = fishNameText.rectTransform.localPosition;
+        newRectPos.y = offset;
+        fishNameText.rectTransform.localPosition = newRectPos;
     }
 
     private void ChangeHueDependingOnTime()

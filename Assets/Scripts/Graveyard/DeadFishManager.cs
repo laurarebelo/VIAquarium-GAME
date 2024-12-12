@@ -40,6 +40,11 @@ public class DeadFishManager : MonoBehaviour
         _ = InitializeDeadFish();
     }
 
+    public void SearchFromInspector()
+    {
+        _ = Search(searchInputField.text);
+    }
+
     public async Task Search(string search)
     {
         searchName = search;
