@@ -20,6 +20,7 @@ public class FishFoodSeek : MonoBehaviour
     private FishState fishState;
     private FishEmotions fishEmotions;
     private FishDeath fishDeath;
+    private FishAudioPlayer audioPlayer;
 
     private int potentialHunger;
     private bool isHungry;
@@ -32,6 +33,7 @@ public class FishFoodSeek : MonoBehaviour
         fishFlip = GetComponent<FishFlip>();
         fishState = GetComponent<FishState>();
         fishEmotions = GetComponent<FishEmotions>();
+        audioPlayer = GameObject.Find("FishAudioPlayer").GetComponent<FishAudioPlayer>();
         fishDeath = GetComponent<FishDeath>();
         potentialHunger = fishController.hungerLevel;
         StartCoroutine(DecreaseHungerOverTime());
@@ -91,6 +93,7 @@ public class FishFoodSeek : MonoBehaviour
                 potentialHunger++;
                 rampageCount++;
                 rampageTimer = 0f;
+                audioPlayer.PlayEatClip();
             }
         }
     }
@@ -112,6 +115,7 @@ public class FishFoodSeek : MonoBehaviour
             fishController.SetHungerLevel(newHungerLevel);
             Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Hunger, newHungerLevel);
             rampageCount = 0;
+            audioPlayer.PlayBeenFedClip();
         }
     }
 

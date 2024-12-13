@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fish;
+using Model;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,7 @@ public class Banner : MonoBehaviour
     private Coroutine currentCoroutine;
 
     private bool isMessageShowing;
+    private FishAudioPlayer audioPlayer;
 
     
     void Awake()
@@ -35,6 +37,12 @@ public class Banner : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    
+    void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        audioPlayer = GameObject.Find("FishAudioPlayer").GetComponent<FishAudioPlayer>();
     }
 
     void Update()
@@ -67,9 +75,11 @@ public class Banner : MonoBehaviour
         {
             case NeedType.Hunger:
                 messageString = FishMessages.GetRandomHungerComplaint();
+                audioPlayer.PlayHungryClip();
                 break;
                 case NeedType.Social:
                 messageString = FishMessages.GetRandomSocialComplaint();
+                audioPlayer.PlayLonelyClip();
                 break;
         }
         message.text = messageString;
@@ -95,10 +105,6 @@ public class Banner : MonoBehaviour
         AppearAndReappear();
     }
 
-    void Start()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
     
     public static Banner Instance => instance;
     

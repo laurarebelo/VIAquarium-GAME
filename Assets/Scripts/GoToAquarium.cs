@@ -3,9 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GoToAquarium : MonoBehaviour
 {
-
     public void OnButtonClick()
     {
-        SceneManager.LoadScene("S8-Visuals");
+        SceneManager.LoadScene("S11-Audio");
     }
 }

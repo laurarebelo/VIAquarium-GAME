@@ -10,8 +10,8 @@ public class FishAsk : MonoBehaviour
     public float checkInterval = 30f;
     void Start()
     {   
-        fishController = gameObject.GetComponent<FishController>();
-        fishEmotions = gameObject.GetComponent<FishEmotions>();
+        fishController = GetComponent<FishController>();
+        fishEmotions = GetComponent<FishEmotions>();
         StartCoroutine(CheckFishStatusCoroutine());
     }
 

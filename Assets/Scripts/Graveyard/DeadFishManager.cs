@@ -13,6 +13,7 @@ public class DeadFishManager : MonoBehaviour
     public GameObject noFishScreen;
     public Transform foregroundParentGo;
     public GameObject gravePrefab;
+    public AudioSource bgmAudioSource;
 
     private List<GameObject> instantiatedGraves = new List<GameObject>();
     private string sortBy = "lastdied";
@@ -99,6 +100,7 @@ public class DeadFishManager : MonoBehaviour
             ShowLoadingScreen(false);
             _ = LoadAdditionalDeadFish(true);
         }
+        bgmAudioSource.Play();
     }
 
     async Task LoadAdditionalDeadFish(bool store = false)

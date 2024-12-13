@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class FeedingManager : MonoBehaviour
 {
+    private AudioSource audioSource;
     public GameObject flakeParticleSystemPrefab;
     public bool feedingModeOn;
     public Sprite spriteFeedingOff;
     public Sprite spriteFeedingOn;
     public Image feedingButtonImage;
     public CursorManager cursorManager;
+
+    void Start()
+    {
+        audioSource = GameObject.Find("FishAudioPlayer").GetComponent<AudioSource>();
+    }
 
     public void ToggleFeedingMode()
     {
@@ -43,5 +49,6 @@ public class FeedingManager : MonoBehaviour
     void InstantiateFlakeParticleSystem(Vector3 position)
     {
         GameObject flakeParticleSystem = Instantiate(flakeParticleSystemPrefab, position, Quaternion.identity);
+        audioSource.Play();
     }
 }

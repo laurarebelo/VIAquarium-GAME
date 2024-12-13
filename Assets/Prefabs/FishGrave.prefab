@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 1838678371348902820}
   - component: {fileID: 7551871064165485826}
   - component: {fileID: 1332170170242952334}
+  - component: {fileID: 3045654029557770710}
   m_Layer: 5
   m_Name: ReviveButton
   m_TagString: Untagged
@@ -587,6 +588,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3045654029557770710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357324929701661892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9a5a3c07d814043bf390b9db4dfa43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1501707069821447790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,6 +1555,7 @@ GameObject:
   - component: {fileID: 3643603233492875477}
   - component: {fileID: 7964081708685625082}
   - component: {fileID: 1515898267293953562}
+  - component: {fileID: 7476958576205455992}
   m_Layer: 5
   m_Name: RespectButton
   m_TagString: Untagged
@@ -1665,6 +1679,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grave: {fileID: 950122720740385606}
+--- !u!114 &7476958576205455992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432308091988615197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9a5a3c07d814043bf390b9db4dfa43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8047209317599968013
 GameObject:
   m_ObjectHideFlags: 0

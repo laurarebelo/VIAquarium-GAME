@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class FishManager : MonoBehaviour
 {
+    public AudioSource bgmAudioSource;
     public FishAPI fishApi;
     private List<FishGetObject> fishList;
     public GameObject fishPrefab;
@@ -48,6 +49,7 @@ public class FishManager : MonoBehaviour
 
     public void InstantiateFishList(List<FishGetObject> fishList)
     {
+        bgmAudioSource.Play();
         sceneSizeManager.SetBoundsForFishNumber(fishList.Count);
         z = fishList.Count;
         foreach (var fish in fishList)
