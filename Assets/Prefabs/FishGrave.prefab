@@ -163,6 +163,16 @@ MonoBehaviour:
   colorSpriteRenderer: {fileID: 8975014788262413692}
   respectParentRT: {fileID: 3791685403308524424}
   deadFishId: 0
+  deadFish:
+    id: 0
+    name: 
+    template: 
+    sprite: 
+    dateOfBirth: 
+    dateOfDeath: 
+    daysLived: 0
+    respectCount: 0
+    causeOfDeath: 
 --- !u!1 &1000013283074672982
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +488,7 @@ GameObject:
   - component: {fileID: 7551871064165485826}
   - component: {fileID: 1332170170242952334}
   - component: {fileID: 3045654029557770710}
+  - component: {fileID: 6373238425266610592}
   m_Layer: 5
   m_Name: ReviveButton
   m_TagString: Untagged
@@ -600,6 +611,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9a5a3c07d814043bf390b9db4dfa43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6373238425266610592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357324929701661892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7959c3957e7084cd08d1c79923c8bcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grave: {fileID: 950122720740385606}
 --- !u!1 &1501707069821447790
 GameObject:
   m_ObjectHideFlags: 0
