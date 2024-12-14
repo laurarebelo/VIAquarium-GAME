@@ -67,4 +67,13 @@ public static class Utils
 
         return items;
     }
+    
+    public static string GetDateMiniString(string dateStringYYYYMMDD)
+    {
+        string[] parts = dateStringYYYYMMDD.Split('-');
+        string year = parts[0].Substring(2);
+        string month = parts[1];
+        string day = parts[2].Substring(0, 2);
+        return $"{day}.{month}.{year}";
+    }
 }

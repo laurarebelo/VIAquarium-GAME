@@ -2,25 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishAudioPlayer : MonoBehaviour
+public class FlappyFishAudioPlayer : MonoBehaviour
 {
     private AudioSource audioSource;
-    public AudioClip pettingClip;
-    public AudioClip beenFedClip;
-    public AudioClip beenPetClip;
-    public AudioClip lonelyClip;
-    public AudioClip hungryClip;
+    public AudioClip heartPickupClip;
+    public AudioClip deathClip;
+    public AudioClip reviveClip;
     public AudioClip[] eatClips;
-
+    
     void Start()
     {
-        audioSource = GameObject.Find("FishAudioPlayer").GetComponent<AudioSource>();
+        audioSource = GameObject.Find("FlappyFishAudioPlayer").GetComponent<AudioSource>();
     }
 
     private void PlayClip(AudioClip clip, float volumePercentage = 100f, bool loop = false)
     {
         if (clip != null && audioSource != null)
         {
+            audioSource.Stop();
             audioSource.clip = clip;
             audioSource.loop = loop;
             audioSource.volume = Mathf.Clamp01(volumePercentage / 100f);
@@ -32,38 +31,19 @@ public class FishAudioPlayer : MonoBehaviour
         }
     }
 
-    public void StartPlayingPettingClip()
+    public void PlayHeartClip()
     {
-        PlayClip(pettingClip, 100f, true);
+        PlayClip(heartPickupClip, 25f);
     }
 
-    public void StopPlayingPettingClip()
+    public void PlayDeathClip()
     {
-        if (audioSource != null && audioSource.isPlaying && audioSource.clip == pettingClip)
-        {
-            audioSource.Stop();
-            audioSource.loop = false;
-        }
+        PlayClip(deathClip, 25f);
     }
 
-    public void PlayBeenFedClip()
+    public void PlayReviveClip()
     {
-        PlayClip(beenFedClip, 25f);
-    }
-
-    public void PlayBeenPetClip()
-    {
-        PlayClip(beenPetClip, 25f);
-    }
-
-    public void PlayLonelyClip()
-    {
-        PlayClip(lonelyClip);
-    }
-
-    public void PlayHungryClip()
-    {
-        PlayClip(hungryClip, 25f);
+        PlayClip(reviveClip, 25f);
     }
 
     public void PlayEatClip()

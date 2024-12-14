@@ -15,6 +15,7 @@ public class Grave : MonoBehaviour
 
     private FishTemplateProvider templateProvider;
     public int deadFishId;
+    public DeadFishGetObject deadFish;
 
     private void Awake()
     {
@@ -23,9 +24,10 @@ public class Grave : MonoBehaviour
 
     public void InitializeGrave(DeadFishGetObject deadFishGetObject)
     {
+        deadFish = deadFishGetObject;
         fishNameText.text = deadFishGetObject.name;
-        birthDateText.text = GetDateMiniString(deadFishGetObject.dateOfBirth);
-        deathDateText.text = GetDateMiniString(deadFishGetObject.dateOfDeath);
+        birthDateText.text = Utils.GetDateMiniString(deadFishGetObject.dateOfBirth);
+        deathDateText.text = Utils.GetDateMiniString(deadFishGetObject.dateOfDeath);
         respectCountText.text = deadFishGetObject.respectCount.ToString();
         AdjustPosXDependingOnRespectCountDigits();
         outlineSpriteRenderer.sprite = templateProvider.GetSpritePair(deadFishGetObject.template).outlineSprite;
@@ -47,14 +49,5 @@ public class Grave : MonoBehaviour
 
         respectParentRT.localPosition = new Vector3(newX, respectParentRT.localPosition.y, respectParentRT.localPosition.z);
     }
-
-
-    public string GetDateMiniString(string dateStringYYYYMMDD)
-    {
-        string[] parts = dateStringYYYYMMDD.Split('-');
-        string year = parts[0].Substring(2);
-        string month = parts[1];
-        string day = parts[2].Substring(0, 2);
-        return $"{day}.{month}.{year}";
-    }
+    
 }
