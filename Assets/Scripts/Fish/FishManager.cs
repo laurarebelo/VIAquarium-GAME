@@ -18,12 +18,15 @@ public class FishManager : MonoBehaviour
     public GameObject loadingScreen;
     private SceneSizeManager sceneSizeManager;
 
+    private List<FishController> allFishControllers = new List<FishController>();
+
 
     void Start()
     {
         sceneSizeManager = GameObject.Find("SceneSizeManager").GetComponent<SceneSizeManager>();
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         _ = InitializeFish();
+        StartCoroutine(UpdateFishNeeds());
     }
 
     async Task InitializeFish()
@@ -74,22 +77,12 @@ public void InstantiateFish(FishGetObject newFish)
         NamedSprite spritePair = fishTemplateProvider.GetSpritePair(newFish.template);
         fishController.SetFishTemplate(spritePair);
         if (newFish.sprite != "") fishController.SetFishSprite(newFish.sprite);
+        allFishControllers.Add(fishController);
     }
 
     public void DeleteFish(FishController fish)
     {
         StartCoroutine(DeleteFishCoroutine(fish));
-    }
-
-    void InstantiateAllFish()
-    {
-        if (fishList.Count > 0)
-        {
-            foreach (var fish in fishList)
-            {
-                InstantiateFish(fish);
-            }
-        }
     }
 
     private IEnumerator DeleteFishCoroutine(FishController fishController)
@@ -108,6 +101,7 @@ public void InstantiateFish(FishGetObject newFish)
         {
             GameObject fishGo = fishController.gameObject;
             Destroy(fishGo);
+            allFishControllers.Remove(fishController);
         }
     }
 
@@ -115,4 +109,36 @@ public void InstantiateFish(FishGetObject newFish)
     {
         return await fishApi.FishDelete(fishId);
     }
+
+    IEnumerator UpdateFishNeeds()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15f);
+            var updateTask = UpdateFishNeedsAsync();
+            yield return new WaitUntil(() => updateTask.IsCompleted);
+        }
+    }
+
+    async Task UpdateFishNeedsAsync()
+    {
+        if (allFishControllers.Count == 0) return;
+        var fishNeedsList = await fishApi.GetAliveFishNeeds();
+        Debug.Log(allFishControllers.Count);
+        foreach (var fishController in allFishControllers)
+        {
+            var fishNeeds = fishNeedsList.FirstOrDefault(f => f.id == fishController.fishId);
+            if (fishNeeds != null)
+            {
+                fishController.SetHungerLevel(fishNeeds.hungerLevel);
+                fishController.SetSocialLevel(fishNeeds.socialLevel);
+            }
+            else
+            {
+                allFishControllers.Remove(fishController);
+                fishController.gameObject.GetComponent<FishDeath>().Die();
+            }
+        }
+    }
+
 }

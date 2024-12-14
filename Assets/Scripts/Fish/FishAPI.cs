@@ -57,7 +57,8 @@ namespace Model
             return FetchFishData<FishGetObject>("alive");
         }
 
-        public Task<List<DeadFishGetObject>> GetDeadFish([CanBeNull] string sortBy, [CanBeNull] string searchName, int? startIndex, int? endIndex)
+        public Task<List<DeadFishGetObject>> GetDeadFish([CanBeNull] string sortBy, [CanBeNull] string searchName,
+            int? startIndex, int? endIndex)
         {
             string urlAddon = "dead";
 
@@ -100,7 +101,7 @@ namespace Model
                     await Task.Yield();
                 }
 
-                if (webRequest.result == UnityWebRequest.Result.ConnectionError || 
+                if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
                     webRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogError($"Error fetching fish data: {webRequest.error}");
@@ -128,13 +129,14 @@ namespace Model
                 }
             }
         }
-        
+
         string[] ParseFishListResponse(string jsonResponse)
         {
             if (string.IsNullOrEmpty(jsonResponse) || jsonResponse == "[]")
             {
                 return Array.Empty<string>();
             }
+
             string trimmedJson = jsonResponse.Trim(new char[] { '[', ']' });
             string[] jsonObjects = trimmedJson.Split(new string[] { "},{" }, StringSplitOptions.None);
             for (int i = 0; i < jsonObjects.Length; i++)
@@ -199,6 +201,37 @@ namespace Model
             }
         }
 
+        public async Task<List<FishOnlyNeeds>> GetAliveFishNeeds()
+        {
+            string fullUrl = $"{url}/alive/needs";
+            using (UnityWebRequest www = UnityWebRequest.Get(fullUrl))
+            {
+                var operation = www.SendWebRequest();
+                while (!operation.isDone)
+                {
+                    await Task.Yield();
+                }
+
+                if (www.result == UnityWebRequest.Result.ConnectionError ||
+                    www.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogError($"Error getting alive fish needs: {www.error}");
+                }
+
+                string responseJson = www.downloadHandler.text;
+                string[] eachFishNeedsJson = ParseFishListResponse(responseJson);
+                List<FishOnlyNeeds> fishNeedList = new List<FishOnlyNeeds>();
+
+                foreach (var fishJson in eachFishNeedsJson)
+                {
+                    FishOnlyNeeds fishNeedObject = JsonUtility.FromJson<FishOnlyNeeds>(fishJson);
+                    fishNeedList.Add(fishNeedObject);
+                }
+
+                return fishNeedList;
+            }
+        }
+
         public async Task<FishFedResponse> UploadFishFeed(int fishAffectedId, int hungerPoints)
         {
             return await UploadFishNeed<FishFedResponse>(fishAffectedId, "hunger", hungerPoints);
@@ -245,13 +278,14 @@ namespace Model
                     await Task.Yield();
                 }
 
-                if (www.result == UnityWebRequest.Result.ConnectionError || 
+                if (www.result == UnityWebRequest.Result.ConnectionError ||
                     www.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogError($"Error respecting dead fish: {www.error}");
                 }
             }
         }
+
         public async Task<FishGetObject> ReviveDeadFish(int fishId)
         {
             string fullUrl = $"{url}/dead/{fishId}/revive";
@@ -263,11 +297,12 @@ namespace Model
                     await Task.Yield();
                 }
 
-                if (www.result == UnityWebRequest.Result.ConnectionError || 
+                if (www.result == UnityWebRequest.Result.ConnectionError ||
                     www.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogError($"Error reviving dead fish: {www.error}");
                 }
+
                 string responseJson = www.downloadHandler.text;
                 FishGetObject revivedFish = JsonUtility.FromJson<FishGetObject>(responseJson);
                 return revivedFish;

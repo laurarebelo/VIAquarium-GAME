@@ -34,7 +34,6 @@ namespace Fish
             {
                 Debug.LogError("PettingManager not found in the scene.");
             }
-            StartCoroutine(GetLonelyOverTime());
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -68,24 +67,6 @@ namespace Fish
                 audioPlayer.PlayBeenPetClip();
             }
             audioPlayer.StopPlayingPettingClip();
-        }
-        
-        private IEnumerator GetLonelyOverTime()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(minutesToGetLonely * 60f);
-                fishController.SetSocialLevel(fishController.socialLevel - 1);
-                CheckIfDead();
-            }
-        }
-
-        private void CheckIfDead()
-        {
-            if (fishController.socialLevel == 0)
-            {
-                fishDeath.Die();
-            }
         }
 
 

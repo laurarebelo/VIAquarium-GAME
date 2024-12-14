@@ -1868,7 +1868,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 10d63929e62bd4b478365275bfc27eef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 51fac0534c24c4e52a9d94fe05fc9438, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2918,6 +2918,8 @@ MonoBehaviour:
   gravePrefab: {fileID: 181481122609354415, guid: 02f41a4198502442494ec82da363b206, type: 3}
   bgmAudioSource: {fileID: 893142625}
   searchInputField: {fileID: 1496387271}
+  blackScreenGo: {fileID: 0}
+  blackScreenImage: {fileID: 0}
 --- !u!4 &1156758314
 Transform:
   m_ObjectHideFlags: 0
@@ -6020,6 +6022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 893142625}
   fishAudioPlayer: {fileID: 0}
+  flappyFishAudioPlayer: {fileID: 0}
   soundEffectsAudioSources:
   - {fileID: 1640120609}
   - {fileID: 826403109}

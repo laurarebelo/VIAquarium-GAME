@@ -19,10 +19,8 @@ public class FishFoodSeek : MonoBehaviour
     private FishFlip fishFlip;
     private FishState fishState;
     private FishEmotions fishEmotions;
-    private FishDeath fishDeath;
     private FishAudioPlayer audioPlayer;
 
-    private int potentialHunger;
     private bool isHungry;
     private int minutesToGetHungry = 100;
 
@@ -34,10 +32,6 @@ public class FishFoodSeek : MonoBehaviour
         fishState = GetComponent<FishState>();
         fishEmotions = GetComponent<FishEmotions>();
         audioPlayer = GameObject.Find("FishAudioPlayer").GetComponent<FishAudioPlayer>();
-        fishDeath = GetComponent<FishDeath>();
-        potentialHunger = fishController.hungerLevel;
-        StartCoroutine(DecreaseHungerOverTime());
-        CheckIfHungry();
     }
 
     void Update()
@@ -47,14 +41,9 @@ public class FishFoodSeek : MonoBehaviour
         HandleRampage();
     }
 
-    void CheckIfHungry()
-    {
-        isHungry = potentialHunger < 100;
-    }
-
     void FindFoodFlake()
     {
-        if (!isHungry) return;
+        if (fishController.hungerLevel == 100) return;
         Collider2D[] foodFlakes = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
         targetFlake = null;
 
@@ -90,7 +79,6 @@ public class FishFoodSeek : MonoBehaviour
                     new Vector2(flakePosition.x, flakePosition.y)) < 0.1f)
             {
                 Destroy(targetFlake.gameObject);
-                potentialHunger++;
                 rampageCount++;
                 rampageTimer = 0f;
                 audioPlayer.PlayEatClip();
@@ -116,26 +104,6 @@ public class FishFoodSeek : MonoBehaviour
             Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Hunger, newHungerLevel);
             rampageCount = 0;
             audioPlayer.PlayBeenFedClip();
-        }
-    }
-
-    private void CheckIfDead()
-    {
-        if (potentialHunger == 0)
-        {
-            fishDeath.Die();
-        }
-    }
-
-    private IEnumerator DecreaseHungerOverTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(minutesToGetHungry * 60f);
-            potentialHunger = Mathf.Max(0, potentialHunger - 1);
-            fishController.SetHungerLevel(potentialHunger);
-            CheckIfHungry();
-            CheckIfDead();
         }
     }
 }
