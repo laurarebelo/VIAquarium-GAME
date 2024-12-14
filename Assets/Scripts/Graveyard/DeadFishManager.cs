@@ -180,6 +180,6 @@ public class DeadFishManager : MonoBehaviour
         color.a = 1f;
         blackScreenImage.color = color;
 
-        SceneManager.LoadScene("S11-FlappyFish");
+        SceneManager.LoadScene("MainFlappyFish");
     }
 }
