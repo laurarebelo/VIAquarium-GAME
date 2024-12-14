@@ -13,11 +13,11 @@ public class FishController : MonoBehaviour
     public GameObject emotionsDisplayGo;
     public int hungerLevel;
     public int socialLevel;
-    private FishEmotions fishEmotions;
+    private FishDeath fishDeath;
 
     void Start()
     {
-        fishEmotions = GetComponent<FishEmotions>();
+        fishDeath = GetComponent<FishDeath>();
         Deselect();
         UpdateText();
     }
@@ -25,6 +25,12 @@ public class FishController : MonoBehaviour
     public void SetHungerLevel(int level)
     {
         if (level < 0) level = 0;
+        if (level == 0)
+        {
+            fishDeath.Die();
+            FishStore.Instance.RemoveFish(fishId);
+        }
+
         if (level > 100) level = 100;
         hungerLevel = level;
         FishStore.Instance.UpdateStoredFishHunger(fishId, level);
@@ -33,6 +39,12 @@ public class FishController : MonoBehaviour
     public void SetSocialLevel(int level)
     {
         if (level < 0) level = 0;
+        if (level == 0)
+        {
+            fishDeath.Die();
+            FishStore.Instance.RemoveFish(fishId);
+        }
+
         if (level > 100) level = 100;
         socialLevel = level;
         FishStore.Instance.UpdateStoredFishSocial(fishId, level);

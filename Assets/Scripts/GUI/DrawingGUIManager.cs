@@ -87,7 +87,7 @@ public class DrawingGUIManager : MonoBehaviour
         return byteString;
     }
     
-    // Validation method to check if the name contains only letters and is unique
+    // Validation method to check if the name contains only letters and spaces
     bool ValidateName(string name)
     {
         if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$") || name.Length > NameSize)
@@ -96,17 +96,6 @@ public class DrawingGUIManager : MonoBehaviour
 
             return false;
         }
-        
-        foreach (var fishGetObject in fishList)
-        {
-            if (fishGetObject.name.Equals(name, System.StringComparison.OrdinalIgnoreCase))
-            {
-                errorManager.ShowError("There is only space for one " + name + " in the tank, make the name UNIQUE!");
-
-                return false;
-            }
-        }
-
         return true;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fish;
 using UnityEngine;
 
 public class FishState : MonoBehaviour
@@ -8,12 +9,14 @@ public class FishState : MonoBehaviour
     private FishMovement idleSwim;
     private FishKnockReaction fishKnockReaction;
     private FishEmotions fishEmotions;
+    private Pettable fishPettable;
     void Start()
     {
         foodSeek = GetComponent<FishFoodSeek>();
         idleSwim = GetComponent<FishMovement>();
         fishKnockReaction = GetComponent<FishKnockReaction>();
         fishEmotions = GetComponent<FishEmotions>();
+        fishPettable = GetComponent<Pettable>();
     }
 
     public void Die()
@@ -22,11 +25,17 @@ public class FishState : MonoBehaviour
         StopSeekingFood();
         StopShowingEmotions();
         StopReactingToKnocks();
+        StopBeingPettable();
     }
 
     public void StartShowingEmotions()
     {
         fishEmotions.enabled = true;
+    }
+
+    public void StopBeingPettable()
+    {
+        fishPettable.enabled = false;
     }
 
     public void StopShowingEmotions()
