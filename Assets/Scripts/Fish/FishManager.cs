@@ -114,7 +114,7 @@ public void InstantiateFish(FishGetObject newFish)
     {
         while (true)
         {
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(60f);
             var updateTask = UpdateFishNeedsAsync();
             yield return new WaitUntil(() => updateTask.IsCompleted);
         }
@@ -132,6 +132,8 @@ public void InstantiateFish(FishGetObject newFish)
             {
                 fishController.SetHungerLevel(fishNeeds.hungerLevel);
                 fishController.SetSocialLevel(fishNeeds.socialLevel);
+                FishStore.Instance.UpdateStoredFishHunger(fishController.fishId, fishNeeds.hungerLevel);
+                FishStore.Instance.UpdateStoredFishSocial(fishController.fishId, fishNeeds.socialLevel);
             }
             else
             {
