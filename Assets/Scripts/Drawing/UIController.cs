@@ -104,15 +104,15 @@ public class UIController : MonoBehaviour
         //Button callbacks
         clearButton.onClick.AddListener(() => OnClearButtonClicked?.Invoke());
         m_brushButton.RegisterCallback<ClickEvent>((arg) => OnBrushClicked?.Invoke());
-        m_brushButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_brushButton));
+        m_brushButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(m_brushButton));
         m_lineButton.RegisterCallback<ClickEvent>((arg) => OnLineClicked?.Invoke());
-        m_lineButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_lineButton));
+        m_lineButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(m_lineButton));
         m_squareButton.RegisterCallback<ClickEvent>((arg) => OnRectangleClicked?.Invoke());
-        m_squareButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_squareButton));
+        m_squareButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(m_squareButton));
         m_colorPickerButton.RegisterCallback<ClickEvent>((arg) => OnColorPickerClicked?.Invoke());
-        m_colorPickerButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_colorPickerButton));
+        m_colorPickerButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(m_colorPickerButton));
         m_bucketButton.RegisterCallback<ClickEvent>((arg) => OnBucketClicked?.Invoke());
-        m_bucketButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked(evt, m_bucketButton));
+        m_bucketButton.RegisterCallback<ClickEvent>((evt) => SetButtonChecked( m_bucketButton));
         undoButton.onClick.AddListener(() => OnUndoButtonClicked?.Invoke());
         redoButton.onClick.AddListener(() => OnRedoButtonClicked?.Invoke());
 
@@ -141,6 +141,8 @@ public class UIController : MonoBehaviour
         m_valueField.RegisterValueChangedCallback(ValueChanged);
 
         buttonClickSound = GameObject.Find("ButtonClickSound").GetComponent<AudioSource>();
+        OnBrushClicked?.Invoke();
+        SetButtonChecked(m_brushButton);
     }
 
     /// <summary>
@@ -148,7 +150,7 @@ public class UIController : MonoBehaviour
     /// </summary>
     /// <param name="evt"></param>
     /// <param name="element"></param>
-    private void SetButtonChecked(ClickEvent evt, VisualElement element)
+    private void SetButtonChecked(VisualElement element)
     {
         foreach (var item in m_toolButtons)
         {
