@@ -85,12 +85,12 @@ public class GUIManager : MonoBehaviour
 
     void GoToFishPainting()
     {
-        SceneManager.LoadScene("DrawingCanvas");
+        SceneManager.LoadScene("MainDrawing");
     }
     
     void GoToGraveyard()
     {
-        SceneManager.LoadScene("S10-Graveyard");
+        SceneManager.LoadScene("MainGraveyard");
     }
 
     void UpdateContinueButtonState(bool isTemplateSelected)

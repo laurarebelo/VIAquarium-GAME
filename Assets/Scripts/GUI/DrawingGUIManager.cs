@@ -38,7 +38,7 @@ public class DrawingGUIManager : MonoBehaviour
 
     private void GoBack()
     {
-        SceneManager.LoadScene("S11-Audio");
+        SceneManager.LoadScene("MainAquarium");
     }
 
     private IEnumerator SubmitFishCoroutine()
