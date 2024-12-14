@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Model;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +21,7 @@ public class FishDeath : MonoBehaviour
     private Transform topLeftBoundary;
     private FishState fishState;
     private FishStore fishStore;
+    private FishAPI fishApi;
 
     void Start()
     {
@@ -26,6 +29,7 @@ public class FishDeath : MonoBehaviour
         fishState = GetComponent<FishState>();
         fishController = GetComponent<FishController>();
         topLeftBoundary = GameObject.Find("MinBounds").transform;
+        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
     }
 
     public void Die()
@@ -38,9 +42,16 @@ public class FishDeath : MonoBehaviour
         fishState.Die();
         fishController.ChangeToDeadOutline();
         fishStore.RemoveFish(fishController.fishId);
-
-        yield return new WaitForSeconds(1f);
-
+        if (fishStore.HasDeadStoredFish())
+        {
+            Task<List<DeadFishGetObject>> task = fishApi.GetDeadFish("lastdied", fishController.fishName, 0, 1);
+            while (!task.IsCompleted)
+            {
+                yield return null;
+            }
+            DeadFishGetObject deadFish = task.Result[0];
+            fishStore.StoreDeadFish(deadFish);
+        }
         lineFishRenderer.flipY = true;
         colorFishRenderer.flipY = true;
 

@@ -68,7 +68,7 @@ public class FishStore : MonoBehaviour
 
     public void StoreDeadFish(DeadFishGetObject deadFish)
     {
-        storedDeadFish.Add(deadFish);
+        storedDeadFish.Insert(0, deadFish);
     }
 
     public void StoreDeadFishList(List<DeadFishGetObject> deadFishList)

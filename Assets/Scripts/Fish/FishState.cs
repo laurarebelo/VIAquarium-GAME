@@ -10,6 +10,7 @@ public class FishState : MonoBehaviour
     private FishKnockReaction fishKnockReaction;
     private FishEmotions fishEmotions;
     private Pettable fishPettable;
+    private Selectable selectable;
     void Start()
     {
         foodSeek = GetComponent<FishFoodSeek>();
@@ -17,6 +18,7 @@ public class FishState : MonoBehaviour
         fishKnockReaction = GetComponent<FishKnockReaction>();
         fishEmotions = GetComponent<FishEmotions>();
         fishPettable = GetComponent<Pettable>();
+        selectable = GetComponent<Selectable>();
     }
 
     public void Die()
@@ -26,6 +28,7 @@ public class FishState : MonoBehaviour
         StopShowingEmotions();
         StopReactingToKnocks();
         StopBeingPettable();
+        StopBeingSelectable();
     }
 
     public void StartShowingEmotions()
@@ -36,6 +39,11 @@ public class FishState : MonoBehaviour
     public void StopBeingPettable()
     {
         fishPettable.enabled = false;
+    }
+
+    public void StopBeingSelectable()
+    {
+        selectable.enabled = false;
     }
 
     public void StopShowingEmotions()

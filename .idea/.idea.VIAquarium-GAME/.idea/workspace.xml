@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishOnlyNeeds.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Model/FishOnlyNeeds.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/FontAssets/tiny-3x5 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/FontAssets/tiny-3x5 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/S10-Graveyard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/S10-Graveyard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Laura/S11-Audio.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Laura/S11-Audio.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFoodSeek.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFoodSeek.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/Pettable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/Pettable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/FeedingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/FeedingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/FishStore.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +130,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "s11-sync",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
