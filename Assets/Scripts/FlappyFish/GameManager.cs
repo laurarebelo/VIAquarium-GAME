@@ -143,14 +143,14 @@ public class GameManager : MonoBehaviour
     public void GoBackToGraveyard()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("S10-Graveyard");
+        SceneManager.LoadScene("MainGraveyard");
         RestartGameState.Instance.isFirstTime = true;
     }
 
     public void GoBackToAquarium()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("S11-Audio");
+        SceneManager.LoadScene("MainAquarium");
         RestartGameState.Instance.isFirstTime = true;
     }
 }

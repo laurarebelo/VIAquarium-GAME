@@ -6,33 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Laura/DrawingCanvas.unity
+    path: Assets/Scenes/Main/MainDrawing.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/Laura/Previous/S2-FeedFish.unity
+    path: Assets/Scenes/Development/Laura/Previous/S2-FeedFish.unity
     guid: 44a625ce978214ef3acb487d64426b0a
   - enabled: 0
-    path: Assets/Scenes/Sprint3-Petting.unity
+    path: Assets/Scenes/Development/Sprint3-Petting.unity
     guid: ad181b14bdc119b44bdc5cad550e3464
   - enabled: 0
-    path: Assets/Scenes/Laura/Previous/S6-Cleanup.unity
+    path: Assets/Scenes/Development/Laura/Previous/S6-Cleanup.unity
     guid: 699d1c4af73a64a878ab36584bd93bfc
   - enabled: 0
-    path: Assets/Scenes/Laura/Previous/S7-Optimizing.unity
+    path: Assets/Scenes/Development/Laura/Previous/S7-Optimizing.unity
     guid: 081c41522e1714f8a91a9eeaf6cd369b
   - enabled: 1
-    path: Assets/Scenes/Graveyard.unity
+    path: Assets/Scenes/Development/Graveyard.unity
     guid: 630ad3feeb803d942a3a033d4b162476
   - enabled: 1
-    path: Assets/Scenes/Laura/Previous/S8-Visuals.unity
+    path: Assets/Scenes/Development/Laura/Previous/S8-Visuals.unity
     guid: d84869ee8bc5b4615b9ede4bbfc21de0
   - enabled: 1
-    path: Assets/Scenes/Laura/S10-Graveyard.unity
+    path: Assets/Scenes/Main/MainGraveyard.unity
     guid: d4322f682a00848fb97f262a705e03d6
   - enabled: 1
-    path: Assets/Scenes/Laura/S11-Audio.unity
+    path: Assets/Scenes/Main/MainAquarium.unity
     guid: 00815cbdaeb614c2782028c0adc1148a
   - enabled: 1
-    path: Assets/Scenes/Laura/S11-FlappyFish.unity
+    path: Assets/Scenes/Main/MainFlappyFish.unity
+    guid: f1efa23e35f9741169b7d52621453d1b
+  - enabled: 1
+    path: Assets/Scenes/Main/MainGraveyard.unity
+    guid: d4322f682a00848fb97f262a705e03d6
+  - enabled: 1
+    path: Assets/Scenes/Main/MainAquarium.unity
+    guid: 00815cbdaeb614c2782028c0adc1148a
+  - enabled: 1
+    path: Assets/Scenes/Main/MainDrawing.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Main/MainFlappyFish.unity
     guid: f1efa23e35f9741169b7d52621453d1b
   m_configObjects: {}
