@@ -829,8 +829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4c75805868044c2a74038452974e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -5
-  maxX: 5
+  minX: 0
+  maxX: 0
 --- !u!114 &410636531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5114,7 +5114,7 @@ Transform:
   m_GameObject: {fileID: 1243144844}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -3.04, z: 0}
+  m_LocalPosition: {x: 7.73, y: -3.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5622,7 +5622,7 @@ Transform:
   m_GameObject: {fileID: 1332745405}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 4, z: 0}
+  m_LocalPosition: {x: -7.73, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6444,7 +6444,6 @@ MonoBehaviour:
   eatClips:
   - {fileID: 8300000, guid: dad0b60f62aef4494aa95e7a51884a65, type: 3}
   - {fileID: 8300000, guid: c45a572fca81047ea812304deed8d3fb, type: 3}
-  shouldPlay: 1
 --- !u!82 &1580532503
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7080,7 +7079,6 @@ MonoBehaviour:
   lonelyClip: {fileID: 8300000, guid: 493756ebbbd4048de8296bfa0ac69a38, type: 3}
   hungryClip: {fileID: 8300000, guid: 480eb22090b954b4089fd3f61c1f319f, type: 3}
   eatClips: []
-  shouldPlay: 1
 --- !u!82 &1762134020
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7355,7 +7353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48102e1b30e94a4d8b83085c3cc1943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraBounds: {fileID: 0}
+  cameraBounds: {fileID: 410636530}
   minBounds: {fileID: 1332745406}
   maxBounds: {fileID: 1243144845}
 --- !u!4 &1773720431
@@ -9225,6 +9223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 1061584316}
   fishAudioPlayer: {fileID: 1580532502}
+  flappyFishAudioPlayer: {fileID: 0}
   soundEffectsAudioSources:
   - {fileID: 1214471438}
   - {fileID: 1769467018}
