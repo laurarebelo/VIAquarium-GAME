@@ -32,6 +32,15 @@ public class FishStore : MonoBehaviour
             storedFish.Remove(fishToRemove);
         }
     }
+
+    public void RemoveDeadFish(int deadFishId)
+    {
+        DeadFishGetObject deadFishToRemove = storedDeadFish.Find(fish => fish.id == deadFishId);
+        if (deadFishToRemove != null)
+        {
+            storedDeadFish.Remove(deadFishToRemove);
+        }
+    }
     
     // Alive fish
 

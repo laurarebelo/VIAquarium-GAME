@@ -252,5 +252,26 @@ namespace Model
                 }
             }
         }
+        public async Task<FishGetObject> ReviveDeadFish(int fishId)
+        {
+            string fullUrl = $"{url}/dead/{fishId}/revive";
+            using (UnityWebRequest www = UnityWebRequest.PostWwwForm(fullUrl, ""))
+            {
+                var operation = www.SendWebRequest();
+                while (!operation.isDone)
+                {
+                    await Task.Yield();
+                }
+
+                if (www.result == UnityWebRequest.Result.ConnectionError || 
+                    www.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogError($"Error reviving dead fish: {www.error}");
+                }
+                string responseJson = www.downloadHandler.text;
+                FishGetObject revivedFish = JsonUtility.FromJson<FishGetObject>(responseJson);
+                return revivedFish;
+            }
+        }
     }
 }

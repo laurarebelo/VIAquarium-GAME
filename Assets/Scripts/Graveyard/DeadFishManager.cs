@@ -4,10 +4,11 @@ using System.Threading.Tasks;
 using Model;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeadFishManager : MonoBehaviour
 {
-    private FishTemplateProvider fishTemplateProvider;
     private FishAPI fishApi;
     public GameObject loadingScreen;
     public GameObject noFishScreen;
@@ -26,17 +27,24 @@ public class DeadFishManager : MonoBehaviour
     public TMP_InputField searchInputField;
     private string searchName;
 
+    public GameObject blackScreenGo;
+    public Image blackScreenImage;
+
 
     void Start()
     {
         cameraReset = Camera.main.GetComponent<CameraReset>();
         cameraBounds = Camera.main.GetComponent<CameraBounds>();
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         if (searchInputField != null)
         {
             searchInputField.onEndEdit.AddListener(async => _ = Search(searchInputField.text));
+
         }
+
+        blackScreenGo = GameObject.Find("BlackScreenCanvas");
+        blackScreenImage = GameObject.Find("BlackScreen").GetComponent<Image>();
+        blackScreenGo.SetActive(false);
 
         _ = InitializeDeadFish();
     }
@@ -153,5 +161,25 @@ public class DeadFishManager : MonoBehaviour
         }
 
         cameraBounds.MaxX = GetGravePosition(deadFishList.Count - 1).x - 3;
+    }
+    
+    public IEnumerator FadeToBlackAndLoadReviveScene(float duration)
+    {
+        blackScreenGo.SetActive(true);
+        float elapsed = 0f;
+        Color color = blackScreenImage.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsed / duration);
+            blackScreenImage.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        blackScreenImage.color = color;
+
+        SceneManager.LoadScene("S11-FlappyFish");
     }
 }

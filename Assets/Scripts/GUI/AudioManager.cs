@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sound Effects")]
     public FishAudioPlayer fishAudioPlayer;
+    public FlappyFishAudioPlayer flappyFishAudioPlayer;
     public AudioSource[] soundEffectsAudioSources; 
     private bool areSoundsMuted = false;
 
@@ -44,6 +45,11 @@ public class AudioManager : MonoBehaviour
         if (fishAudioPlayer != null)
         {
             fishAudioPlayer.enabled = !AudioState.Instance.areSoundsMuted;
+        }
+
+        if (flappyFishAudioPlayer != null)
+        {
+            flappyFishAudioPlayer.enabled = !AudioState.Instance.areSoundsMuted;
         }
 
         foreach (var audioSource in soundEffectsAudioSources)
