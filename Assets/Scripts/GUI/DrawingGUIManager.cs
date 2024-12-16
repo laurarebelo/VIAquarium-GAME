@@ -13,18 +13,16 @@ public class DrawingGUIManager : MonoBehaviour
     public Button backButton;
     public Button submitButton;
     public TMP_InputField nameInputField;
-    private FishAPI fishApi;
     public RenderTexture renderTexture;
     public int NameSize = 20;
 
 
     void Start()
     {
-        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
+        nameInputField.characterLimit = NameSize;
         errorManager = GameObject.Find("ErrorManager").GetComponent<ErrorManager>();
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
-        nameInputField.characterLimit = NameSize;
     }
 
     private void GoBack()
@@ -61,7 +59,7 @@ public class DrawingGUIManager : MonoBehaviour
     
     private async Task<FishGetObject> FishPostAsync(FishPostObject fishPostObject)
     {
-        return await fishApi.FishPost(fishPostObject);
+        return await FishAPI.Instance.FishPost(fishPostObject);
     }
     
     private string SaveTextureAsPNG()

@@ -14,7 +14,6 @@ public class DrawingManager : MonoBehaviour
     private DrawingRenderer m_drawingRenderer;
     [SerializeField]
     private GridRenderer m_gridRenderer;
-
     private DrawingTool m_currentTool;
 
     private Vector2 m_drawingStartPointInNormalizedCoordinates;

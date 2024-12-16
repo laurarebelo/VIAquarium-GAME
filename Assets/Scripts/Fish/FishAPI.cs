@@ -26,6 +26,7 @@ namespace Model
                 DontDestroyOnLoad(gameObject);
             }
         }
+        public static FishAPI Instance => instance;
 
         public async Task<FishGetObject> FishPost(FishPostObject fishPostObject)
         {

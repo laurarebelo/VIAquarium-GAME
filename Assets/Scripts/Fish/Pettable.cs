@@ -8,7 +8,6 @@ namespace Fish
 {
     public class Pettable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        private FishAPI fishApi;
         private FishController fishController;
         private CursorManager _cursorManager;
         private FishEmotions fishEmotions;
@@ -21,7 +20,6 @@ namespace Fish
 
         private void Start()
         {
-            fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
             handState = GameObject.Find("HandState").GetComponent<HandState>();
             fishController = GetComponent<FishController>();
             fishEmotions = GetComponent<FishEmotions>();
@@ -57,7 +55,7 @@ namespace Fish
             {
                 fishEmotions.SetEmotion(FishEmotions.Emotion.Loved);
                 StopCoroutine(holdCounterCoroutine);
-                _ = fishApi.UploadFishPet(fishController.fishId, holdCounter);
+                _ = FishAPI.Instance.UploadFishPet(fishController.fishId, holdCounter);
                 int newSocialLevel = Math.Min(fishController.socialLevel + holdCounter, 100);
                 fishController.SetSocialLevel(newSocialLevel);
                 Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Social, newSocialLevel);

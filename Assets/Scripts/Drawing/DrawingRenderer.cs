@@ -289,14 +289,12 @@ public class DrawingRenderer : MonoBehaviour
     private void SetDrawableMask(Texture2D fishBaseTexture)
     {
         m_drawableMask = new bool[fishBaseTexture.width * fishBaseTexture.height];
-
         for (int y = 0; y < fishBaseTexture.height; y++)
         {
             for (int x = 0; x < fishBaseTexture.width; x++)
             {
                 int index = y * fishBaseTexture.width + x;
                 Color pixelColor = fishBaseTexture.GetPixel(x, y);
-
                 m_drawableMask[index] = pixelColor.a > 0.1f;
             }
         }
