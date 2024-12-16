@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VIAquarium-GAME/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main/MainDrawing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main/MainDrawing.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Drawing/DrawingRenderer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishDeath.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFoodSeek.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishFoodSeek.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/FishManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fish/Pettable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fish/Pettable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlappyFish/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlappyFish/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Graveyard/DeadFishManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Graveyard/DeadFishManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +226,7 @@
       <workItem from="1733869981351" duration="1264000" />
       <workItem from="1733910623134" duration="2348000" />
       <workItem from="1734078178313" duration="18320000" />
-      <workItem from="1734345927297" duration="10017000" />
+      <workItem from="1734345927297" duration="10575000" />
     </task>
     <servers />
   </component>

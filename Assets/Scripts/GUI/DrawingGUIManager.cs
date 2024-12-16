@@ -15,8 +15,7 @@ public class DrawingGUIManager : MonoBehaviour
     public TMP_InputField nameInputField;
     public RenderTexture renderTexture;
     public int NameSize = 20;
-
-
+    
     void Start()
     {
         nameInputField.characterLimit = NameSize;
@@ -33,7 +32,6 @@ public class DrawingGUIManager : MonoBehaviour
     private IEnumerator SubmitFishCoroutine()
     {
         string fishName = nameInputField.text;
-
         if (!ValidateName(fishName)) yield break;
         string fishTemplate = FishTemplateProvider.Instance.selectedTemplate.TemplateName();
         string image = SaveTextureAsPNG();
@@ -76,12 +74,24 @@ public class DrawingGUIManager : MonoBehaviour
         return byteString;
     }
     
-    // Validation method to check if the name contains only letters and spaces
+    // Validation method to check if the name is not empty and contains only letters and spaces
     bool ValidateName(string name)
     {
-        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$") || name.Length > NameSize)
+        if (string.IsNullOrWhiteSpace(name))
         {
-            errorManager.ShowError( name + " is very special, however NO SPECIAL CHARACTERS are allowed in the name!");
+            errorManager.ShowError("Please do not submit an empty name!");
+            return false;
+        }
+        if (!System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$"))
+        {
+            errorManager.ShowError( name + " is very special, however " +
+                                    "NO SPECIAL CHARACTERS are allowed in the name!");
+            return false;
+        }
+        if (name.Length > NameSize)
+        {
+            errorManager.ShowError($"This shouldn't be possible, but please " +
+                                   $"keep your name under {NameSize} characters.");
             return false;
         }
         return true;
