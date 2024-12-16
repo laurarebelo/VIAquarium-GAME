@@ -13,7 +13,6 @@ public class FishManager : MonoBehaviour
     private List<FishGetObject> fishList;
     public GameObject fishPrefab;
     private int z;
-    private FishTemplateProvider fishTemplateProvider;
     public GameObject loadingScreen;
     private SceneSizeManager sceneSizeManager;
 
@@ -23,7 +22,6 @@ public class FishManager : MonoBehaviour
     void Start()
     {
         sceneSizeManager = GameObject.Find("SceneSizeManager").GetComponent<SceneSizeManager>();
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         _ = InitializeFish();
         StartCoroutine(UpdateFishNeeds());
     }
@@ -71,9 +69,8 @@ public void InstantiateFish(FishGetObject newFish)
         fishController.SetFishId(newFish.id);
         fishController.SetHungerLevel(newFish.hungerLevel);
         fishController.SetSocialLevel(newFish.socialLevel);
-
         
-        NamedSprite spritePair = fishTemplateProvider.GetSpritePair(newFish.template);
+        NamedSprite spritePair = FishTemplateProvider.Instance.GetSpritePair(newFish.template);
         fishController.SetFishTemplate(spritePair);
         if (newFish.sprite != "") fishController.SetFishSprite(newFish.sprite);
         allFishControllers.Add(fishController);
