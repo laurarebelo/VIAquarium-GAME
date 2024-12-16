@@ -900,7 +900,7 @@ MonoBehaviour:
   submitButton: {fileID: 268740193}
   nameInputField: {fileID: 650223962}
   renderTexture: {fileID: 8400000, guid: a32a07e61d26e494b9c502a04a083fdf, type: 2}
-  NameSize: 30
+  NameSize: 20
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &766427481
 Transform:
   m_ObjectHideFlags: 0
@@ -2335,6 +2335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 1599726875}
   fishAudioPlayer: {fileID: 0}
+  flappyFishAudioPlayer: {fileID: 0}
   soundEffectsAudioSources:
   - {fileID: 858585349}
   - {fileID: 8551863628496940882}

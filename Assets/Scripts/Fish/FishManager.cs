@@ -10,11 +10,9 @@ using UnityEngine;
 public class FishManager : MonoBehaviour
 {
     public AudioSource bgmAudioSource;
-    public FishAPI fishApi;
     private List<FishGetObject> fishList;
     public GameObject fishPrefab;
     private int z;
-    private FishTemplateProvider fishTemplateProvider;
     public GameObject loadingScreen;
     private SceneSizeManager sceneSizeManager;
 
@@ -24,7 +22,6 @@ public class FishManager : MonoBehaviour
     void Start()
     {
         sceneSizeManager = GameObject.Find("SceneSizeManager").GetComponent<SceneSizeManager>();
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         _ = InitializeFish();
         StartCoroutine(UpdateFishNeeds());
     }
@@ -38,7 +35,7 @@ public class FishManager : MonoBehaviour
         else
         {
             ShowLoadingScreen(true);
-            var allFish = await fishApi.GetAllFishAlive();
+            var allFish = await FishAPI.Instance.GetAllFishAlive();
             FishStore.Instance.StoreFishList(allFish);
             InstantiateFishList(allFish);
             ShowLoadingScreen(false);
@@ -72,9 +69,8 @@ public void InstantiateFish(FishGetObject newFish)
         fishController.SetFishId(newFish.id);
         fishController.SetHungerLevel(newFish.hungerLevel);
         fishController.SetSocialLevel(newFish.socialLevel);
-
         
-        NamedSprite spritePair = fishTemplateProvider.GetSpritePair(newFish.template);
+        NamedSprite spritePair = FishTemplateProvider.Instance.GetSpritePair(newFish.template);
         fishController.SetFishTemplate(spritePair);
         if (newFish.sprite != "") fishController.SetFishSprite(newFish.sprite);
         allFishControllers.Add(fishController);
@@ -107,7 +103,7 @@ public void InstantiateFish(FishGetObject newFish)
 
     private async Task<bool> FishDeleteAsync(int fishId)
     {
-        return await fishApi.FishDelete(fishId);
+        return await FishAPI.Instance.FishDelete(fishId);
     }
 
     IEnumerator UpdateFishNeeds()
@@ -123,7 +119,7 @@ public void InstantiateFish(FishGetObject newFish)
     async Task UpdateFishNeedsAsync()
     {
         if (allFishControllers.Count == 0) return;
-        var fishNeedsList = await fishApi.GetAliveFishNeeds();
+        var fishNeedsList = await FishAPI.Instance.GetAliveFishNeeds();
         Debug.Log(allFishControllers.Count);
         foreach (var fishController in allFishControllers)
         {

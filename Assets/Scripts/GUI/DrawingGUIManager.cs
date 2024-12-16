@@ -11,32 +11,20 @@ public class DrawingGUIManager : MonoBehaviour
 {
     private ErrorManager errorManager;
     public Button backButton;
-
     public Button submitButton;
-
     public TMP_InputField nameInputField;
-
-    private FishTemplateProvider fishTemplateProvider;
-
-    private FishAPI fishApi;
     public RenderTexture renderTexture;
-    private List<FishGetObject> fishList;
     public int NameSize = 20;
-
-
+    
     void Start()
     {
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
-        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
-        errorManager = GameObject.Find("ErrorManager").GetComponent<ErrorManager>();
-        
-        submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
-        backButton.onClick.AddListener(GoBack);
-        fishList = FishStore.Instance.GetStoredFish();
         nameInputField.characterLimit = NameSize;
+        errorManager = GameObject.Find("ErrorManager").GetComponent<ErrorManager>();
+        submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
+        backButton.onClick.AddListener(ReturnToAquarium);
     }
 
-    private void GoBack()
+    private void ReturnToAquarium()
     {
         SceneManager.LoadScene("MainAquarium");
     }
@@ -44,10 +32,9 @@ public class DrawingGUIManager : MonoBehaviour
     private IEnumerator SubmitFishCoroutine()
     {
         string fishName = nameInputField.text;
-
         if (!ValidateName(fishName)) yield break;
-        string fishTemplate = fishTemplateProvider.selectedTemplate.TemplateName();
-        string image = SaveTextureAsPNG();
+        string fishTemplate = FishTemplateProvider.Instance.selectedTemplate.TemplateName();
+        string image = SaveTextureAsByteString();
         FishPostObject fishPostObject = new FishPostObject(fishName, fishTemplate, image);
         var task = FishPostAsync(fishPostObject);
         while (!task.IsCompleted)
@@ -62,18 +49,17 @@ public class DrawingGUIManager : MonoBehaviour
         
         FishGetObject fishObject = task.Result;
         FishStore.Instance.StoreFish(fishObject);
-        
         nameInputField.text = "";
-        fishTemplateProvider.DeselectTemplate();
-        GoBack();
+        FishTemplateProvider.Instance.DeselectTemplate();
+        ReturnToAquarium();
     }
     
     private async Task<FishGetObject> FishPostAsync(FishPostObject fishPostObject)
     {
-        return await fishApi.FishPost(fishPostObject);
+        return await FishAPI.Instance.FishPost(fishPostObject);
     }
     
-    private string SaveTextureAsPNG()
+    private string SaveTextureAsByteString()
     {
         RenderTexture currentRT = RenderTexture.active;
         RenderTexture.active = renderTexture;
@@ -87,13 +73,24 @@ public class DrawingGUIManager : MonoBehaviour
         return byteString;
     }
     
-    // Validation method to check if the name contains only letters and spaces
+    // Validation method to check if the name is not empty and contains only letters and spaces
     bool ValidateName(string name)
     {
-        if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$") || name.Length > NameSize)
+        if (string.IsNullOrWhiteSpace(name))
         {
-            errorManager.ShowError( name + " is very special, however NO SPECIAL CHARACTERS are allowed in the name!");
-
+            errorManager.ShowError("Please do not submit an empty name!");
+            return false;
+        }
+        if (!System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$"))
+        {
+            errorManager.ShowError( name + " is very special, however " +
+                                    "NO SPECIAL CHARACTERS are allowed in the name!");
+            return false;
+        }
+        if (name.Length > NameSize)
+        {
+            errorManager.ShowError($"This shouldn't be possible, but please " +
+                                   $"keep your name under {NameSize} characters.");
             return false;
         }
         return true;

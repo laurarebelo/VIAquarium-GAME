@@ -14,7 +14,6 @@ public class FishFoodSeek : MonoBehaviour
     private int rampageCount = 0;
     private float rampageTimer = 0f;
 
-    private FishAPI fishApi;
     private FishController fishController;
     private FishFlip fishFlip;
     private FishState fishState;
@@ -26,7 +25,6 @@ public class FishFoodSeek : MonoBehaviour
 
     private void Start()
     {
-        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         fishController = GetComponent<FishController>();
         fishFlip = GetComponent<FishFlip>();
         fishState = GetComponent<FishState>();
@@ -98,7 +96,7 @@ public class FishFoodSeek : MonoBehaviour
         {
             fishEmotions.SetEmotion(FishEmotions.Emotion.Happy);
             fishState.StartIdling();
-            _ = fishApi.UploadFishFeed(fishController.fishId, rampageCount);
+            _ = FishAPI.Instance.UploadFishFeed(fishController.fishId, rampageCount);
             int newHungerLevel = fishController.hungerLevel + rampageCount;
             fishController.SetHungerLevel(newHungerLevel);
             Banner.Instance.ShowThankfulMessage(fishController, Banner.NeedType.Hunger, newHungerLevel);

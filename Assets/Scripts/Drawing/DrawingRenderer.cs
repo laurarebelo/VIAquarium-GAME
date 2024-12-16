@@ -22,7 +22,6 @@ public class DrawingRenderer : MonoBehaviour
     Color[] m_drawingPixelColors, m_previewPixelColors, m_outlinePixelColors;
 
     TextureRendererHelper m_textureRendererHelper;
-    private FishTemplateProvider fishTemplateProvider;
 
     private bool[] m_drawableMask;
     
@@ -43,8 +42,6 @@ public class DrawingRenderer : MonoBehaviour
 
     void Start()
     {
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
-
         //Prepare the drawing texture
         m_drawingTexture =
             new(m_renderTexture.width, m_renderTexture.height, TextureFormat.RGBA32, false);
@@ -234,16 +231,14 @@ public class DrawingRenderer : MonoBehaviour
     public void SetFishBase()
     {
         // Set outline
-        Texture2D outlineTexture = fishTemplateProvider.selectedTemplate.namedSprite.outlineSprite.texture;
+        Texture2D outlineTexture = FishTemplateProvider.Instance.selectedTemplate.namedSprite.outlineSprite.texture;
         Color[] fishOutlineColorArray = outlineTexture.GetPixels();
-        Debug.Log($"Colors of a fish outline... {fishOutlineColorArray.Length}");
         m_outlinePixelColors = fishOutlineColorArray;
         UpdateRenderTexture(m_outlineRenderTexture, m_outlineTexture, fishOutlineColorArray);
 
         // Set base
-        Texture2D baseTexture = fishTemplateProvider.selectedTemplate.namedSprite.colorSprite.texture;
+        Texture2D baseTexture = FishTemplateProvider.Instance.selectedTemplate.namedSprite.colorSprite.texture;
         Color[] fishBaseColorArray = baseTexture.GetPixels();
-        Debug.Log($"Colors of a fish base... {fishOutlineColorArray.Length}");
 
         m_drawingPixelColors = fishBaseColorArray;
         UpdateRenderTexture(m_renderTexture, m_drawingTexture, fishBaseColorArray);
@@ -294,14 +289,12 @@ public class DrawingRenderer : MonoBehaviour
     private void SetDrawableMask(Texture2D fishBaseTexture)
     {
         m_drawableMask = new bool[fishBaseTexture.width * fishBaseTexture.height];
-
         for (int y = 0; y < fishBaseTexture.height; y++)
         {
             for (int x = 0; x < fishBaseTexture.width; x++)
             {
                 int index = y * fishBaseTexture.width + x;
                 Color pixelColor = fishBaseTexture.GetPixel(x, y);
-
                 m_drawableMask[index] = pixelColor.a > 0.1f;
             }
         }

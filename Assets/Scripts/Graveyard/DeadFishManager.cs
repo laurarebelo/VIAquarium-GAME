@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class DeadFishManager : MonoBehaviour
 {
-    private FishAPI fishApi;
     public GameObject loadingScreen;
     public GameObject noFishScreen;
     public Transform foregroundParentGo;
@@ -35,7 +34,6 @@ public class DeadFishManager : MonoBehaviour
     {
         cameraReset = Camera.main.GetComponent<CameraReset>();
         cameraBounds = Camera.main.GetComponent<CameraBounds>();
-        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         if (searchInputField != null)
         {
             searchInputField.onEndEdit.AddListener(async => _ = Search(searchInputField.text));
@@ -71,7 +69,7 @@ public class DeadFishManager : MonoBehaviour
         cameraReset.ResetCamera();
         noFishScreen.SetActive(false);
         ShowLoadingScreen(true);
-        var allFish = await fishApi.GetDeadFish(sortBy, searchName, null, 32);
+        var allFish = await FishAPI.Instance.GetDeadFish(sortBy, searchName, null, 32);
         InstantiateDeadFishList(allFish);
         ShowLoadingScreen(false);
         await LoadAdditionalDeadFish();
@@ -102,7 +100,7 @@ public class DeadFishManager : MonoBehaviour
         else
         {
             ShowLoadingScreen(true);
-            var allFish = await fishApi.GetDeadFish(sortBy, null, null, 32);
+            var allFish = await FishAPI.Instance.GetDeadFish(sortBy, null, null, 32);
             FishStore.Instance.StoreDeadFishList(allFish);
             InstantiateDeadFishList(allFish);
             ShowLoadingScreen(false);
@@ -113,7 +111,7 @@ public class DeadFishManager : MonoBehaviour
 
     async Task LoadAdditionalDeadFish(bool store = false)
     {
-        var additionalFish = await fishApi.GetDeadFish(sortBy, searchName, null, 100);
+        var additionalFish = await FishAPI.Instance.GetDeadFish(sortBy, searchName, null, 100);
         if (additionalFish.Count > 0)
         {
             if (store) FishStore.Instance.SetStoredDeadFish(additionalFish);

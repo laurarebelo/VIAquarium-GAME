@@ -15,6 +15,7 @@ public class FishTemplateProvider : MonoBehaviour
     public FishTemplateSelector selectedTemplate;
     public GameObject allFishTemplatesParent;
     public GameObject addFishCanvas;
+    public static FishTemplateProvider Instance => instance;
 
     void Awake()
     {
@@ -81,12 +82,10 @@ public class FishTemplateProvider : MonoBehaviour
     {
         return namedSpritesDictionary[template.ToLower()];
     }
-
     public void SelectTemplate(FishTemplateSelector template)
     {
         DeselectTemplate();
         selectedTemplate = template;
-        selectedTemplate.Select();
         OnTemplateSelectionChanged.Invoke(true);
     }
 

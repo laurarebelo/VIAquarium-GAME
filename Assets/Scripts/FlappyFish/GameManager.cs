@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
 
     private int deadFishId;
 
-    private FishAPI fishApi;
     private FlappyFishAudioPlayer audioPlayer;
     private AudioSource bgm;
 
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour
     {
         audioPlayer = GameObject.Find("FlappyFishAudioPlayer").GetComponent<FlappyFishAudioPlayer>();
         fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
-        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         bgm = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
 
         SetDeadFish(RestartGameState.Instance.deadFishPlaying);
@@ -123,7 +121,7 @@ public class GameManager : MonoBehaviour
             audioPlayer.PlayReviveClip();
             winningCanvas.SetActive(true);
             winningScoreText.text += gameScore;
-            FishGetObject revivedFish = await fishApi.ReviveDeadFish(deadFishId);
+            FishGetObject revivedFish = await FishAPI.Instance.ReviveDeadFish(deadFishId);
             FishStore.Instance.StoreFish(revivedFish);
             FishStore.Instance.RemoveDeadFish(deadFishId);
         }

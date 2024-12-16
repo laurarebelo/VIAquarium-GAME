@@ -21,7 +21,6 @@ public class FishDeath : MonoBehaviour
     private Transform topLeftBoundary;
     private FishState fishState;
     private FishStore fishStore;
-    private FishAPI fishApi;
 
     void Start()
     {
@@ -29,7 +28,6 @@ public class FishDeath : MonoBehaviour
         fishState = GetComponent<FishState>();
         fishController = GetComponent<FishController>();
         topLeftBoundary = GameObject.Find("MinBounds").transform;
-        fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
     }
 
     public void Die()
@@ -44,7 +42,7 @@ public class FishDeath : MonoBehaviour
         fishStore.RemoveFish(fishController.fishId);
         if (fishStore.HasDeadStoredFish())
         {
-            Task<List<DeadFishGetObject>> task = fishApi.GetDeadFish("lastdied", fishController.fishName, 0, 1);
+            Task<List<DeadFishGetObject>> task = FishAPI.Instance.GetDeadFish("lastdied", fishController.fishName, 0, 1);
             while (!task.IsCompleted)
             {
                 yield return null;
