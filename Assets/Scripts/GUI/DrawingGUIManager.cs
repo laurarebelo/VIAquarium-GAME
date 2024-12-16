@@ -34,7 +34,7 @@ public class DrawingGUIManager : MonoBehaviour
         string fishName = nameInputField.text;
         if (!ValidateName(fishName)) yield break;
         string fishTemplate = FishTemplateProvider.Instance.selectedTemplate.TemplateName();
-        string image = SaveTextureAsPNG();
+        string image = SaveTextureAsByteString();
         FishPostObject fishPostObject = new FishPostObject(fishName, fishTemplate, image);
         var task = FishPostAsync(fishPostObject);
         while (!task.IsCompleted)
@@ -49,7 +49,6 @@ public class DrawingGUIManager : MonoBehaviour
         
         FishGetObject fishObject = task.Result;
         FishStore.Instance.StoreFish(fishObject);
-        
         nameInputField.text = "";
         FishTemplateProvider.Instance.DeselectTemplate();
         GoBack();
@@ -60,7 +59,7 @@ public class DrawingGUIManager : MonoBehaviour
         return await FishAPI.Instance.FishPost(fishPostObject);
     }
     
-    private string SaveTextureAsPNG()
+    private string SaveTextureAsByteString()
     {
         RenderTexture currentRT = RenderTexture.active;
         RenderTexture.active = renderTexture;
