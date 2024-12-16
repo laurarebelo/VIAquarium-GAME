@@ -87,7 +87,6 @@ public class FishTemplateProvider : MonoBehaviour
     {
         DeselectTemplate();
         selectedTemplate = template;
-        selectedTemplate.Select();
         OnTemplateSelectionChanged.Invoke(true);
     }
 

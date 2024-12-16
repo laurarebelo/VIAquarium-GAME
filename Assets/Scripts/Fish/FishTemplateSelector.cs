@@ -37,6 +37,7 @@ public class FishTemplateSelector : MonoBehaviour
     {
         if (namedSprite != null)
         {
+            Select();
             FishTemplateProvider.Instance.SelectTemplate(this);
         }
     }
