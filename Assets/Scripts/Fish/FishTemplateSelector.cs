@@ -42,7 +42,7 @@ public class FishTemplateSelector : MonoBehaviour
         }
     }
 
-    public void Select()
+    private void Select()
     {
         highlightImage.SetActive(true);
     }

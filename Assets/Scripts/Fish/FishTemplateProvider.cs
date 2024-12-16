@@ -82,7 +82,6 @@ public class FishTemplateProvider : MonoBehaviour
     {
         return namedSpritesDictionary[template.ToLower()];
     }
-
     public void SelectTemplate(FishTemplateSelector template)
     {
         DeselectTemplate();
