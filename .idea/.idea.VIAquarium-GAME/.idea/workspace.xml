@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="" />
+    <list default="true" id="76b12596-7a17-4963-ae6d-57b8b4b948a3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GUI/DrawingGUIManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,7 +225,7 @@
       <workItem from="1733869981351" duration="1264000" />
       <workItem from="1733910623134" duration="2348000" />
       <workItem from="1734078178313" duration="18320000" />
-      <workItem from="1734345927297" duration="10909000" />
+      <workItem from="1734345927297" duration="11242000" />
     </task>
     <servers />
   </component>

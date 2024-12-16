@@ -21,10 +21,10 @@ public class DrawingGUIManager : MonoBehaviour
         nameInputField.characterLimit = NameSize;
         errorManager = GameObject.Find("ErrorManager").GetComponent<ErrorManager>();
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
-        backButton.onClick.AddListener(GoBack);
+        backButton.onClick.AddListener(ReturnToAquarium);
     }
 
-    private void GoBack()
+    private void ReturnToAquarium()
     {
         SceneManager.LoadScene("MainAquarium");
     }
@@ -51,7 +51,7 @@ public class DrawingGUIManager : MonoBehaviour
         FishStore.Instance.StoreFish(fishObject);
         nameInputField.text = "";
         FishTemplateProvider.Instance.DeselectTemplate();
-        GoBack();
+        ReturnToAquarium();
     }
     
     private async Task<FishGetObject> FishPostAsync(FishPostObject fishPostObject)
