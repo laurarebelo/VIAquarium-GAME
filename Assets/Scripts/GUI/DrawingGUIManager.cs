@@ -11,28 +11,19 @@ public class DrawingGUIManager : MonoBehaviour
 {
     private ErrorManager errorManager;
     public Button backButton;
-
     public Button submitButton;
-
     public TMP_InputField nameInputField;
-
-    private FishTemplateProvider fishTemplateProvider;
-
     private FishAPI fishApi;
     public RenderTexture renderTexture;
-    private List<FishGetObject> fishList;
     public int NameSize = 20;
 
 
     void Start()
     {
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         fishApi = GameObject.Find("FishApi").GetComponent<FishAPI>();
         errorManager = GameObject.Find("ErrorManager").GetComponent<ErrorManager>();
-        
         submitButton.onClick.AddListener(() => StartCoroutine(SubmitFishCoroutine()));
         backButton.onClick.AddListener(GoBack);
-        fishList = FishStore.Instance.GetStoredFish();
         nameInputField.characterLimit = NameSize;
     }
 
@@ -46,7 +37,7 @@ public class DrawingGUIManager : MonoBehaviour
         string fishName = nameInputField.text;
 
         if (!ValidateName(fishName)) yield break;
-        string fishTemplate = fishTemplateProvider.selectedTemplate.TemplateName();
+        string fishTemplate = FishTemplateProvider.Instance.selectedTemplate.TemplateName();
         string image = SaveTextureAsPNG();
         FishPostObject fishPostObject = new FishPostObject(fishName, fishTemplate, image);
         var task = FishPostAsync(fishPostObject);
@@ -64,7 +55,7 @@ public class DrawingGUIManager : MonoBehaviour
         FishStore.Instance.StoreFish(fishObject);
         
         nameInputField.text = "";
-        fishTemplateProvider.DeselectTemplate();
+        FishTemplateProvider.Instance.DeselectTemplate();
         GoBack();
     }
     
@@ -93,7 +84,6 @@ public class DrawingGUIManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(name) || !System.Text.RegularExpressions.Regex.IsMatch(name, @"^[a-zA-Z\s]+$") || name.Length > NameSize)
         {
             errorManager.ShowError( name + " is very special, however NO SPECIAL CHARACTERS are allowed in the name!");
-
             return false;
         }
         return true;

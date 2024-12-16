@@ -1400,7 +1400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &766427481
 Transform:
   m_ObjectHideFlags: 0
@@ -2335,6 +2335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 1599726875}
   fishAudioPlayer: {fileID: 0}
+  flappyFishAudioPlayer: {fileID: 0}
   soundEffectsAudioSources:
   - {fileID: 858585349}
   - {fileID: 8551863628496940882}

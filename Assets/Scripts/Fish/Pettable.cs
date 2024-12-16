@@ -12,7 +12,6 @@ namespace Fish
         private FishController fishController;
         private CursorManager _cursorManager;
         private FishEmotions fishEmotions;
-        private FishDeath fishDeath;
         private FishAudioPlayer audioPlayer;
         private HandState handState;
 
@@ -26,7 +25,6 @@ namespace Fish
             handState = GameObject.Find("HandState").GetComponent<HandState>();
             fishController = GetComponent<FishController>();
             fishEmotions = GetComponent<FishEmotions>();
-            fishDeath = GetComponent<FishDeath>();
             audioPlayer = GameObject.Find("FishAudioPlayer").GetComponent<FishAudioPlayer>();
             _cursorManager = FindObjectOfType<CursorManager>();
         

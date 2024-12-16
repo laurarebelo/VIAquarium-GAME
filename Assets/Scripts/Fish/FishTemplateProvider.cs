@@ -15,6 +15,7 @@ public class FishTemplateProvider : MonoBehaviour
     public FishTemplateSelector selectedTemplate;
     public GameObject allFishTemplatesParent;
     public GameObject addFishCanvas;
+    public static FishTemplateProvider Instance => instance;
 
     void Awake()
     {

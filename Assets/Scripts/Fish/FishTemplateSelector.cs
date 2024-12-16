@@ -11,13 +11,11 @@ public class FishTemplateSelector : MonoBehaviour
     public Button button;
     public TMP_Text fishNameText;
     public NamedSprite namedSprite;
-    private FishTemplateProvider fishTemplateProvider;
     public GameObject highlightImage;
 
     private void Awake()
     {
         button.onClick.AddListener(OnTemplateSelected);
-        fishTemplateProvider = GameObject.Find("FishTemplateProvider").GetComponent<FishTemplateProvider>();
         Deselect();
     }
 
@@ -39,7 +37,7 @@ public class FishTemplateSelector : MonoBehaviour
     {
         if (namedSprite != null)
         {
-            fishTemplateProvider.SelectTemplate(this);
+            FishTemplateProvider.Instance.SelectTemplate(this);
         }
     }
 
