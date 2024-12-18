@@ -13,10 +13,15 @@ public class FishKnockReaction : MonoBehaviour
         knocker = GameObject.Find("Knocker").GetComponent<Knocker>();
         if (knocker != null)
         {
-            knocker.OnDoubleTap += ReactToKnock;
+            SubscribeToKnocker();
         }
 
         swimmingController = GetComponent<FishMovement>();
+    }
+
+    void SubscribeToKnocker()
+    {
+        knocker.OnDoubleTap += ReactToKnock;
     }
 
     bool WasItCloseEnough(Vector3 position)

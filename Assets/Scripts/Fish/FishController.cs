@@ -28,7 +28,6 @@ public class FishController : MonoBehaviour
         if (level == 0)
         {
             fishDeath.Die();
-            FishStore.Instance.RemoveFish(fishId);
         }
 
         if (level > 100) level = 100;
@@ -42,7 +41,6 @@ public class FishController : MonoBehaviour
         if (level == 0)
         {
             fishDeath.Die();
-            FishStore.Instance.RemoveFish(fishId);
         }
 
         if (level > 100) level = 100;

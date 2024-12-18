@@ -33,16 +33,20 @@ public class Knocker : MonoBehaviour
                 if (Time.time - lastTapTime <= doubleTapTime)
                 {
                     Vector3 position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                    OnDoubleTap?.Invoke(position);
-                    cursorManager.Knock();
-                    Vector3 feedbackPosition = position + new Vector3(0, 0, 11);
-                    Instantiate(knockFeedback, feedbackPosition, Quaternion.identity);
-                    PlayKnockClip();
+                    Knock(position);
                 }
-
                 lastTapTime = Time.time;
             }
         }
+    }
+
+    private void Knock(Vector3 knockPosition)
+    {
+        OnDoubleTap?.Invoke(knockPosition);
+        cursorManager.Knock();
+        Vector3 feedbackPosition = knockPosition + new Vector3(0, 0, 11);
+        Instantiate(knockFeedback, feedbackPosition, Quaternion.identity);
+        PlayKnockClip();
     }
     
     private void PlayKnockClip()
